@@ -1,4 +1,4 @@
-package com.dots.server;
+package com.dots.Servidor;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,5 +18,10 @@ public class server {
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             out.println("ok");
         }
+    }
+
+    public static void main(String[] args) throws IOException{
+        server s1 = new server();
+        s1.start();
     }
 }
