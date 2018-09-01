@@ -2,40 +2,45 @@ package com.dots.listas;
 
 /**
  * Clase nodo, se utiliza en conjunto con listas para almacenar datos
- * @param <A> Tipo de dato, puede ser int, string, boolean, entre otros
  */
 
-public class Nodo<A> {
-    public Nodo<A> sigue;
-    private A dato;
+public class Nodo{
 
-    /**
-     * Contructor de la clase nodo
-     * @param dato almacena el dato introducido por el usuario
-     */
+    public Nodo next;
+    public Nodo prev;
+    private int numNodo;
+    private int posx;
+    private int posy;
 
-    public Nodo(A dato){
-        this.dato = dato;
-        this.sigue = null;
+    public Nodo(int numNodo, int posx, int posy) {
+        this.next = null;
+        this.prev = null;
+        this.numNodo = numNodo;
+        this.posx = posx;
+        this.posy = posy;
     }
 
-    /**
-     * Getters y Setters de la clase nodo
-     */
-
-    public A getDato() {
-        return this.dato;
+    public int getNumNodo() {
+        return this.numNodo;
     }
 
-    public void setDato(A dato) {
-        this.dato = dato;
+    public void setNumNodo(int numNodo) {
+        this.numNodo = numNodo;
     }
 
-    public Nodo<A> getSigue() {
-        return this.sigue;
+    public int getPosx() {
+        return this.posx;
     }
 
-    public void setSigue(Nodo<A> sigue) {
-        this.sigue = sigue;
+    public void setPosx(int posx) {
+        this.posx = posx;
+    }
+
+    public int getPosy() {
+        return this.posy;
+    }
+
+    public void setPosy(int posy) {
+        this.posy = posy;
     }
 }

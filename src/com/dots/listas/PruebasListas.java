@@ -6,9 +6,10 @@ package com.dots.listas;
 
 public class PruebasListas {
     public static void main(String [ ] args){
-        ListaSimple<Integer> l1 = new ListaSimple<>();
-        l1.anadirElemento(3);
-        l1.anadirElemento(4);
+
+        ListaDeListas l1 = new ListaDeListas();
+        l1.anadirElemento(6, 1, 1, 1);
         l1.imprimirLista();
+
     }
 }

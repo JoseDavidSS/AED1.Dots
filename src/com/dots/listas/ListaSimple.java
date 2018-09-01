@@ -2,20 +2,24 @@ package com.dots.listas;
 
 /**
  * Clase de listas simples
- * @param <A> Tipo de dato que almacena la lista
  */
 
-public class ListaSimple<A> {
+public class ListaSimple {
+
+    public ListaSimple next;
+    public ListaSimple prev;
     private int largo;
-    private Nodo<A> cabeza;
+    private Nodo head;
 
     /**
      * Constructor de la clase lista
      */
 
     public ListaSimple(){
+        this.next = null;
+        this.prev = null;
         this.largo = 0;
-        this.cabeza = null;
+        this.head = null;
     }
 
     /**
@@ -32,17 +36,20 @@ public class ListaSimple<A> {
 
     /**
      * Metodo que agrega un elemento a la lista
-     * @param dato ingresa el dato que almacena el nodo
+     * @param numNodo ingresa el dato que almacena el nodo
      */
 
-    public void anadirElemento(A dato){
-        if (this.cabeza == null)
-            this.cabeza = new Nodo<>(dato);
+    public void anadirElemento(int numNodo, int posx, int posy){
+        if (this.head == null) {
+            this.head = new Nodo(numNodo, posx, posy);
+        }
         else{
-            Nodo<A> tmp = this.cabeza;
-            while(tmp.sigue != null)
-                tmp = tmp.sigue;
-            tmp.sigue = new Nodo<>(dato);
+            Nodo tmp = this.head;
+            while(tmp.next != null) {
+                tmp = tmp.next;
+            }
+            tmp.next = new Nodo(numNodo, posx, posy);
+            tmp.next.prev = tmp;
         }
     }
 
@@ -51,10 +58,13 @@ public class ListaSimple<A> {
      */
 
     public void imprimirLista(){
-        Nodo<A> tmp = this.cabeza;
+        Nodo tmp = this.head;
+        System.out.println("Cambio lista");
         while(tmp != null) {
-            System.out.println(tmp.getDato());
-            tmp = tmp.sigue;
+            System.out.println("Nodo" + tmp.getNumNodo());
+            System.out.println("Posx" + tmp.getPosx());
+            System.out.println("Posy" + tmp.getPosy());
+            tmp = tmp.next;
         }
     }
 
