@@ -36,6 +36,7 @@ public class ListaDeListas {
                     posy++;
                     columnas = filas_columnas;
                     posx = rposx;
+                    this.largo++;
                 } else {
                     ListaSimple tmp = this.head;
                     while (tmp.next != null) {
@@ -53,6 +54,7 @@ public class ListaDeListas {
                     posy++;
                     columnas = filas_columnas;
                     posx = rposx;
+                    this.largo++;
                 }
             }
         } else {

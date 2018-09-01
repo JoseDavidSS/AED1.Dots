@@ -42,6 +42,7 @@ public class ListaSimple {
     public void anadirElemento(int numNodo, int posx, int posy){
         if (this.head == null) {
             this.head = new Nodo(numNodo, posx, posy);
+            this.largo++;
         }
         else{
             Nodo tmp = this.head;
@@ -50,6 +51,7 @@ public class ListaSimple {
             }
             tmp.next = new Nodo(numNodo, posx, posy);
             tmp.next.prev = tmp;
+            this.largo++;
         }
     }
 
