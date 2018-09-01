@@ -4,10 +4,21 @@ public class ListaSimpleLineas {
 
     private NodoLineas head;
     private int largo;
+    private static ListaSimpleLineas ListaLineas;
 
-    public ListaSimpleLineas() {
+    private ListaSimpleLineas() {
         this.head = null;
         this.largo = 0;
+    }
+
+    public static ListaSimpleLineas getLista(){
+        if (ListaLineas == null){
+            ListaLineas = new ListaSimpleLineas();
+        }
+        else{
+            return ListaLineas;
+        }
+        return null;
     }
 
     public int getLargo() {

@@ -4,10 +4,21 @@ public class ListaDeListas {
 
     private int largo;
     private ListaSimple head;
+    public static ListaDeListas ListaLista;
 
-    public ListaDeListas() {
+    private ListaDeListas() {
         this.largo = 0;
         this.head = null;
+    }
+
+    public static ListaDeListas getLista(){
+        if (ListaLista == null){
+            ListaLista = new ListaDeListas();
+        }
+        else{
+            return ListaLista;
+        }
+        return null;
     }
 
     public int getLargo() {

@@ -7,9 +7,9 @@ package com.dots.listas;
 public class PruebasListas {
     public static void main(String [ ] args){
 
-        ListaDeListas l1 = new ListaDeListas();
-        l1.anadirElemento(3, 1, 1, 1);
-        l1.imprimirLista();
+        ListaDeListas.getLista();
+        ListaDeListas.getLista().anadirElemento(3,1,1,1);
+        ListaDeListas.getLista().imprimirLista();
 
     }
 }
