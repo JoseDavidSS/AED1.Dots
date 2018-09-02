@@ -11,12 +11,13 @@ public class Server {
     public void start() throws IOException {
         ServerSocket server = new ServerSocket(10000);
         while (true) {
+
             Socket socket = server.accept();
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String line = reader.readLine();
             System.out.println(line);
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            out.println("ok");
+            out.println("ok\n");
         }
     }
 
