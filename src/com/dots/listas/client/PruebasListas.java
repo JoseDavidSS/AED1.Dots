@@ -1,5 +1,7 @@
 package com.dots.listas.client;
 
+import com.dots.listas.server.ListaSimpleLineas;
+
 /**
  * Clase temporal para pruebas de listas
  */
@@ -7,9 +9,14 @@ package com.dots.listas.client;
 public class PruebasListas {
     public static void main(String [ ] args){
 
-        ListaDeListas.getLista();
-        ListaDeListas.getLista().anadirElemento(3,1,1,1);
-        ListaDeListas.getLista().imprimirLista();
+        ListaSimpleLineas.getLista();
+        ListaSimpleLineas l1 = ListaSimpleLineas.getLista();
+        l1.anadirElemento(2, 2, 1, 2);
+        l1.anadirElemento(1, 2, 1, 2);
+        l1.anadirElemento(1,2,1,1);
+
+
+        l1.comprobarAdyacentes();
 
     }
 }

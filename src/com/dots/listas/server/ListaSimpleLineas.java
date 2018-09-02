@@ -48,25 +48,25 @@ public class ListaSimpleLineas {
     public String comprobarAdyacentes(){
         if (this.largo > 2){
             NodoLineas tmp1 = this.head;
-            NodoLineas tmp2 = tmp1.next;
-            while(tmp1.next != null){
-                while (tmp2.next != null){
+            NodoLineas tmp2 = tmp1;
+            while(tmp1 != null){
+                while (tmp2 != null){
                     if (tmp1 == tmp2){
                         tmp2 = tmp2.next;
                     }
                     else if (tmp1.getPosxf() == tmp2.getPosxi() && tmp1.getPosyf() == tmp2.getPosyi()){
                         NodoLineas tmp3 = this.head;
-                        while (tmp3.next != null){
+                        while (tmp3 != null){
                             if (tmp1 == tmp3 || tmp2 == tmp3){
                                 tmp3 = tmp3.next;
                             }
                             else if (tmp2.getPosxf() == tmp3.getPosxf() && tmp2.getPosyf() == tmp3.getPosyf()){
-                                if (tmp1.getPosxi() == tmp3.getPosxi() && tmp1.getPosyf() == tmp3.getPosyi()){
+                                if (tmp1.getPosxi() == tmp3.getPosxi() && tmp1.getPosyi() == tmp3.getPosyi()){
                                     return "Triangulo";
                                 }
                                 else{
                                     NodoLineas tmp4 = this.head;
-                                    while (tmp4.next != null){
+                                    while (tmp4 != null){
                                         if (tmp1 == tmp4 || tmp2 == tmp4 || tmp3 == tmp4){
                                             tmp4 = tmp4.next;
                                         }
