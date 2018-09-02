@@ -13,12 +13,12 @@ public class HiloServer extends Thread {
     PrintWriter salida;
     Socket socket;
 
-    public HiloServer (Socket socket){
+    public HiloServer(Socket socket) {
         this.socket = socket;
         try {
             entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            salida = new PrintWriter(socket.getOutputStream(),true);
-        }catch (IOException e){
+            salida = new PrintWriter(socket.getOutputStream(), true);
+        } catch (IOException e) {
             System.out.println("Mae se despicho la vara");
         }
     }
@@ -27,26 +27,25 @@ public class HiloServer extends Thread {
     public void run() {
         int numero = 0;
 
-        while (numero != 6969){
+        while (numero != 6969) {
             System.out.println("El cliente " + socket.toString() + " envió un número.");
             try {
                 numero = Integer.parseInt(entrada.readLine());
-                if ( numero%2 == 0){
+                if (numero % 2 == 0) {
                     salida.println("Par");
-                }
-                else {
+                } else {
                     salida.println("Impar");
                 }
-            }catch (IOException e){
-                System.out.println("Mae se despicho la vara");
+            } catch (IOException | NumberFormatException a) {
+               salida.println("ERROR");
             }
         }
-        System.out.println("El cliente " + socket.toString() + " terminó la sesión" );
+        System.out.println("El cliente " + socket.toString() + " terminó la sesión");
         try {
             entrada.close();
             salida.close();
             socket.close();
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Mae se despicho la vara");
         }
     }
