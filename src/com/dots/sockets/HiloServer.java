@@ -17,7 +17,7 @@ public class HiloServer extends Thread {
         this.socket = socket;
         try {
             entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            salida = new PrintWriter(socket.getOutputStream());
+            salida = new PrintWriter(socket.getOutputStream(),true);
         }catch (IOException e){
             System.out.println("Mae se despicho la vara");
         }
