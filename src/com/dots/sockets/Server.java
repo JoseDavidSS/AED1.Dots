@@ -1,4 +1,4 @@
-package com.dots.Servidor;
+package com.dots.sockets;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class server {
+public class Server {
     public void start() throws IOException {
         ServerSocket server = new ServerSocket(10000);
         while (true) {
@@ -21,7 +21,7 @@ public class server {
     }
 
     public static void main(String[] args) throws IOException{
-        server s1 = new server();
+        Server s1 = new Server();
         s1.start();
     }
 }

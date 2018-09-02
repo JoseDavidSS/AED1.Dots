@@ -1,4 +1,4 @@
-package com.dots.listas;
+package com.dots.listas.client;
 
 /**
  * Clase temporal para pruebas de listas

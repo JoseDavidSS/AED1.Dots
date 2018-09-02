@@ -1,4 +1,4 @@
-package com.dots.listas;
+package com.dots.listas.client;
 
 public class ListaDeListas {
 
