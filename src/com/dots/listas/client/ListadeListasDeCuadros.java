@@ -1,21 +1,19 @@
 package com.dots.listas.client;
 
-//Puede que sea innecesario, pero lo dejo por si acaso
+public class ListadeListasDeCuadros {
 
-public class ListaDeListas {
-
+    public static ListadeListasDeCuadros ListaLista;
     private int largo;
-    private ListaSimple head;
-    public static ListaDeListas ListaLista;
+    private ListaCuadros head;
 
-    private ListaDeListas() {
+    private ListadeListasDeCuadros() {
         this.largo = 0;
         this.head = null;
     }
 
-    public static ListaDeListas getLista(){
+    public static ListadeListasDeCuadros getLista(){
         if (ListaLista == null){
-            ListaLista = new ListaDeListas();
+            ListaLista = new ListadeListasDeCuadros();
         }
         else{
             return ListaLista;
@@ -31,42 +29,33 @@ public class ListaDeListas {
         this.largo = largo;
     }
 
-    public void anadirElemento(int filas_columnas, int numNodo, int posx, int posy) {
+    public void anadirElemento(int filas_columnas) {
         if (filas_columnas > 2) {
             int filas = filas_columnas;
             int columnas = filas_columnas;
-            int rposx = posx;
             while (filas != 0) {
                 if (this.head == null) {
-                    this.head = new ListaSimple();
+                    this.head = new ListaCuadros();
                     while (columnas != 0){
-                        this.head.anadirElemento(numNodo, posx, posy);
+                        this.head.anadirElemento();
                         columnas--;
-                        posx++;
-                        numNodo++;
                     }
                     filas--;
-                    posy++;
                     columnas = filas_columnas;
-                    posx = rposx;
                     this.largo++;
                 } else {
-                    ListaSimple tmp = this.head;
+                    ListaCuadros tmp = this.head;
                     while (tmp.next != null) {
                         tmp = tmp.next;
                     }
-                    tmp.next = new ListaSimple();
+                    tmp.next = new ListaCuadros();
                     tmp.next.prev = tmp;
                     while (columnas != 0){
-                        tmp.next.anadirElemento(numNodo, posx, posy);
+                        tmp.next.anadirElemento();
                         columnas--;
-                        posx++;
-                        numNodo++;
                     }
                     filas--;
-                    posy++;
                     columnas = filas_columnas;
-                    posx = rposx;
                     this.largo++;
                 }
             }
@@ -76,7 +65,7 @@ public class ListaDeListas {
     }
 
     public void imprimirLista(){
-        ListaSimple tmp = this.head;
+        ListaCuadros tmp = this.head;
         while (tmp != null){
             tmp.imprimirLista();
             tmp = tmp.next;
