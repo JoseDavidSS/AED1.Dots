@@ -45,7 +45,7 @@ public class ListaSimpleLineas {
         }
     }
 
-    public String comprobarAdyacentes(){
+    public void comprobarAdyacentes(){
         if (this.largo > 2){
             NodoLineas tmp1 = this.head;
             NodoLineas tmp2 = tmp1;
@@ -62,7 +62,8 @@ public class ListaSimpleLineas {
                             }
                             else if (tmp2.getPosxf() == tmp3.getPosxf() && tmp2.getPosyf() == tmp3.getPosyf()){
                                 if (tmp1.getPosxi() == tmp3.getPosxi() && tmp1.getPosyi() == tmp3.getPosyi()){
-                                    return "Triangulo";
+                                    System.out.println("Triangulo");
+                                    tmp3 = tmp3.next;
                                 }
                                 else{
                                     NodoLineas tmp4 = this.head;
@@ -70,9 +71,10 @@ public class ListaSimpleLineas {
                                         if (tmp1 == tmp4 || tmp2 == tmp4 || tmp3 == tmp4){
                                             tmp4 = tmp4.next;
                                         }
-                                        else if(tmp3.getPosxi() == tmp4.getPosxf() && tmp3.getPosyi() == tmp4.getPosyf()){
+                                        else if (tmp3.getPosxi() == tmp4.getPosxf() && tmp3.getPosyi() == tmp4.getPosyf()){
                                             if (tmp1.getPosxi() == tmp4.getPosxi() && tmp1.getPosyi() == tmp4.getPosyi()){
-                                                return "Cuadrado";
+                                                System.out.println("Cuadrado");
+                                                tmp4 = tmp4.next;
                                             }
                                             else{
                                                 tmp4 = tmp4.next;
@@ -100,8 +102,7 @@ public class ListaSimpleLineas {
             }
         }
         else{
-            return "Error";
+            System.out.println("Error");
         }
-        return null;
     }
 }
