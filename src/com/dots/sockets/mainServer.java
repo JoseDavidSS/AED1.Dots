@@ -9,7 +9,7 @@ public class mainServer {
         try {
             s1.start();
         } catch (IOException e) {
-            System.out.println("Mae se despicho la vara");
+            System.out.println("Error IO");
         }
     }
 }
