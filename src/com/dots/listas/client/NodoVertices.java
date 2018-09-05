@@ -4,15 +4,15 @@ package com.dots.listas.client;
  * Clase nodo, se utiliza en conjunto con listas para almacenar datos
  */
 
-public class Nodo{
+public class NodoVertices {
 
-    public Nodo next;
-    public Nodo prev;
+    public NodoVertices next;
+    public NodoVertices prev;
     private int numNodo;
     private int posx;
     private int posy;
 
-    public Nodo(int numNodo, int posx, int posy) {
+    public NodoVertices(int numNodo, int posx, int posy) {
         this.next = null;
         this.prev = null;
         this.numNodo = numNodo;

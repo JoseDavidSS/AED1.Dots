@@ -2,20 +2,20 @@ package com.dots.listas.client;
 
 //Puede que sea innecesario, pero lo dejo por si acaso
 
-public class ListaDeListas {
+public class ListaDeListasDeVertices {
 
     private int largo;
-    private ListaSimple head;
-    public static ListaDeListas ListaLista;
+    public static ListaDeListasDeVertices ListaLista;
+    private ListaVertices head;
 
-    private ListaDeListas() {
+    private ListaDeListasDeVertices() {
         this.largo = 0;
         this.head = null;
     }
 
-    public static ListaDeListas getLista(){
+    public static ListaDeListasDeVertices getLista(){
         if (ListaLista == null){
-            ListaLista = new ListaDeListas();
+            ListaLista = new ListaDeListasDeVertices();
         }
         else{
             return ListaLista;
@@ -38,7 +38,7 @@ public class ListaDeListas {
             int rposx = posx;
             while (filas != 0) {
                 if (this.head == null) {
-                    this.head = new ListaSimple();
+                    this.head = new ListaVertices();
                     while (columnas != 0){
                         this.head.anadirElemento(numNodo, posx, posy);
                         columnas--;
@@ -51,11 +51,11 @@ public class ListaDeListas {
                     posx = rposx;
                     this.largo++;
                 } else {
-                    ListaSimple tmp = this.head;
+                    ListaVertices tmp = this.head;
                     while (tmp.next != null) {
                         tmp = tmp.next;
                     }
-                    tmp.next = new ListaSimple();
+                    tmp.next = new ListaVertices();
                     tmp.next.prev = tmp;
                     while (columnas != 0){
                         tmp.next.anadirElemento(numNodo, posx, posy);
@@ -76,7 +76,7 @@ public class ListaDeListas {
     }
 
     public void imprimirLista(){
-        ListaSimple tmp = this.head;
+        ListaVertices tmp = this.head;
         while (tmp != null){
             tmp.imprimirLista();
             tmp = tmp.next;

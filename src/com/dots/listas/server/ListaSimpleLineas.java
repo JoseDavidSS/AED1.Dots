@@ -68,10 +68,16 @@ public class ListaSimpleLineas {
                                 if (tmp1.getPosxi() == tmp3.getPosxi() && tmp1.getPosyi() == tmp3.getPosyi()){
                                     if (this.tail == tmp1 || this.tail == tmp2 || this.tail == tmp3){
                                         System.out.println("Triangulo con ultima linea");
+                                        System.out.println("V1: " + tmp1.getPosxi() + ", " + tmp1.getPosyi());
+                                        System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
+                                        System.out.println("V3: " + tmp2.getPosxf() + ", " + tmp2.getPosyf());
                                         tmp3 = tmp3.next;
                                     }
                                     else{
                                         System.out.println("Triangulo");
+                                        System.out.println("V1: " + tmp1.getPosxi() + ", " + tmp1.getPosyi());
+                                        System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
+                                        System.out.println("V3: " + tmp2.getPosxf() + ", " + tmp2.getPosyf());
                                         tmp3 = tmp3.next;
                                     }
                                 }
@@ -85,10 +91,18 @@ public class ListaSimpleLineas {
                                             if (tmp1.getPosxi() == tmp4.getPosxi() && tmp1.getPosyi() == tmp4.getPosyi()){
                                                 if (this.tail == tmp1 || this.tail == tmp2 || this.tail == tmp3 || this.tail == tmp4){
                                                     System.out.println("Cuadrado con ultima linea");
+                                                    System.out.println("V1: " + tmp1.getPosxi() + ", " + tmp1.getPosyi());
+                                                    System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
+                                                    System.out.println("V3: " + tmp2.getPosxf() + ", " + tmp2.getPosyf());
+                                                    System.out.println("V4: " + tmp4.getPosxf() + ", " + tmp4.getPosyf());
                                                     tmp4 = tmp4.next;
                                                 }
                                                 else{
                                                     System.out.println("Cuadrado");
+                                                    System.out.println("V1: " + tmp1.getPosxi() + ", " + tmp1.getPosyi());
+                                                    System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
+                                                    System.out.println("V3: " + tmp2.getPosxf() + ", " + tmp2.getPosyf());
+                                                    System.out.println("V4: " + tmp4.getPosxf() + ", " + tmp4.getPosyf());
                                                     tmp4 = tmp4.next;
                                                 }
                                             }
