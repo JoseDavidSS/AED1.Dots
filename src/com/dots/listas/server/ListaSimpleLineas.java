@@ -3,12 +3,14 @@ package com.dots.listas.server;
 public class ListaSimpleLineas {
 
     private NodoLineas head;
+    private NodoLineas tail;
     private int largo;
     private static ListaSimpleLineas ListaLineas;
 
     private ListaSimpleLineas() {
         this.head = null;
         this.largo = 0;
+        this.tail = null;
     }
 
     public static ListaSimpleLineas getLista(){
@@ -32,6 +34,7 @@ public class ListaSimpleLineas {
     public void anadirElemento(int posxi, int posxf, int posyi, int posyf){
         if (this.head == null){
             this.head = new NodoLineas(posxi, posxf, posyi, posyf);
+            this.tail = this.head;
             this.largo++;
         }
         else{
@@ -41,6 +44,7 @@ public class ListaSimpleLineas {
             }
             tmp.next = new NodoLineas(posxi, posxf, posyi, posyf);
             tmp.next.prev = tmp;
+            this.tail = tmp.next;
             this.largo++;
         }
     }
@@ -62,8 +66,14 @@ public class ListaSimpleLineas {
                             }
                             else if (tmp2.getPosxf() == tmp3.getPosxf() && tmp2.getPosyf() == tmp3.getPosyf()){
                                 if (tmp1.getPosxi() == tmp3.getPosxi() && tmp1.getPosyi() == tmp3.getPosyi()){
-                                    System.out.println("Triangulo");
-                                    tmp3 = tmp3.next;
+                                    if (this.tail == tmp1 || this.tail == tmp2 || this.tail == tmp3){
+                                        System.out.println("Triangulo con ultima linea");
+                                        tmp3 = tmp3.next;
+                                    }
+                                    else{
+                                        System.out.println("Triangulo");
+                                        tmp3 = tmp3.next;
+                                    }
                                 }
                                 else{
                                     NodoLineas tmp4 = this.head;
@@ -73,8 +83,14 @@ public class ListaSimpleLineas {
                                         }
                                         else if (tmp3.getPosxi() == tmp4.getPosxf() && tmp3.getPosyi() == tmp4.getPosyf()){
                                             if (tmp1.getPosxi() == tmp4.getPosxi() && tmp1.getPosyi() == tmp4.getPosyi()){
-                                                System.out.println("Cuadrado");
-                                                tmp4 = tmp4.next;
+                                                if (this.tail == tmp1 || this.tail == tmp2 || this.tail == tmp3 || this.tail == tmp4){
+                                                    System.out.println("Cuadrado con ultima linea");
+                                                    tmp4 = tmp4.next;
+                                                }
+                                                else{
+                                                    System.out.println("Cuadrado");
+                                                    tmp4 = tmp4.next;
+                                                }
                                             }
                                             else{
                                                 tmp4 = tmp4.next;

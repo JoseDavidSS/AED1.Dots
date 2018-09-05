@@ -12,17 +12,11 @@ public class PruebasListas {
         ListaSimpleLineas.getLista();
         ListaSimpleLineas l1 = ListaSimpleLineas.getLista();
 
-        l1.anadirElemento(1, 2, 1, 2);
-        l1.anadirElemento(1, 2, 2, 2);
-        l1.anadirElemento(1,1,1,2);
-
-        l1.anadirElemento(2,3,1, 1);
-        l1.anadirElemento(3, 3, 1, 2);
-        l1.anadirElemento(2, 3, 1, 2);
 
         l1.anadirElemento(1,2,2, 2);
         l1.anadirElemento(1,1,2,3);
         l1.anadirElemento(1, 2, 3,2);
+        l1.anadirElemento(3,3,3,3);
 
         l1.comprobarAdyacentes();
 
