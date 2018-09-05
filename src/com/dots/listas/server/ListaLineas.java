@@ -88,6 +88,7 @@ public class ListaLineas {
                                         System.out.println("V1: " + tmp1.getPosxi() + ", " + tmp1.getPosyi());
                                         System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
                                         System.out.println("V3: " + tmp2.getPosxf() + ", " + tmp2.getPosyf());
+                                        l2.anadirElemento(tmp1, tmp2, tmp3, null);
                                         tmp3 = tmp3.next;
                                     }
                                 }
@@ -119,6 +120,7 @@ public class ListaLineas {
                                                     System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
                                                     System.out.println("V3: " + tmp2.getPosxf() + ", " + tmp2.getPosyf());
                                                     System.out.println("V4: " + tmp4.getPosxf() + ", " + tmp4.getPosyf());
+                                                    l2.anadirElemento(tmp1, tmp2, tmp3, tmp4);
                                                     tmp4 = tmp4.next;
                                                 }
                                             }

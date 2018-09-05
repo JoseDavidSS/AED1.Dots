@@ -50,7 +50,7 @@ public class ListaFiguras {
     public boolean comprobarCoincidencia(NodoLineas l1, NodoLineas l2, NodoLineas l3, NodoLineas l4){
         if (this.head != null){
             NodoFiguras tmp = this.head;
-            while (tmp.next != null){
+            while (tmp != null){
                 if (l4 == null){
                     if (tmp.getL4() != null){
                         tmp = tmp.next;
