@@ -4,18 +4,18 @@ package com.dots.listas.client;
  * Clase de listas simples
  */
 
-public class ListaSimple {
+public class ListaVertices {
 
-    public ListaSimple next;
-    public ListaSimple prev;
+    public ListaVertices next;
+    public ListaVertices prev;
     private int largo;
-    private Nodo head;
+    private NodoVertices head;
 
     /**
      * Constructor de la clase lista
      */
 
-    public ListaSimple(){
+    public ListaVertices(){
         this.next = null;
         this.prev = null;
         this.largo = 0;
@@ -41,15 +41,15 @@ public class ListaSimple {
 
     public void anadirElemento(int numNodo, int posx, int posy){
         if (this.head == null) {
-            this.head = new Nodo(numNodo, posx, posy);
+            this.head = new NodoVertices(numNodo, posx, posy);
             this.largo++;
         }
         else{
-            Nodo tmp = this.head;
+            NodoVertices tmp = this.head;
             while(tmp.next != null) {
                 tmp = tmp.next;
             }
-            tmp.next = new Nodo(numNodo, posx, posy);
+            tmp.next = new NodoVertices(numNodo, posx, posy);
             tmp.next.prev = tmp;
             this.largo++;
         }
@@ -60,7 +60,7 @@ public class ListaSimple {
      */
 
     public void imprimirLista(){
-        Nodo tmp = this.head;
+        NodoVertices tmp = this.head;
         System.out.println("Cambio lista");
         while(tmp != null) {
             System.out.println("Nodo" + tmp.getNumNodo());

@@ -11,8 +11,11 @@ public class ListadeListasDeCuadros {
         this.head = null;
     }
 
-    public static ListadeListasDeCuadros getLista(){
+    public static ListadeListasDeCuadros getLista(boolean reinicio){
         if (ListaLista == null){
+            ListaLista = new ListadeListasDeCuadros();
+        }
+        else if (reinicio){
             ListaLista = new ListadeListasDeCuadros();
         }
         else{
