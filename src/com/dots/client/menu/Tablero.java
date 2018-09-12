@@ -4,14 +4,14 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class Juego {
+public class Tablero {
     @FXML
     public void imprimir(){
         System.out.println("hola");
     }
 
     public void correrTablero () throws IOException {
-        Main.setScene("tableroFXML.fxml");
+        Main.setScene("tableroFXML");
     }
 }
 

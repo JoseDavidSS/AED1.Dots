@@ -49,7 +49,7 @@
                               </Label>
                               <HBox alignment="TOP_CENTER" prefHeight="61.0" prefWidth="600.0" spacing="80.0">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" text="3x3" />
+                                    <Button mnemonicParsing="false" onAction="#correrTablero" prefHeight="60.0" prefWidth="100.0" text="3x3" />
                                     <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" text="5x5" />
                                     <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" text="7x7" />
                                  </children>
