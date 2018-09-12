@@ -6,42 +6,64 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dots.client.menu.Juego">
    <children>
-      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Menú">
-               <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Tamaño de Tablero:">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <padding>
-                              <Insets bottom="20.0" top="20.0" />
-                           </padding>
-                        </Label>
-                        <HBox alignment="TOP_CENTER" prefHeight="61.0" prefWidth="600.0" spacing="80.0">
+      <GridPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Menú">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" text="3x3" />
-                              <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" text="5x5" />
-                              <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" text="7x7" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="68.0" prefWidth="600.0" text="DOTS" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="232.0" text="Tamaño de Tablero:">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="TOP_CENTER" prefHeight="61.0" prefWidth="600.0" spacing="80.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" text="3x3" />
+                                    <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" text="5x5" />
+                                    <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" text="7x7" />
+                                 </children>
+                              </HBox>
                            </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-               </content>
-          </Tab>
-          <Tab text="Sockets">
-               <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0" />
-               </content>
-          </Tab>
-        </tabs>
-      </TabPane>
+                        </VBox>
+                     </content>
+                </Tab>
+                <Tab text="Sockets">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                     </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
