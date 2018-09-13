@@ -2,6 +2,8 @@
   <library name="jackson-core-2.9.6">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/libraries/jackson-core-2.9.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/jackson-databind-2.9.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/jackson-dataformat-xml-2.9.6.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
