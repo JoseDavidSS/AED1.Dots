@@ -24,10 +24,11 @@ public class Main extends Application {
     static void setScene(String scene_route) throws IOException {
         Parent root = FXMLLoader.load(Main.class.getResource(scene_route));
         Scene escena = new Scene(root);
-        /**double width = juego.getWidth();
+        double width = juego.getWidth();
         double height = juego.getHeight();
-        boolean fullscreen = juego.isFullScreen();**/
+        boolean fullscreen = juego.isFullScreen();
         juego.setScene(escena);
+
 /**
         if (fullscreen) juego.setFullScreen(true);
         else{
