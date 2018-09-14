@@ -25,6 +25,7 @@ public class ClientPruebas {
         System.out.println(mapper.writeValueAsString(l1));
         out.print(mapper.writeValueAsString(l1));
         out.println();
+
     }
 
 }

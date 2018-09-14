@@ -1,5 +1,7 @@
 package com.dots.sockets.pruebas;
 
+import com.dots.sockets.conexion.Cliente;
+
 public class DatosLineaC {
 
     private int posxi;
@@ -29,4 +31,6 @@ public class DatosLineaC {
     public int getPosyf() {
         return this.posyf;
     }
+
+
 }
