@@ -12,7 +12,7 @@ public class Boton extends Button {
     }
 
     private Button crearBoton(double ejeX, double ejeY) {
-        double r = 1.5;
+        double r = 6.0;
         Button btn = new Button();
         btn.setOnAction(e-> presionarBoton());
         btn.setLayoutX(ejeX);
@@ -25,6 +25,10 @@ public class Boton extends Button {
 
     private void presionarBoton (){
 
+
+    }
+    public Button getBoton (){
+        return boton;
     }
 
 }
