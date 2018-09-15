@@ -14,11 +14,17 @@ public class Juego {
     private AnchorPane paneBoard;
 
     @FXML
+    /**
+     * correrTablero es una función que cambia la escena gracias a una instancia que llama del Main.
+     */
     public void correrTablero () throws IOException {
         Main.setScene("tableroFXML.fxml");
     }
 
     @FXML
+    /**
+     * empezar3x3 es una función que determina las características que tendrá el tablero 3x3.
+     */
     public void empezar3x3() {
 
         double espacio = height / 3;
@@ -31,6 +37,9 @@ public class Juego {
     }
 
     @FXML
+    /**
+     * empezar5x5 es una función que determina las características que tendrá el tablero 5x5.
+     */
     public void empezar5x5() {
 
         double espacio = height / 5;
@@ -42,6 +51,9 @@ public class Juego {
     }
 
     @FXML
+    /**
+     * empezar7x7 es una función que determina las características que tendrá el tablero 7x7.
+     */
     public void empezar7x7() {
 
         double espacio = height / 7;
@@ -53,6 +65,9 @@ public class Juego {
     }
 
     @FXML
+    /**
+     * metodoWhile es una función iterativa que asigna las posiciones de cada botón al momento de instanciarlos.
+     */
     public void metodoWhile(double espacio, int filas, int columnas, int contadorFila, int contadorColumna) {
         while (contadorFila < filas) {
             while (contadorColumna < columnas) {
