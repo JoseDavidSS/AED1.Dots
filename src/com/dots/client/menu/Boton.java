@@ -6,13 +6,20 @@ import javafx.scene.shape.Circle;
 public class Boton extends Button {
 
     private Button boton;
+    private double coordenadaX;
+    private double coordenadaY;
 
     public Boton (double ejeX, double ejeY){
+
         this.boton = crearBoton(ejeX, ejeY);
     }
 
     private Button crearBoton(double ejeX, double ejeY) {
+
         double r = 6.0;
+        coordenadaX = ejeX;
+        coordenadaY = ejeY;
+
         Button btn = new Button();
         btn.setOnAction(e-> presionarBoton());
         btn.setLayoutX(ejeX);
@@ -24,6 +31,7 @@ public class Boton extends Button {
     }
 
     private void presionarBoton (){
+        System.out.println(coordenadaX +","+coordenadaY);
 
 
     }
