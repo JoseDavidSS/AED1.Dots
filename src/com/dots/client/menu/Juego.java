@@ -1,6 +1,9 @@
 package com.dots.client.menu;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -10,8 +13,11 @@ public class Juego {
     double height = 350;
     double ejeX = 200;
     double ejeY = 50;
-    @FXML
-    private AnchorPane paneBoard;
+    public TextField IP;
+    public TextField Puerto;
+    public AnchorPane paneBoard;
+    public Button Comenzar;
+
 
     @FXML
     /**
@@ -81,6 +87,10 @@ public class Juego {
             contadorFila++;
             contadorColumna = 0;
         }
+    }
+    public void recibirTexto (ActionEvent event){
+        Comenzar.setDisable(false);
+        System.out.println(IP.getText()+" , "+ Puerto.getText());
     }
 }
 
