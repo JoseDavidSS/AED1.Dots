@@ -88,6 +88,11 @@ public class Juego {
             contadorColumna = 0;
         }
     }
+
+    /**
+     * la función recibir texto recibe el texto de los TextField y activa el botón de inicio para jugar.
+     * @param event este parametro es el accionar del botón en el tab Sockets
+     */
     public void recibirTexto (ActionEvent event){
         Comenzar.setDisable(false);
         System.out.println(IP.getText()+" , "+ Puerto.getText());
