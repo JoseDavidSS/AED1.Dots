@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ClientPruebas {
