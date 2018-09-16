@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Juego {
 
     double height = 350;
-    double ejeX = 200;
+    double ejeX = 250;
     double ejeY = 50;
     public TextField IP;
     public TextField Puerto;
@@ -83,7 +83,7 @@ public class Juego {
                 contadorColumna++;
             }
             ejeY += espacio;
-            ejeX = 200;
+            ejeX = 250;
             contadorFila++;
             contadorColumna = 0;
         }
@@ -97,7 +97,6 @@ public class Juego {
         if (IP.getText() == null || IP.getText().trim().isEmpty() || Puerto.getText() == null || Puerto.getText().trim().isEmpty()){
             System.out.println("Ingrese valores correctos");
         }else{
-            Comenzar.setDisable(false);
             System.out.println(IP.getText()+" , "+ Puerto.getText());
         }
     }

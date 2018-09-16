@@ -55,7 +55,7 @@
                                     <Font name="System Bold" size="36.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="48.0" prefWidth="463.0" text="*Primero configure en el tab Sockets*" textFill="#ff3f00">
+                              <Label alignment="CENTER" prefHeight="40.0" prefWidth="504.0" text="*Configure el tab Sockets de ser necesario*" textFill="#ff3f00">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -63,7 +63,7 @@
                               <Separator orientation="VERTICAL" prefHeight="70.0" prefWidth="0.0" />
                               <HBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="600.0" spacing="80.0">
                                  <children>
-                                    <Button id="comenzar" fx:id="Comenzar" disable="true" mnemonicParsing="false" onAction="#correrTablero" prefHeight="77.0" prefWidth="255.0" text="Comenzar..." textFill="#11767c">
+                                    <Button id="comenzar" fx:id="Comenzar" mnemonicParsing="false" onAction="#correrTablero" prefHeight="77.0" prefWidth="255.0" text="Comenzar..." textFill="#11767c">
                                        <font>
                                           <Font name="System Bold Italic" size="36.0" />
                                        </font></Button>
@@ -99,9 +99,9 @@
                               <Separator orientation="VERTICAL" prefHeight="14.0" prefWidth="0.0" />
                               <HBox alignment="TOP_CENTER" prefHeight="52.0" prefWidth="600.0">
                                  <children>
-                                    <Button fx:id="Conectar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#recibirTexto" prefHeight="26.0" prefWidth="250.0" text="Conectar..." textFill="#11767c">
+                                    <Button fx:id="Conectar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#recibirTexto" prefHeight="26.0" prefWidth="250.0" text="Configurar..." textFill="#11767c">
                                        <font>
-                                          <Font name="System Bold Italic" size="36.0" />
+                                          <Font name="System Bold Italic" size="34.0" />
                                        </font></Button>
                                  </children>
                               </HBox>
