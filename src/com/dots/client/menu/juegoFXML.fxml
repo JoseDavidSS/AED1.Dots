@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -27,16 +28,23 @@
          <children>
             <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
-                <Tab text="Menú">
+                <Tab text="                       Menú                       ">
                      <content>
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+                        <VBox prefHeight="400.0" prefWidth="600.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="68.0" prefWidth="600.0" text="DOTS" textAlignment="CENTER">
-                                 <font>
-                                    <Font size="36.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="232.0" text="¿ Listo para jugar ?">
+                              <HBox alignment="CENTER" prefHeight="55.0" prefWidth="600.0">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="600.0" text="DOTS" textAlignment="CENTER" textFill="#11767c" underline="true">
+                                       <font>
+                                          <Font name="System Bold" size="62.0" />
+                                       </font>
+                                       <effect>
+                                          <Glow level="1.0" />
+                                       </effect>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="326.0" text="¿ Listo para jugar ?" textFill="#ff3f00">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
@@ -44,31 +52,57 @@
                                     <Insets bottom="20.0" top="20.0" />
                                  </padding>
                                  <font>
-                                    <Font size="24.0" />
+                                    <Font name="System Bold" size="36.0" />
                                  </font>
                               </Label>
+                              <Label alignment="CENTER" prefHeight="48.0" prefWidth="463.0" text="*Primero configure en el tab Sockets*" textFill="#ff3f00">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Separator orientation="VERTICAL" prefHeight="70.0" prefWidth="0.0" />
                               <HBox alignment="TOP_CENTER" prefHeight="60.0" prefWidth="600.0" spacing="80.0">
                                  <children>
-                                    <Button id="comenzar" fx:id="Comenzar" disable="true" mnemonicParsing="false" onAction="#correrTablero" prefHeight="60.0" prefWidth="100.0" text="Comenzar..." />
+                                    <Button id="comenzar" fx:id="Comenzar" disable="true" mnemonicParsing="false" onAction="#correrTablero" prefHeight="77.0" prefWidth="255.0" text="Comenzar..." textFill="#11767c">
+                                       <font>
+                                          <Font name="System Bold Italic" size="36.0" />
+                                       </font></Button>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
                      </content>
                 </Tab>
-                <Tab text="Sockets">
+                <Tab text="                       Sockets                       ">
                      <content>
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                        <VBox>
                            <children>
                               <Separator orientation="VERTICAL" prefHeight="10.0" prefWidth="0.0" />
-                              <Label alignment="CENTER" prefHeight="24.0" prefWidth="85.0" text="IP:" />
-                              <TextField id="IP" fx:id="IP" onAction="#recibirTexto" prefHeight="25.0" prefWidth="412.0" />
-                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="85.0" text="Puerto:" />
-                              <TextField id="Puerto" fx:id="Puerto" onAction="#recibirTexto" />
+                              <Label alignment="CENTER" prefHeight="53.0" prefWidth="83.0" text="IP:" textFill="#ff3f00">
+                                 <font>
+                                    <Font name="System Bold" size="36.0" />
+                                 </font></Label>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField id="IP" fx:id="IP" alignment="CENTER" onAction="#recibirTexto" prefHeight="40.0" prefWidth="250.0" />
+                                 </children>
+                              </HBox>
+                              <Label alignment="CENTER" prefHeight="53.0" prefWidth="142.0" text="Puerto:" textFill="#ff3f00">
+                                 <font>
+                                    <Font name="System Bold" size="36.0" />
+                                 </font></Label>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField id="Puerto" fx:id="Puerto" alignment="CENTER" onAction="#recibirTexto" prefHeight="40.0" prefWidth="250.0" />
+                                 </children>
+                              </HBox>
                               <Separator orientation="VERTICAL" prefHeight="14.0" prefWidth="0.0" />
                               <HBox alignment="TOP_CENTER" prefHeight="52.0" prefWidth="600.0">
                                  <children>
-                                    <Button fx:id="Conectar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#recibirTexto" prefHeight="46.0" prefWidth="85.0" text="Conectar" />
+                                    <Button fx:id="Conectar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#recibirTexto" prefHeight="26.0" prefWidth="250.0" text="Conectar..." textFill="#11767c">
+                                       <font>
+                                          <Font name="System Bold Italic" size="36.0" />
+                                       </font></Button>
                                  </children>
                               </HBox>
                            </children></VBox>

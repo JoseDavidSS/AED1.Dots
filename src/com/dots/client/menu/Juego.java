@@ -94,8 +94,12 @@ public class Juego {
      * @param event este parametro es el accionar del botón en el tab Sockets
      */
     public void recibirTexto (ActionEvent event){
-        Comenzar.setDisable(false);
-        System.out.println(IP.getText()+" , "+ Puerto.getText());
+        if (IP.getText() == null || IP.getText().trim().isEmpty() || Puerto.getText() == null || Puerto.getText().trim().isEmpty()){
+            System.out.println("Ingrese valores correctos");
+        }else{
+            Comenzar.setDisable(false);
+            System.out.println(IP.getText()+" , "+ Puerto.getText());
+        }
     }
 }
 

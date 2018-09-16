@@ -19,7 +19,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Main.juego=primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("juegoFXML.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("¡¡ DOTS !!");
         primaryStage.setScene(new Scene(root, 720, 480));
         primaryStage.show();
     }
