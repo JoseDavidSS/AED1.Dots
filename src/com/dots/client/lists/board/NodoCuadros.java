@@ -1,4 +1,4 @@
-package com.dots.listas.client;
+package com.dots.client.lists.board;
 
 public class NodoCuadros {
 
