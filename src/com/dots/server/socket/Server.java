@@ -1,4 +1,4 @@
-package com.dots.sockets.conexion;
+package com.dots.server.socket;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,6 +13,12 @@ public class Server extends Thread{
 
     public Server(){
 
+    }
+
+    public static void main(String[] args){
+        Server servidor = new Server();
+        servidor.start();
+        servidor.iniciar();
     }
 
     public void iniciar() {
@@ -43,12 +49,6 @@ public class Server extends Thread{
                 System.out.println("Error recibiendo datos desde el servidor");
             }
         }
-    }
-
-    public static void main(String[] args){
-        Server servidor = new Server();
-        servidor.start();
-        servidor.iniciar();
     }
 }
 

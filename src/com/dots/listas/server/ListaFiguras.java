@@ -47,6 +47,24 @@ public class ListaFiguras {
         }
     }
 
+    public void imprimirLista(){
+        if (this.head != null){
+            NodoFiguras tmp = this.head;
+            while (tmp != null){
+                System.out.println("V1: " + tmp.getL1().getPosxi() + ", " + tmp.getL1().getPosyi() + " V2 : " + tmp.getL1().getPosxf() + ", " + tmp.getL1().getPosyf());
+                System.out.println("V3: " + tmp.getL2().getPosxi() + ", " + tmp.getL2().getPosyi() + " V4 : " + tmp.getL2().getPosxf() + ", " + tmp.getL2().getPosyf());
+                System.out.println("V5: " + tmp.getL3().getPosxi() + ", " + tmp.getL3().getPosyi() + " V6 : " + tmp.getL3().getPosxf() + ", " + tmp.getL3().getPosyf());
+                if (tmp.getL4() != null){
+                    System.out.println("V7: " + tmp.getL4().getPosxi() + ", " + tmp.getL4().getPosyi() + " V8 : " + tmp.getL4().getPosxf() + ", " + tmp.getL4().getPosyf());
+                }
+                tmp = tmp.next;
+            }
+        }
+        else{
+            System.out.println("Error");
+        }
+    }
+
     public boolean comprobarCoincidencia(NodoLineas l1, NodoLineas l2, NodoLineas l3, NodoLineas l4){
         if (this.head != null){
             NodoFiguras tmp = this.head;

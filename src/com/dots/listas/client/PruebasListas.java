@@ -25,6 +25,7 @@ public class PruebasListas {
         l1.anadirElemento(2,3,2,2);
 
         l1.comprobarAdyacentes();
-
+        l1.comprobarAdyacentes();
+        l2.imprimirLista();
     }
 }

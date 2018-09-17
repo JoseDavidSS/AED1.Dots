@@ -1,4 +1,4 @@
-package com.dots.sockets.conexion;
+package com.dots.client.socket;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,6 +9,13 @@ import java.net.Socket;
 public class Cliente extends Thread{
     public Cliente(){
 
+    }
+
+    public static void main(String[] args){
+        Cliente c1 = new Cliente();
+        c1.solicitarInfo();
+        c1.enviarInfo("Mensaje cambiado");
+        c1.solicitarInfo();
     }
 
     public void solicitarInfo(){
@@ -33,13 +40,6 @@ public class Cliente extends Thread{
         }catch (IOException a){
             System.out.println("Error enviando datos");
         }
-    }
-
-    public static void main(String[] args){
-        Cliente c1 = new Cliente();
-        c1.solicitarInfo();
-        c1.enviarInfo("Mensaje cambiado");
-        c1.solicitarInfo();
     }
 }
 
