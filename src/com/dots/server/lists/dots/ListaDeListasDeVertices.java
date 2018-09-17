@@ -1,4 +1,4 @@
-package com.dots.client.lists.dots;
+package com.dots.server.lists.dots;
 
 public class ListaDeListasDeVertices {
 

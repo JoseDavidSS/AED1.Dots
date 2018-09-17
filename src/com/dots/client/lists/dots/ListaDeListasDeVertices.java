@@ -1,27 +1,9 @@
-package com.dots.listas.client;
-
-//Puede que sea innecesario, pero lo dejo por si acaso
+package com.dots.client.lists.dots;
 
 public class ListaDeListasDeVertices {
 
-    private int largo;
-    public static ListaDeListasDeVertices ListaLista;
-    private ListaVertices head;
-
-    private ListaDeListasDeVertices() {
-        this.largo = 0;
-        this.head = null;
-    }
-
-    public static ListaDeListasDeVertices getLista(){
-        if (ListaLista == null){
-            ListaLista = new ListaDeListasDeVertices();
-        }
-        else{
-            return ListaLista;
-        }
-        return null;
-    }
+    private int largo = 0;
+    private ListaVertices head = null;
 
     public int getLargo() {
         return this.largo;

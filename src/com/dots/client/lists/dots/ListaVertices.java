@@ -1,4 +1,4 @@
-package com.dots.listas.client;
+package com.dots.client.lists.dots;
 
 /**
  * Clase de listas simples

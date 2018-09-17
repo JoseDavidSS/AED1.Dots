@@ -1,4 +1,4 @@
-package com.dots.client.lists.lines;
+package com.dots.server.lists.lines;
 
 public class NodoLineas {
 

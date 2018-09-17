@@ -1,4 +1,4 @@
-package com.dots.client.lists.figures;
+package com.dots.server.lists.figures;
 
 public class NodoFiguras {
 

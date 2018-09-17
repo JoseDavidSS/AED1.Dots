@@ -1,4 +1,4 @@
-package com.dots.sockets.conexion;
+package com.dots.server.socket;
 
 import com.dots.sockets.pruebas.ListaEnlazadaSimple;
 
@@ -11,9 +11,6 @@ import java.net.Socket;
 import com.google.gson.Gson;
 
 
-import com.dots.sockets.pruebas.Nodo;
-import com.fasterxml.jackson.core.JsonProcessingException;
-
 public class Server extends Thread{
 
     ListaEnlazadaSimple lista;
@@ -22,6 +19,21 @@ public class Server extends Thread{
 
         this.lista = lista;
 
+    }
+
+    public static void main(String[] args) {
+        ListaEnlazadaSimple Lista = new ListaEnlazadaSimple();
+        Lista.add(1);
+        Lista.add(2);
+        Lista.add(3);
+        Lista.add(4);
+        Lista.add(5);
+        Lista.add(6);
+        Lista.add(7);
+        Lista.add(8);
+        Server servidor = new Server(Lista);
+        servidor.start();
+        servidor.iniciar();
     }
 
     public void iniciar() {
@@ -33,6 +45,7 @@ public class Server extends Thread{
                 String listaSerializada = new Gson().toJson(lista);
                 salida.println(listaSerializada);
                 cliente.close();
+                servidor.close();
             } catch (IOException a) {
                 System.out.println("Error enviando datos desde el servidor");
             }
@@ -49,25 +62,11 @@ public class Server extends Thread{
                 String listaRecibida = entrada.readLine();
                 this.lista = new Gson().fromJson(listaRecibida,ListaEnlazadaSimple.class);
                 cliente.close();
+                servidor.close();
             }catch (IOException a){
                 System.out.println("Error recibiendo datos desde el servidor");
             }
         }
-    }
-
-    public static void main(String[] args) {
-        ListaEnlazadaSimple Lista = new ListaEnlazadaSimple();
-        Lista.add(1);
-        Lista.add(2);
-        Lista.add(3);
-        Lista.add(4);
-        Lista.add(5);
-        Lista.add(6);
-        Lista.add(7);
-        Lista.add(8);
-        Server servidor = new Server(Lista);
-        servidor.start();
-        servidor.iniciar();
     }
 }
 

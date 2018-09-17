@@ -1,6 +1,6 @@
-package com.dots.client.lists.lines;
+package com.dots.server.lists.lines;
 
-import com.dots.client.lists.figures.ListaFiguras;
+import com.dots.server.lists.figures.ListaFiguras;
 
 public class ListaLineas {
 

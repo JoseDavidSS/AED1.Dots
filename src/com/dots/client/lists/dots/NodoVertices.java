@@ -1,4 +1,4 @@
-package com.dots.listas.client;
+package com.dots.client.lists.dots;
 
 /**
  * Clase nodo, se utiliza en conjunto con listas para almacenar datos

@@ -1,4 +1,4 @@
-package com.dots.sockets.conexion;
+package com.dots.client.socket;
 
 import com.dots.sockets.pruebas.ListaEnlazadaSimple;
 
@@ -15,6 +15,14 @@ public class Cliente extends Thread{
 
     public Cliente(){
 
+    }
+
+    public static void main(String[] args){
+        Cliente c1 = new Cliente();
+        c1.solicitarInfo();
+        c1.lista.add(9);
+        c1.enviarInfo();
+        c1.solicitarInfo();
     }
 
     public void solicitarInfo(){
@@ -43,14 +51,6 @@ public class Cliente extends Thread{
         }catch (IOException a){
             System.out.println("Error enviando datos");
         }
-    }
-
-    public static void main(String[] args){
-        Cliente c1 = new Cliente();
-        c1.solicitarInfo();
-        c1.lista.add(9);
-        c1.enviarInfo();
-        c1.solicitarInfo();
     }
 }
 

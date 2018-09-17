@@ -1,12 +1,12 @@
-package com.dots.client.lists.figures;
+package com.dots.server.lists.figures;
 
 public class ListaFiguras {
 
-    private static ListaFiguras ListaFiguras = new ListaFiguras();
+    private static com.dots.server.lists.figures.ListaFiguras ListaFiguras = new ListaFiguras();
     private NodoFiguras head = null;
     private int largo = 0;
 
-    public static ListaFiguras getInstance(){
+    public static com.dots.server.lists.figures.ListaFiguras getInstance(){
         return ListaFiguras;
     }
 

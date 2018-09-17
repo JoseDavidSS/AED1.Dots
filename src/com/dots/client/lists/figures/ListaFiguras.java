@@ -1,27 +1,13 @@
-package com.dots.listas.server;
+package com.dots.client.lists.figures;
 
 public class ListaFiguras {
 
-    private static ListaFiguras ListaFiguras;
-    private NodoFiguras head;
-    private int largo;
+    private static ListaFiguras ListaFiguras = new ListaFiguras();
+    private NodoFiguras head = null;
+    private int largo = 0;
 
-    private ListaFiguras() {
-        this.head = null;
-        this.largo = 0;
-    }
-
-    public static ListaFiguras getLista(boolean reinicio){
-        if (ListaFiguras == null){
-            ListaFiguras = new ListaFiguras();
-        }
-        else if (reinicio){
-            ListaFiguras = new ListaFiguras();
-        }
-        else{
-            return ListaFiguras;
-        }
-        return null;
+    public static ListaFiguras getInstance(){
+        return ListaFiguras;
     }
 
     public int getLargo() {
@@ -32,9 +18,9 @@ public class ListaFiguras {
         this.largo = largo;
     }
 
-    public void anadirElemento(NodoLineas l1, NodoLineas l2, NodoLineas l3, NodoLineas l4){
+    public void anadirElemento(int v1x, int v1y, int v2x, int v2y, int v3x, int v3y, int v4x, int v4y){
         if (this.head == null){
-            this.head = new NodoFiguras(l1, l2, l3, l4);
+            this.head = new NodoFiguras(v1x, v1y, v2x, v2y, v3x, v3y, v4x, v4y);
             this.largo++;
         }
         else{
@@ -42,7 +28,7 @@ public class ListaFiguras {
             while (tmp.next != null){
                 tmp = tmp.next;
             }
-            tmp.next = new NodoFiguras(l1, l2, l3, l4);
+            tmp.next = new NodoFiguras(v1x, v1y, v2x, v2y, v3x, v3y, v4x, v4y);
             this.largo++;
         }
     }
@@ -51,11 +37,11 @@ public class ListaFiguras {
         if (this.head != null){
             NodoFiguras tmp = this.head;
             while (tmp != null){
-                System.out.println("V1: " + tmp.getL1().getPosxi() + ", " + tmp.getL1().getPosyi() + " V2 : " + tmp.getL1().getPosxf() + ", " + tmp.getL1().getPosyf());
-                System.out.println("V3: " + tmp.getL2().getPosxi() + ", " + tmp.getL2().getPosyi() + " V4 : " + tmp.getL2().getPosxf() + ", " + tmp.getL2().getPosyf());
-                System.out.println("V5: " + tmp.getL3().getPosxi() + ", " + tmp.getL3().getPosyi() + " V6 : " + tmp.getL3().getPosxf() + ", " + tmp.getL3().getPosyf());
-                if (tmp.getL4() != null){
-                    System.out.println("V7: " + tmp.getL4().getPosxi() + ", " + tmp.getL4().getPosyi() + " V8 : " + tmp.getL4().getPosxf() + ", " + tmp.getL4().getPosyf());
+                System.out.println("V1: " + tmp.getV1x() + ", " + tmp.getV1y());
+                System.out.println("V2: " + tmp.getV2x() + ", " + tmp.getV2y());
+                System.out.println("V3: " + tmp.getV3x() + ", " + tmp.getV3y());
+                if (tmp.getV4x() != 0){
+                    System.out.println("V4: " + tmp.getV4x() + ", " + tmp.getV4y());
                 }
                 tmp = tmp.next;
             }
@@ -65,16 +51,16 @@ public class ListaFiguras {
         }
     }
 
-    public boolean comprobarCoincidencia(NodoLineas l1, NodoLineas l2, NodoLineas l3, NodoLineas l4){
+    public boolean comprobarCoincidencia(int v1x, int v1y, int v2x, int v2y, int v3x, int v3y, int v4x, int v4y){
         if (this.head != null){
             NodoFiguras tmp = this.head;
             while (tmp != null){
-                if (l4 == null){
-                    if (tmp.getL4() != null){
+                if (v4x == 0){
+                    if (tmp.getV4x() != 0){
                         tmp = tmp.next;
                     }
                     else{
-                        if ((l1 == tmp.getL1() || l1 == tmp.getL2() || l1 == tmp.getL3()) && (l2 == tmp.getL1() || l2 == tmp.getL2() || l2 == tmp.getL3()) && (l3 == tmp.getL1() || l3 == tmp.getL2() || l3 == tmp.getL3())){
+                        if ((v1x == tmp.getV1x() || v1x == tmp.getV2x() || v1x == tmp.getV3x()) && (v2x == tmp.getV1x() || v2x == tmp.getV2x() || v2x == tmp.getV3x()) && (v3x == tmp.getV1x() || v3x == tmp.getV2x() || v3x == tmp.getV3x()) && (v1y == tmp.getV1y() || v1y == tmp.getV2y() || v1y == tmp.getV3y()) && (v2y == tmp.getV1y() || v2y == tmp.getV2y() || v2y == tmp.getV3y()) && (v3y == tmp.getV1y() || v3y == tmp.getV2y() || v3y == tmp.getV3y())){
                             return true;
                         }
                         else{
@@ -83,7 +69,7 @@ public class ListaFiguras {
                     }
                 }
                 else{
-                    if ((l1 == tmp.getL1() || l1 == tmp.getL2() || l1 == tmp.getL3() || l1 == tmp.getL4()) && (l2 == tmp.getL1() || l2 == tmp.getL2() || l2 == tmp.getL3() || l2 == tmp.getL4()) && (l3 == tmp.getL1() || l3 == tmp.getL2() || l3 == tmp.getL3() || l3 == tmp.getL4()) && (l4 == tmp.getL1() || l4 == tmp.getL2() || l4 == tmp.getL3() || l4 == tmp.getL4())){
+                    if ((v1x == tmp.getV1x() || v1x == tmp.getV2x() || v1x == tmp.getV3x() || v1x == tmp.getV4x()) && (v2x == tmp.getV1x() || v2x == tmp.getV2x() || v2x == tmp.getV3x() || v2x == tmp.getV4x()) && (v3x == tmp.getV1x() || v3x == tmp.getV2x() || v3x == tmp.getV3x() || v3x == tmp.getV4x()) && (v4x == tmp.getV1x() || v4x == tmp.getV2x() || v4x == tmp.getV3x() || v4x == tmp.getV4x()) && (v1y == tmp.getV1y() || v1y == tmp.getV2y() || v1y == tmp.getV3y() || v1y == tmp.getV4y()) && (v2y == tmp.getV1y() || v2y == tmp.getV2y() || v2y == tmp.getV3y() || v2y == tmp.getV4y()) && (v3y == tmp.getV1y() || v3y == tmp.getV2y() || v3y == tmp.getV3y() || v3y == tmp.getV4y()) && (v4y == tmp.getV1y() || v4y == tmp.getV2y() || v4y == tmp.getV3y() || v4y == tmp.getV4y())){
                         return true;
                     }
                     else{

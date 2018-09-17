@@ -1,30 +1,12 @@
-package com.dots.listas.server;
+package com.dots.client.lists.lines;
+
+import com.dots.client.lists.figures.ListaFiguras;
 
 public class ListaLineas {
 
-    private NodoLineas head;
-    private NodoLineas tail;
-    private int largo;
-    private static ListaLineas ListaLineas;
-
-    private ListaLineas() {
-        this.head = null;
-        this.largo = 0;
-        this.tail = null;
-    }
-
-    public static ListaLineas getLista(boolean reinicio){
-        if (ListaLineas == null){
-            ListaLineas = new ListaLineas();
-        }
-        else if (reinicio){
-            ListaLineas = new ListaLineas();
-        }
-        else{
-            return ListaLineas;
-        }
-        return null;
-    }
+    private NodoLineas head = null;
+    private NodoLineas tail = null;
+    private int largo = 0;
 
     public int getLargo() {
         return largo;
@@ -54,7 +36,7 @@ public class ListaLineas {
 
     public void comprobarAdyacentes(){
         if (this.largo > 2){
-            ListaFiguras l2 = ListaFiguras.getLista(false);
+            ListaFiguras l = ListaFiguras.getInstance();
             NodoLineas tmp1 = this.head;
             NodoLineas tmp2 = tmp1;
             while(tmp1 != null){
@@ -71,7 +53,7 @@ public class ListaLineas {
                             else if (tmp2.getPosxf() == tmp3.getPosxf() && tmp2.getPosyf() == tmp3.getPosyf()){
                                 if (tmp1.getPosxi() == tmp3.getPosxi() && tmp1.getPosyi() == tmp3.getPosyi()){
                                     if (this.tail == tmp1 || this.tail == tmp2 || this.tail == tmp3){
-                                        if (l2.comprobarCoincidencia(tmp1, tmp2, tmp3, null)){
+                                        if (l.comprobarCoincidencia(tmp1.getPosxi(), tmp1.getPosyi(), tmp2.getPosxi(), tmp2.getPosyi(), tmp3.getPosxf(), tmp3.getPosyf(), 0, 0)){
                                             tmp3 = tmp3.next;
                                         }
                                         else{
@@ -79,7 +61,7 @@ public class ListaLineas {
                                             System.out.println("V1: " + tmp1.getPosxi() + ", " + tmp1.getPosyi());
                                             System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
                                             System.out.println("V3: " + tmp2.getPosxf() + ", " + tmp2.getPosyf());
-                                            l2.anadirElemento(tmp1, tmp2, tmp3, null);
+                                            l.anadirElemento(tmp1.getPosxi(), tmp1.getPosyi(), tmp2.getPosxi(), tmp2.getPosyi(), tmp3.getPosxf(), tmp3.getPosyf(), 0, 0);
                                             tmp3 = tmp3.next;
                                         }
                                     }
@@ -88,7 +70,7 @@ public class ListaLineas {
                                         System.out.println("V1: " + tmp1.getPosxi() + ", " + tmp1.getPosyi());
                                         System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
                                         System.out.println("V3: " + tmp2.getPosxf() + ", " + tmp2.getPosyf());
-                                        l2.anadirElemento(tmp1, tmp2, tmp3, null);
+                                        l.anadirElemento(tmp1.getPosxi(), tmp1.getPosyi(), tmp2.getPosxi(), tmp2.getPosyi(), tmp3.getPosxf(), tmp3.getPosyf(), 0, 0);
                                         tmp3 = tmp3.next;
                                     }
                                 }
@@ -101,7 +83,7 @@ public class ListaLineas {
                                         else if (tmp3.getPosxi() == tmp4.getPosxf() && tmp3.getPosyi() == tmp4.getPosyf()){
                                             if (tmp1.getPosxi() == tmp4.getPosxi() && tmp1.getPosyi() == tmp4.getPosyi()){
                                                 if (this.tail == tmp1 || this.tail == tmp2 || this.tail == tmp3 || this.tail == tmp4){
-                                                    if (l2.comprobarCoincidencia(tmp1, tmp2, tmp3, tmp4)){
+                                                    if (l.comprobarCoincidencia(tmp1.getPosxi(), tmp1.getPosyi(), tmp2.getPosxi(), tmp2.getPosyi(), tmp3.getPosxf(), tmp3.getPosyf(), tmp4.getPosxf(), tmp4.getPosyf())){
                                                         tmp4 = tmp4.next;
                                                     }
                                                     else{
@@ -110,7 +92,7 @@ public class ListaLineas {
                                                         System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
                                                         System.out.println("V3: " + tmp2.getPosxf() + ", " + tmp2.getPosyf());
                                                         System.out.println("V4: " + tmp4.getPosxf() + ", " + tmp4.getPosyf());
-                                                        l2.anadirElemento(tmp1, tmp2, tmp3, tmp4);
+                                                        l.anadirElemento(tmp1.getPosxi(), tmp1.getPosyi(), tmp2.getPosxi(), tmp2.getPosyi(), tmp3.getPosxf(), tmp3.getPosyf(), tmp4.getPosxf(), tmp4.getPosyf());
                                                         tmp4 = tmp4.next;
                                                     }
                                                 }
@@ -120,7 +102,7 @@ public class ListaLineas {
                                                     System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
                                                     System.out.println("V3: " + tmp2.getPosxf() + ", " + tmp2.getPosyf());
                                                     System.out.println("V4: " + tmp4.getPosxf() + ", " + tmp4.getPosyf());
-                                                    l2.anadirElemento(tmp1, tmp2, tmp3, tmp4);
+                                                    l.anadirElemento(tmp1.getPosxi(), tmp1.getPosyi(), tmp2.getPosxi(), tmp2.getPosyi(), tmp3.getPosxf(), tmp3.getPosyf(), tmp4.getPosxf(), tmp4.getPosyf());
                                                     tmp4 = tmp4.next;
                                                 }
                                             }

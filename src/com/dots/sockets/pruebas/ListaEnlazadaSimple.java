@@ -39,16 +39,5 @@ public class ListaEnlazadaSimple {
         }
     }
 
-    public static void main(String[] args){
-        ListaEnlazadaSimple lista = new ListaEnlazadaSimple();
-        lista.add(12);
-        lista.add(13);
-        lista.add(14);
-        lista.add(15);
-        lista.add(16);
-        lista.add(17);
-        lista.add(18);
-        lista.print();
-    }
 }
 
