@@ -13,7 +13,6 @@ import com.google.gson.Gson;
 
 import com.dots.sockets.pruebas.Nodo;
 import com.fasterxml.jackson.core.JsonProcessingException;
-//import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Server extends Thread{
 
@@ -58,7 +57,7 @@ public class Server extends Thread{
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         ListaEnlazadaSimple Lista = new ListaEnlazadaSimple();
         Lista.add(1);
         Lista.add(2);
@@ -68,11 +67,6 @@ public class Server extends Thread{
         Lista.add(6);
         Lista.add(7);
         Lista.add(8);
-        /*ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(Lista);
-        System.out.println(json);
-        Type found = new Type<ArrayList<Nodo>>(){}.getType();
-        Nodo Lista1 = mapper.readValue(json,found);*/
         Server servidor = new Server(Lista);
         servidor.start();
         servidor.iniciar();
