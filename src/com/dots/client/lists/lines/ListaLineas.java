@@ -4,9 +4,14 @@ import com.dots.client.lists.figures.ListaFiguras;
 
 public class ListaLineas {
 
+    private static ListaLineas ListaLineas = new ListaLineas();
     private NodoLineas head = null;
     private NodoLineas tail = null;
     private int largo = 0;
+
+    public static ListaLineas getInstance(){
+        return ListaLineas;
+    }
 
     public int getLargo() {
         return largo;
@@ -31,6 +36,18 @@ public class ListaLineas {
             tmp.next.prev = tmp;
             this.tail = tmp.next;
             this.largo++;
+        }
+    }
+
+    public void imprimirLista(){
+        if (this.largo != 0){
+            NodoLineas tmp = this.head;
+            while (tmp != null){
+                System.out.println("I: " + tmp.getPosxi() + ", " + tmp.getPosyi() + ". " + "F: " + tmp.getPosxf() + ", " + tmp.getPosyf());
+                tmp = tmp.next;
+            }
+        }else{
+            System.out.println("Error");
         }
     }
 

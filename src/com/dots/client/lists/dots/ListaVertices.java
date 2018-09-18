@@ -1,25 +1,19 @@
 package com.dots.client.lists.dots;
 
+import com.dots.client.lists.lines.ListaLineas;
+
 /**
  * Clase de listas simples
  */
 
 public class ListaVertices {
 
-    public ListaVertices next;
-    public ListaVertices prev;
-    private int largo;
-    private NodoVertices head;
+    private static ListaVertices ListaVertices = new ListaVertices();
+    private int largo = 0;
+    private NodoVertices head = null;
 
-    /**
-     * Constructor de la clase lista
-     */
-
-    public ListaVertices(){
-        this.next = null;
-        this.prev = null;
-        this.largo = 0;
-        this.head = null;
+    public static ListaVertices getInstance(){
+        return ListaVertices;
     }
 
     /**
@@ -36,12 +30,11 @@ public class ListaVertices {
 
     /**
      * Metodo que agrega un elemento a la lista
-     * @param numNodo ingresa el dato que almacena el nodo
      */
 
-    public void anadirElemento(int numNodo, int posx, int posy){
+    public void anadirElemento(int posx, int posy){
         if (this.head == null) {
-            this.head = new NodoVertices(numNodo, posx, posy);
+            this.head = new NodoVertices(posx, posy);
             this.largo++;
         }
         else{
@@ -49,10 +42,13 @@ public class ListaVertices {
             while(tmp.next != null) {
                 tmp = tmp.next;
             }
-            tmp.next = new NodoVertices(numNodo, posx, posy);
-            tmp.next.prev = tmp;
+            tmp.next = new NodoVertices(posx, posy);
             this.largo++;
         }
+    }
+
+    public void reiniciar(){
+        ListaVertices = new ListaVertices();
     }
 
     /**
@@ -63,11 +59,44 @@ public class ListaVertices {
         NodoVertices tmp = this.head;
         System.out.println("Cambio lista");
         while(tmp != null) {
-            System.out.println("Nodo" + tmp.getNumNodo());
-            System.out.println("Posx" + tmp.getPosx());
-            System.out.println("Posy" + tmp.getPosy());
+            System.out.println("Posx: " + tmp.getPosx());
+            System.out.println("Posy: " + tmp.getPosy());
             tmp = tmp.next;
         }
     }
+
+    public void ordenar2(){
+        if (this.largo == 2){
+            NodoVertices tmp = this.head;
+            NodoVertices tmp2 = tmp.next;
+            ListaLineas l = ListaLineas.getInstance();
+            if (tmp.getPosy() == tmp2.getPosy()){
+                if (tmp.getPosx() < tmp2.getPosx()){
+                    l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                }else{
+                    l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                }
+            }
+            else if (tmp.getPosx() == tmp2.getPosx()){
+                if (tmp.getPosy() < tmp2.getPosy()){
+                    l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                }else{
+                    l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp2.getPosy(), tmp.getPosy());
+                }
+            }else {
+                if ((tmp.getPosx() < tmp2.getPosx()) && (tmp.getPosy() < tmp2.getPosy())) {
+                    l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                } else if ((tmp.getPosx() < tmp2.getPosx()) && (tmp.getPosy() > tmp2.getPosy())) {
+                    l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                }else{
+                    l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp2.getPosy(), tmp.getPosy());
+                }
+            }
+
+        }else{
+            System.out.println("Error");
+        }
+    }
+
 
 }

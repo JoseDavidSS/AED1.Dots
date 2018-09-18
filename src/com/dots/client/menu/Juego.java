@@ -11,8 +11,8 @@ import java.io.IOException;
 public class Juego {
 
     double height = 350;
-    double ejeX = 250;
-    double ejeY = 50;
+    int ejeX = 250;
+    int ejeY = 50;
     public TextField IP;
     public TextField Puerto;
     public AnchorPane paneBoard;

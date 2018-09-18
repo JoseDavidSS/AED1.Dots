@@ -7,25 +7,13 @@ package com.dots.client.lists.dots;
 public class NodoVertices {
 
     public NodoVertices next;
-    public NodoVertices prev;
-    private int numNodo;
     private int posx;
     private int posy;
 
-    public NodoVertices(int numNodo, int posx, int posy) {
+    public NodoVertices(int posx, int posy) {
         this.next = null;
-        this.prev = null;
-        this.numNodo = numNodo;
         this.posx = posx;
         this.posy = posy;
-    }
-
-    public int getNumNodo() {
-        return this.numNodo;
-    }
-
-    public void setNumNodo(int numNodo) {
-        this.numNodo = numNodo;
     }
 
     public int getPosx() {

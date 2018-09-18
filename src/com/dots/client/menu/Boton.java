@@ -1,20 +1,22 @@
 package com.dots.client.menu;
 
+import com.dots.client.lists.dots.ListaVertices;
+import com.dots.client.lists.lines.ListaLineas;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
 
 public class Boton extends Button {
 
     private Button boton;
-    private double coordenadaX;
-    private double coordenadaY;
+    private int coordenadaX;
+    private int coordenadaY;
 
     /**
      * Es te es el constructor de la clase Boton.
      * @param ejeX variable que almacena la posición en X del botón.
      * @param ejeY variable que almacena la posición en X del botón.
      */
-    public Boton (double ejeX, double ejeY){
+    public Boton (int ejeX, int ejeY){
         this.boton = crearBoton(ejeX, ejeY);
     }
 
@@ -24,9 +26,9 @@ public class Boton extends Button {
      * @param ejeY atributo para asignar la posición en Y del botón.
      * @return
      */
-    private Button crearBoton(double ejeX, double ejeY) {
+    private Button crearBoton(int ejeX, int ejeY) {
 
-        double r = 6.0;
+        int r = 6;
         coordenadaX = ejeX;
         coordenadaY = ejeY;
 
@@ -45,9 +47,15 @@ public class Boton extends Button {
      */
     private void presionarBoton (){
         boton.setDisable(true);
-        System.out.println(coordenadaX +","+coordenadaY);
-
-
+        System.out.println(coordenadaX +", "+ coordenadaY);
+        ListaVertices l1 = ListaVertices.getInstance();
+        l1.anadirElemento(coordenadaX, coordenadaY);
+        if (l1.getLargo() == 2){
+            l1.ordenar2();
+            l1.reiniciar();
+            ListaLineas l2 = ListaLineas.getInstance();
+            l2.imprimirLista();
+        }
     }
     public Button getBoton (){
         return boton;
