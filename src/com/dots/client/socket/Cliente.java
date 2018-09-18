@@ -1,5 +1,6 @@
 package com.dots.client.socket;
 
+import com.dots.client.lists.lines.ListaLineas;
 import com.dots.sockets.pruebas.ListaEnlazadaSimple;
 
 import java.io.BufferedReader;
@@ -19,55 +20,43 @@ public class Cliente extends Thread{
         Cliente c1 = new Cliente();
         Tablero t = new Tablero();
         t.setFilas_columnas(3);
-        c1.enviarNum(t);
         ListaEnlazadaSimple lista = new ListaEnlazadaSimple();
-        lista.add(1);
-        lista.add(2);
-        lista.print();
-        c1.enviarLista(lista);
+        lista.add(100);
+        lista.add(200);
+        c1.enviarDatos(t, lista);
     }
 
-    /*
     public void solicitarInfo(){
-
         try{
             sleep(3000);
             Socket conexionServer = new Socket("127.0.0.1",10000);
             BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
             String listRecibida = entradaDatos.readLine();
-            this.lista = new Gson().fromJson(listRecibida,ListaEnlazadaSimple.class);
+            ListaEnlazadaSimple l1 = new Gson().fromJson(listRecibida,ListaEnlazadaSimple.class);
             conexionServer.close();
             System.out.println("Lista que recibí:");
-            lista.print();
+            l1.print();
         } catch (IOException | InterruptedException a){
             System.out.println("Error recibiendo datos");
         }
     }
-    */
 
-    public void enviarLista(ListaEnlazadaSimple lista){
+    public void enviarDatos(Tablero tablero, ListaEnlazadaSimple lista) {
         try {
-            Socket conexionServer = new Socket("127.0.0.1",10001);
-            PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(),true);
-            String listaSerializada = new Gson().toJson(lista);
-            salida.println(listaSerializada);
-            conexionServer.close();
-        }catch (IOException a){
-            System.out.println("Error enviando datos");
-        }
-    }
-
-    public void enviarNum(Tablero tablero){
-        try {
-            Socket conexionServer = new Socket("127.0.0.1",10001);
-            PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(),true);
+            Socket conexionServer = new Socket("127.0.0.1", 10001);
+            PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(), true);
             String tableroSerial = new Gson().toJson(tablero);
             salida.println(tableroSerial);
+            //String listaSerializada = new Gson().toJson(lista);
+            //salida.println(listaSerializada);
+            ListaLineas l1 = new ListaLineas();
+            l1.anadirElemento(1,1,2,3);
+            String lf = new Gson().toJson(l1);
+            salida.println(lf);
             conexionServer.close();
-        }catch (IOException a){
+        } catch (IOException a) {
             System.out.println("Error enviando datos");
         }
     }
-
 }
 

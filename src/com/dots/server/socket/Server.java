@@ -1,5 +1,6 @@
 package com.dots.server.socket;
 
+import com.dots.client.lists.lines.ListaLineas;
 import com.dots.sockets.pruebas.ListaEnlazadaSimple;
 
 import java.io.BufferedReader;
@@ -21,14 +22,19 @@ public class Server extends Thread{
         Server servidor = new Server();
         servidor.start();
     }
-    /*
+
+
     public void iniciar() {
         while (true) {
             try {
                 ServerSocket servidor = new ServerSocket(10000);
                 Socket cliente = servidor.accept();
                 PrintWriter salida = new PrintWriter(cliente.getOutputStream(), true);
-                String listaSerializada = new Gson().toJson(lista);
+                ListaEnlazadaSimple l1 = new ListaEnlazadaSimple();
+                l1.add(2);
+                l1.add(122);
+                l1.add(311);
+                String listaSerializada = new Gson().toJson(l1);
                 salida.println(listaSerializada);
                 cliente.close();
                 servidor.close();
@@ -37,7 +43,6 @@ public class Server extends Thread{
             }
         }
     }
-    */
 
     @Override
     public void run(){
@@ -47,16 +52,30 @@ public class Server extends Thread{
                 Socket cliente = servidor.accept();
                 BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
                 String json = entrada.readLine();
-                try {
+                try{
                     Tablero tablero = new Gson().fromJson(json, Tablero.class);
                     System.out.println(tablero.getFilas_columnas());
-                }catch (Exception e){
+                    if (tablero.getFilas_columnas() != 0){
+                        json = entrada.readLine();
+                    }
+                }catch(Exception e){
                     System.out.println("Error");
                 }
-                try {
+                try{
                     ListaEnlazadaSimple lista = new Gson().fromJson(json, ListaEnlazadaSimple.class);
-                    lista.print();
-                }catch (Exception e){
+                    if (lista.print()){
+                        json = entrada.readLine();
+                    }
+                }catch(Exception e){
+                    System.out.println("Error");
+                }
+                try{
+                    ListaLineas ll = new Gson().fromJson(json, ListaLineas.class);
+                    System.out.println(ll.getLargo());
+                    if (ll.getLargo() != 0){
+                        json = entrada.readLine();
+                    }
+                }catch(Exception e){
                     System.out.println("Error");
                 }
                 cliente.close();

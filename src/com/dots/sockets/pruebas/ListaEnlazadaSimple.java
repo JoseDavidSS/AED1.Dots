@@ -25,9 +25,9 @@ public class ListaEnlazadaSimple {
         }
     }
 
-    public void print(){
+    public boolean print(){
         if (this.first == null){
-            System.out.println("Lista vacía");
+            return false;
         }
         else {
             Nodo temp = this.first;
@@ -36,8 +36,8 @@ public class ListaEnlazadaSimple {
                 temp = temp.next;
             }
             System.out.println("------------------------------------------------");
+            return true;
         }
     }
-
 }
 

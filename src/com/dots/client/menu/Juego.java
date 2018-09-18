@@ -38,7 +38,7 @@ public class Juego {
         Cliente c1 = new Cliente();
         Tablero t = new Tablero();
         t.setFilas_columnas(3);
-        c1.enviarNum(t);
+        //c1.enviarNum(t);
 
         double espacio = height / 3;
         int filas = 3;
@@ -57,7 +57,7 @@ public class Juego {
         Cliente c1 = new Cliente();
         Tablero t = new Tablero();
         t.setFilas_columnas(5);
-        c1.enviarNum(t);
+        //c1.enviarNum(t);
 
         double espacio = height / 5;
         int filas = 5;
@@ -75,7 +75,7 @@ public class Juego {
         Cliente c1 = new Cliente();
         Tablero t = new Tablero();
         t.setFilas_columnas(7);
-        c1.enviarNum(t);
+        //c1.enviarNum(t);
 
         double espacio = height / 7;
         int filas = 7;
