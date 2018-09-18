@@ -1,5 +1,8 @@
 package com.dots.client.menu;
 
+import com.dots.client.lists.board.ListadeListasDeCuadros;
+import com.dots.client.socket.Cliente;
+import com.dots.client.socket.Tablero;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -32,6 +35,10 @@ public class Juego {
      * empezar3x3 es una función que determina las características que tendrá el tablero 3x3.
      */
     public void empezar3x3() {
+        Cliente c1 = new Cliente();
+        Tablero t = new Tablero();
+        t.setFilas_columnas(3);
+        c1.enviarNum(t);
 
         double espacio = height / 3;
         int filas = 3;
@@ -47,6 +54,10 @@ public class Juego {
      * empezar5x5 es una función que determina las características que tendrá el tablero 5x5.
      */
     public void empezar5x5() {
+        Cliente c1 = new Cliente();
+        Tablero t = new Tablero();
+        t.setFilas_columnas(5);
+        c1.enviarNum(t);
 
         double espacio = height / 5;
         int filas = 5;
@@ -61,6 +72,10 @@ public class Juego {
      * empezar7x7 es una función que determina las características que tendrá el tablero 7x7.
      */
     public void empezar7x7() {
+        Cliente c1 = new Cliente();
+        Tablero t = new Tablero();
+        t.setFilas_columnas(7);
+        c1.enviarNum(t);
 
         double espacio = height / 7;
         int filas = 7;
@@ -75,6 +90,7 @@ public class Juego {
      * metodoWhile es una función iterativa que asigna las posiciones de cada botón al momento de instanciarlos.
      */
     public void metodoWhile(double espacio, int filas, int columnas, int contadorFila, int contadorColumna) {
+        ListadeListasDeCuadros l = new ListadeListasDeCuadros();
         while (contadorFila < filas) {
             while (contadorColumna < columnas) {
                 Boton boton = new Boton(ejeX, ejeY);

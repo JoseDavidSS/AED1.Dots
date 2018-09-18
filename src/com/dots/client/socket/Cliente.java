@@ -11,20 +11,23 @@ import com.google.gson.Gson;
 
 public class Cliente extends Thread{
 
-    ListaEnlazadaSimple lista;
-
     public Cliente(){
 
     }
 
     public static void main(String[] args){
         Cliente c1 = new Cliente();
-        c1.solicitarInfo();
-        c1.lista.add(9);
-        c1.enviarInfo();
-        c1.solicitarInfo();
+        Tablero t = new Tablero();
+        t.setFilas_columnas(3);
+        c1.enviarNum(t);
+        ListaEnlazadaSimple lista = new ListaEnlazadaSimple();
+        lista.add(1);
+        lista.add(2);
+        lista.print();
+        c1.enviarLista(lista);
     }
 
+    /*
     public void solicitarInfo(){
 
         try{
@@ -40,17 +43,31 @@ public class Cliente extends Thread{
             System.out.println("Error recibiendo datos");
         }
     }
+    */
 
-    public void enviarInfo(){
+    public void enviarLista(ListaEnlazadaSimple lista){
         try {
             Socket conexionServer = new Socket("127.0.0.1",10001);
             PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(),true);
-            String listaSerializada = new Gson().toJson(this.lista);
+            String listaSerializada = new Gson().toJson(lista);
             salida.println(listaSerializada);
             conexionServer.close();
         }catch (IOException a){
             System.out.println("Error enviando datos");
         }
     }
+
+    public void enviarNum(Tablero tablero){
+        try {
+            Socket conexionServer = new Socket("127.0.0.1",10001);
+            PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(),true);
+            String tableroSerial = new Gson().toJson(tablero);
+            salida.println(tableroSerial);
+            conexionServer.close();
+        }catch (IOException a){
+            System.out.println("Error enviando datos");
+        }
+    }
+
 }
 

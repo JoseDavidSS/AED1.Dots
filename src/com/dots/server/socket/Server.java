@@ -13,29 +13,15 @@ import com.google.gson.Gson;
 
 public class Server extends Thread{
 
-    ListaEnlazadaSimple lista;
-
-    public Server(ListaEnlazadaSimple lista){
-
-        this.lista = lista;
+    public Server(){
 
     }
 
     public static void main(String[] args) {
-        ListaEnlazadaSimple Lista = new ListaEnlazadaSimple();
-        Lista.add(1);
-        Lista.add(2);
-        Lista.add(3);
-        Lista.add(4);
-        Lista.add(5);
-        Lista.add(6);
-        Lista.add(7);
-        Lista.add(8);
-        Server servidor = new Server(Lista);
+        Server servidor = new Server();
         servidor.start();
-        servidor.iniciar();
     }
-
+    /*
     public void iniciar() {
         while (true) {
             try {
@@ -51,6 +37,7 @@ public class Server extends Thread{
             }
         }
     }
+    */
 
     @Override
     public void run(){
@@ -59,8 +46,19 @@ public class Server extends Thread{
                 ServerSocket servidor = new ServerSocket(10001);
                 Socket cliente = servidor.accept();
                 BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
-                String listaRecibida = entrada.readLine();
-                this.lista = new Gson().fromJson(listaRecibida,ListaEnlazadaSimple.class);
+                String json = entrada.readLine();
+                try {
+                    Tablero tablero = new Gson().fromJson(json, Tablero.class);
+                    System.out.println(tablero.getFilas_columnas());
+                }catch (Exception e){
+                    System.out.println("Error");
+                }
+                try {
+                    ListaEnlazadaSimple lista = new Gson().fromJson(json, ListaEnlazadaSimple.class);
+                    lista.print();
+                }catch (Exception e){
+                    System.out.println("Error");
+                }
                 cliente.close();
                 servidor.close();
             }catch (IOException a){
