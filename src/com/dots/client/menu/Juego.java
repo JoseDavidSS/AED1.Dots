@@ -216,7 +216,7 @@ public class Juego {
         ListaVertices l1 = ListaVertices.getInstance();
         NodoVertices tmp = l1.head;
         NodoVertices tmp2 = tmp.next;
-        Line linea = new Line(tmp.getPosx(), tmp.getPosy(), tmp2.getPosx(), tmp2.getPosy());
+        Line linea = new Line(tmp.getPosx()+5, tmp.getPosy()+5, tmp2.getPosx()+5, tmp2.getPosy()+5);
         paneBoard.getChildren().addAll(linea);
     }
 
