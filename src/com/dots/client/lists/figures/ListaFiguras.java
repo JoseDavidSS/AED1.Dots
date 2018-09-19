@@ -3,7 +3,7 @@ package com.dots.client.lists.figures;
 public class ListaFiguras {
 
     private static ListaFiguras ListaFiguras = new ListaFiguras();
-    private NodoFiguras head = null;
+    public NodoFiguras head = null;
     private int largo = 0;
 
     public static ListaFiguras getInstance(){

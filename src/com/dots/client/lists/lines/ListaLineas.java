@@ -4,10 +4,10 @@ import com.dots.client.lists.figures.ListaFiguras;
 
 public class ListaLineas {
 
-    private static ListaLineas ListaLineas = new ListaLineas();
-    private NodoLineas head = null;
-    private NodoLineas tail = null;
-    private int largo = 0;
+    public static ListaLineas ListaLineas = new ListaLineas();
+    public NodoLineas head = null;
+    public NodoLineas tail = null;
+    public int largo = 0;
 
     public static ListaLineas getInstance(){
         return ListaLineas;
