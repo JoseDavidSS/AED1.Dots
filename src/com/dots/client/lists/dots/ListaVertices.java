@@ -37,6 +37,9 @@ public class ListaVertices {
             this.head = new NodoVertices(posx, posy);
             this.largo++;
         }
+        else if (this.head.getPosx() == posx && this.head.getPosy() == posy){
+            System.out.println("Error");
+        }
         else{
             NodoVertices tmp = this.head;
             while(tmp.next != null) {

@@ -2,7 +2,7 @@ package com.dots.client.menu;
 
 import com.dots.client.lists.board.ListadeListasDeCuadros;
 import com.dots.client.socket.Cliente;
-import com.dots.client.socket.Tablero;
+import com.dots.client.board.Tablero;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -35,18 +35,39 @@ public class Juego {
      * empezar3x3 es una función que determina las características que tendrá el tablero 3x3.
      */
     public void empezar3x3() {
-        Cliente c1 = new Cliente();
-        Tablero t = new Tablero();
-        t.setFilas_columnas(3);
-        //c1.enviarNum(t);
-
-        double espacio = height / 3;
-        int filas = 3;
-        int columnas = 3;
-        int contadorFila = 0;
-        int contadorColumna = 0;
-        metodoWhile(espacio, filas, columnas, contadorFila, contadorColumna);
-
+        Tablero t = Tablero.getInstance();
+        System.out.println(t.getFilas_columnas());
+        if (t.getFilas_columnas() == 3 || t.getFilas_columnas() == 5 || t.getFilas_columnas() == 7){
+            System.out.println("No");
+            System.out.println(t.getJugador());
+        }
+        else{
+            Cliente c = new Cliente();
+            t.setFilas_columnas(3);
+            c.enviarTablero(t);
+            Tablero.setInstance(c.solicitarTablero());
+            System.out.println(t.getFilas_columnas());
+            System.out.println(t.getJugador());
+            if (t.getFilas_columnas() == 3){
+                System.out.println("No deberia estar aqui");
+                double espacio = height / 3;
+                int filas = 3;
+                int columnas = 3;
+                int contadorFila = 0;
+                int contadorColumna = 0;
+                metodoWhile(espacio, filas, columnas, contadorFila, contadorColumna);
+            }else{
+                if (t.getFilas_columnas() == 5){
+                    System.out.println("Que hacer");
+                    empezar5x5();
+                    t.setFilas_columnas(0);
+                }
+                else{
+                    empezar7x7();
+                    t.setFilas_columnas(0);
+                }
+            }
+        }
     }
 
     @FXML
@@ -54,17 +75,37 @@ public class Juego {
      * empezar5x5 es una función que determina las características que tendrá el tablero 5x5.
      */
     public void empezar5x5() {
-        Cliente c1 = new Cliente();
-        Tablero t = new Tablero();
-        t.setFilas_columnas(5);
-        //c1.enviarNum(t);
-
-        double espacio = height / 5;
-        int filas = 5;
-        int columnas = 5;
-        int contadorFila = 0;
-        int contadorColumna = 0;
-        metodoWhile(espacio, filas, columnas, contadorFila, contadorColumna);
+        Tablero t = Tablero.getInstance();
+        System.out.println(t.getFilas_columnas());
+        if (t.getFilas_columnas() == 3 || t.getFilas_columnas() == 5 || t.getFilas_columnas() == 7){
+            System.out.println("No");
+            System.out.println(t.getJugador());
+        }
+        else{
+            Cliente c = new Cliente();
+            t.setFilas_columnas(5);
+            c.enviarTablero(t);
+            Tablero.setInstance(c.solicitarTablero());
+            System.out.println(t.getFilas_columnas());
+            if (t.getFilas_columnas() == 5) {
+                System.out.println("Hola");
+                double espacio = height / 5;
+                int filas = 5;
+                int columnas = 5;
+                int contadorFila = 0;
+                int contadorColumna = 0;
+                metodoWhile(espacio, filas, columnas, contadorFila, contadorColumna);
+            }else{
+                if (t.getFilas_columnas() == 3){
+                    empezar3x3();
+                    t.setFilas_columnas(0);
+                }
+                else{
+                    empezar7x7();
+                    t.setFilas_columnas(0);
+                }
+            }
+        }
     }
 
     @FXML
@@ -72,17 +113,35 @@ public class Juego {
      * empezar7x7 es una función que determina las características que tendrá el tablero 7x7.
      */
     public void empezar7x7() {
-        Cliente c1 = new Cliente();
-        Tablero t = new Tablero();
-        t.setFilas_columnas(7);
-        //c1.enviarNum(t);
-
-        double espacio = height / 7;
-        int filas = 7;
-        int columnas = 7;
-        int contadorFila = 0;
-        int contadorColumna = 0;
-        metodoWhile(espacio, filas, columnas, contadorFila, contadorColumna);
+        Tablero t = Tablero.getInstance();
+        System.out.println(t.getFilas_columnas());
+        if (t.getFilas_columnas() == 3 || t.getFilas_columnas() == 5 || t.getFilas_columnas() == 7){
+            System.out.println("No");
+            System.out.println(t.getJugador());
+        }
+        else{
+            Cliente c = new Cliente();
+            t.setFilas_columnas(7);
+            c.enviarTablero(t);
+            Tablero.setInstance(c.solicitarTablero());
+            System.out.println(t.getJugador());
+            if (t.getFilas_columnas() == 7) {
+                double espacio = height / 7;
+                int filas = 7;
+                int columnas = 7;
+                int contadorFila = 0;
+                int contadorColumna = 0;
+                metodoWhile(espacio, filas, columnas, contadorFila, contadorColumna);
+            } else {
+                if (t.getFilas_columnas() == 3) {
+                    empezar3x3();
+                    t.setFilas_columnas(0);
+                } else {
+                    empezar5x5();
+                    t.setFilas_columnas(0);
+                }
+            }
+        }
     }
 
     @FXML

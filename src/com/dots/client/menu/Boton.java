@@ -46,7 +46,6 @@ public class Boton extends Button {
      * presionarBoton es una funcion dedicada a ser llamada por el setOnAction de cada botón creado e imprime su posición en X y en Y.
      */
     private void presionarBoton (){
-        boton.setDisable(true);
         System.out.println(coordenadaX +", "+ coordenadaY);
         ListaVertices l1 = ListaVertices.getInstance();
         l1.anadirElemento(coordenadaX, coordenadaY);
