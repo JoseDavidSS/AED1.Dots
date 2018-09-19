@@ -10,13 +10,10 @@ import com.dots.server.lists.board.ListadeListasDeCuadros;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 
 import java.io.IOException;
 
@@ -50,7 +47,7 @@ public class Juego {
     public void empezar3x3() {
         Tablero t = Tablero.getInstance();
         if (t.getFilas_columnas() == 3 || t.getFilas_columnas() == 5 || t.getFilas_columnas() == 7) {
-            System.out.println("No");
+            System.out.println("No, ya elijió un juego");
         } else {
             Cliente c = new Cliente();
             t.setFilas_columnas(3);
@@ -58,8 +55,14 @@ public class Juego {
             t = c.solicitarTablero();
             Tablero.setInstance(t);
             if (t.getJugador().equals("J1")){
+                System.out.println("Soy el: " + t.getJugador());
                 this.empezar3x3_2();
-            } else {
+            }
+            else if (t.getJugador().equals("")){
+                System.out.println("Ya hay dos jugadores, no puedo jugar");
+            }
+            else {
+                System.out.println("Soy el: " + t.getJugador());
                 if (t.getFilas_columnas() == 5) {
                     this.empezar5x5_2();
                 }else {
@@ -70,7 +73,7 @@ public class Juego {
     }
 
     public void empezar3x3_2(){
-        double espacio = height / 3;
+        int espacio = height / 3;
         int filas = 3;
         int columnas = 3;
         int contadorFila = 0;
@@ -85,7 +88,7 @@ public class Juego {
     public void empezar5x5(){
         Tablero t = Tablero.getInstance();
         if (t.getFilas_columnas() == 3 || t.getFilas_columnas() == 5 || t.getFilas_columnas() == 7){
-            System.out.println("No");
+            System.out.println("No, ya elijió un juego");
         }
         else {
             Cliente c = new Cliente();
@@ -94,8 +97,14 @@ public class Juego {
             t = c.solicitarTablero();
             Tablero.setInstance(t);
             if (t.getJugador().equals("J1")){
+                System.out.println("Soy el: " + t.getJugador());
                 this.empezar5x5_2();
-            } else {
+            }
+            else if (t.getJugador().equals("")){
+                System.out.println("Ya hay dos jugadores, no puedo jugar");
+            }
+            else {
+                System.out.println("Soy el: " + t.getJugador());
                 if (t.getFilas_columnas() == 3) {
                     this.empezar3x3_2();
                 }else {
@@ -106,7 +115,7 @@ public class Juego {
     }
 
     public void empezar5x5_2(){
-        double espacio = height / 5;
+        int espacio = height / 5;
         int filas = 5;
         int columnas = 5;
         int contadorFila = 0;
@@ -121,7 +130,7 @@ public class Juego {
     public void empezar7x7() {
         Tablero t = Tablero.getInstance();
         if (t.getFilas_columnas() == 3 || t.getFilas_columnas() == 5 || t.getFilas_columnas() == 7){
-            System.out.println("No");
+            System.out.println("No, ya elijió un juego");
         }
         else {
             Cliente c = new Cliente();
@@ -130,8 +139,14 @@ public class Juego {
             t = c.solicitarTablero();
             Tablero.setInstance(t);
             if (t.getJugador().equals("J1")){
+                System.out.println("Soy el: " + t.getJugador());
                 this.empezar7x7_2();
-            } else {
+            }
+            else if (t.getJugador().equals("")){
+                System.out.println("Ya hay dos jugadores, no puedo jugar");
+            }
+            else {
+                System.out.println("Soy el: " + t.getJugador());
                 if (t.getFilas_columnas() == 5) {
                     this.empezar5x5_2();
                 }else {
@@ -142,7 +157,7 @@ public class Juego {
     }
 
     public void empezar7x7_2(){
-        double espacio = height / 7;
+        int espacio = height / 7;
         int filas = 7;
         int columnas = 7;
         int contadorFila = 0;
@@ -154,7 +169,7 @@ public class Juego {
     /**
      * metodoWhile es una función iterativa que asigna las posiciones de cada botón al momento de instanciarlos.
      */
-    public void metodoWhile(double espacio, int filas, int columnas, int contadorFila, int contadorColumna) {
+    public void metodoWhile(int espacio, int filas, int columnas, int contadorFila, int contadorColumna) {
         ListadeListasDeCuadros l = new ListadeListasDeCuadros();
         while (contadorFila < filas) {
             while (contadorColumna < columnas) {
@@ -191,7 +206,7 @@ public class Juego {
             int InicioEjeY = tmp.getPosyi();
             int FinalEjeX = tmp.getPosxf();
             int FinalEjeY = tmp.getPosyf();
-            Line linea = new Line(InicioEjeX, InicioEjeY, FinalEjeX, FinalEjeY);
+            Line linea = new Line(InicioEjeX + 5, InicioEjeY + 5, FinalEjeX + 5, FinalEjeY + 5);
             paneBoard.getChildren().addAll(linea);
             tmp = tmp.next;
         }
