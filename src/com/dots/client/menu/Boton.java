@@ -4,6 +4,9 @@ import com.dots.client.lists.dots.ListaVertices;
 import com.dots.client.lists.lines.ListaLineas;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
+
+import java.net.JarURLConnection;
 
 public class Boton extends Button {
 
@@ -54,10 +57,14 @@ public class Boton extends Button {
             l1.reiniciar();
             ListaLineas l2 = ListaLineas.getInstance();
             l2.imprimirLista();
+            Line linea = new Line(121,122,1222,344);
+            Juego.juego.dibujarLineas();
+
         }
     }
     public Button getBoton (){
         return boton;
     }
+
 
 }

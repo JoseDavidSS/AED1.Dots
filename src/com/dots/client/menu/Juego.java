@@ -1,8 +1,12 @@
 package com.dots.client.menu;
 
-import com.dots.server.lists.board.ListadeListasDeCuadros;
-import com.dots.client.socket.Cliente;
 import com.dots.client.board.Tablero;
+import com.dots.client.lists.figures.ListaFiguras;
+import com.dots.client.lists.figures.NodoFiguras;
+import com.dots.client.lists.lines.ListaLineas;
+import com.dots.client.lists.lines.NodoLineas;
+import com.dots.client.socket.Cliente;
+import com.dots.server.lists.board.ListadeListasDeCuadros;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,19 +14,26 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 import java.io.IOException;
 
 public class Juego {
 
-    double height = 350;
+    int height = 350;
     int ejeX = 250;
     int ejeY = 50;
     public TextField IP;
     public TextField Puerto;
     public AnchorPane paneBoard;
     public Button Comenzar;
+    public static Juego juego = new Juego();
 
+    public AnchorPane getPaneBoard() {
+        return paneBoard;
+    }
 
     @FXML
     /**
@@ -147,6 +158,7 @@ public class Juego {
         ListadeListasDeCuadros l = new ListadeListasDeCuadros();
         while (contadorFila < filas) {
             while (contadorColumna < columnas) {
+                Juego.juego.paneBoard = paneBoard;
                 Boton boton = new Boton(ejeX, ejeY);
                 paneBoard.getChildren().addAll(boton.getBoton());
                 ejeX += espacio;
@@ -168,6 +180,34 @@ public class Juego {
             System.out.println("Ingrese valores correctos");
         }else{
             System.out.println(IP.getText()+" , "+ Puerto.getText());
+        }
+    }
+
+    public void dibujarLineas () {
+        ListaLineas l1 = ListaLineas.getInstance();
+        NodoLineas tmp = l1.head;
+        while (tmp != null) {
+            int InicioEjeX = tmp.getPosxi();
+            int InicioEjeY = tmp.getPosyi();
+            int FinalEjeX = tmp.getPosxf();
+            int FinalEjeY = tmp.getPosyf();
+            Line linea = new Line(InicioEjeX, InicioEjeY, FinalEjeX, FinalEjeY);
+            paneBoard.getChildren().addAll(linea);
+            tmp = tmp.next;
+        }
+    }
+
+    public void dibujarCuadros () {
+        ListaFiguras l1 = ListaFiguras.getInstance();
+        NodoFiguras tmp = l1.head;
+        while (tmp != null) {
+            int EjeX = tmp.getV1x();
+            int EjeY = tmp.getV1y();
+            int ancho = (tmp.getV2x() - EjeX);
+            System.out.println(ancho);
+            Rectangle rect = new Rectangle(EjeX, EjeY, 200, 200);
+            paneBoard.getChildren().addAll(rect);
+            tmp = tmp.next;
         }
     }
 }
