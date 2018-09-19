@@ -54,13 +54,13 @@ public class Boton extends Button {
         l1.anadirElemento(coordenadaX, coordenadaY);
         if (l1.getLargo() == 2){
             l1.ordenar2();
+            Juego.juego.dibujarLinea();
             l1.reiniciar();
-            ListaLineas l2 = ListaLineas.getInstance();
-            l2.imprimirLista();
-            Line linea = new Line(121,122,1222,344);
-            Juego.juego.dibujarLineas();
+
+
 
         }
+
     }
     public Button getBoton (){
         return boton;

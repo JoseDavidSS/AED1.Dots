@@ -10,7 +10,7 @@ public class ListaVertices {
 
     private static ListaVertices ListaVertices = new ListaVertices();
     private int largo = 0;
-    private NodoVertices head = null;
+    public NodoVertices head = null;
 
     public static ListaVertices getInstance(){
         return ListaVertices;

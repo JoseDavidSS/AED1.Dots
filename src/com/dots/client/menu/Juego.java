@@ -1,6 +1,8 @@
 package com.dots.client.menu;
 
 import com.dots.client.board.Tablero;
+import com.dots.client.lists.dots.ListaVertices;
+import com.dots.client.lists.dots.NodoVertices;
 import com.dots.client.lists.figures.ListaFiguras;
 import com.dots.client.lists.figures.NodoFiguras;
 import com.dots.client.lists.lines.ListaLineas;
@@ -142,16 +144,26 @@ public class Juego {
             tmp = tmp.next;
         }
     }
+    public void dibujarLinea () {
+        ListaVertices l1 = ListaVertices.getInstance();
+        NodoVertices tmp = l1.head;
+        NodoVertices tmp2 = tmp.next;
+        Line linea = new Line(tmp.getPosx(), tmp.getPosy(), tmp2.getPosx(), tmp2.getPosy());
+        paneBoard.getChildren().addAll(linea);
+    }
 
     public void dibujarCuadros () {
         ListaFiguras l1 = ListaFiguras.getInstance();
         NodoFiguras tmp = l1.head;
+        Rectangle rect = new Rectangle(50, 50, 200, 200);
+        paneBoard.getChildren().addAll(rect);
+        System.out.println(tmp.getV1x());
         while (tmp != null) {
             int EjeX = tmp.getV1x();
             int EjeY = tmp.getV1y();
             int ancho = (tmp.getV2x() - EjeX);
             System.out.println(ancho);
-            Rectangle rect = new Rectangle(EjeX, EjeY, 200, 200);
+            Rectangle rect1 = new Rectangle(EjeX, EjeY, 200, 200);
             paneBoard.getChildren().addAll(rect);
             tmp = tmp.next;
         }
