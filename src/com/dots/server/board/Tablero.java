@@ -10,6 +10,10 @@ public class Tablero {
         return tablero;
     }
 
+    public static void setInstance(Tablero t){
+        tablero = t;
+    }
+
     public int getFilas_columnas() {
         return this.filas_columnas;
     }
@@ -19,7 +23,7 @@ public class Tablero {
     }
 
     public String getJugador() {
-        return jugador;
+        return this.jugador;
     }
 
     public void setJugador(String jugador) {
