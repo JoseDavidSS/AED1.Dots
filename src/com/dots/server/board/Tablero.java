@@ -5,6 +5,15 @@ public class Tablero {
     private int filas_columnas = 0;
     private static Tablero tablero = new Tablero();
     private String jugador = "";
+    private Boolean miTurno = false;
+
+    public Boolean getMiTurno() {
+        return miTurno;
+    }
+
+    public void setMiTurno(Boolean miTurno) {
+        this.miTurno = miTurno;
+    }
 
     public static Tablero getInstance(){
         return tablero;

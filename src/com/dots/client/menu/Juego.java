@@ -172,7 +172,6 @@ public class Juego {
      * metodoWhile es una función iterativa que asigna las posiciones de cada botón al momento de instanciarlos.
      */
     public void metodoWhile(int espacio, int filas, int columnas, int contadorFila, int contadorColumna) {
-        ListadeListasDeCuadros l = new ListadeListasDeCuadros();
         while (contadorFila < filas) {
             while (contadorColumna < columnas) {
                 Juego.juego.paneBoard = paneBoard;
@@ -185,6 +184,10 @@ public class Juego {
             ejeX = 250;
             contadorFila++;
             contadorColumna = 0;
+        }
+        Tablero t = Tablero.getInstance();
+        if (t.getJugador().equals("J1")){
+            this.turno();
         }
     }
 
@@ -235,6 +238,26 @@ public class Juego {
             Rectangle rect1 = new Rectangle(EjeX, EjeY, 200, 200);
             paneBoard.getChildren().addAll(rect);
             tmp = tmp.next;
+        }
+    }
+    public void turno (){
+        boolean a = true;
+        int contador = 0;
+        while (a){
+            if (contador !=100){
+                contador ++;
+            }
+            else{
+                Cliente c = new Cliente();
+                Tablero t = Tablero.getInstance();
+                c.enviarTablero(t);
+                t = c.solicitarTablero();
+                Tablero.setInstance(t);
+                if (t.getMiTurno()){
+                    this.dibujarLineas();
+                    this.dibujarCuadros();
+                }
+            }
         }
     }
 }
