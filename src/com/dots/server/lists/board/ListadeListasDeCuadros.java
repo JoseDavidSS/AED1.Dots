@@ -13,7 +13,7 @@ public class ListadeListasDeCuadros {
         this.largo = largo;
     }
 
-    public void anadirElemento(int filas_columnas) {
+    public void anadirElemento(int filas_columnas, int v1x, int v1y, int v2x, int v2y, int v3x, int v3y, int v4x, int v4y) {
         if (filas_columnas > 2) {
             int filas = filas_columnas;
             int columnas = filas_columnas;
@@ -21,7 +21,7 @@ public class ListadeListasDeCuadros {
                 if (this.head == null) {
                     this.head = new ListaCuadros();
                     while (columnas != 0){
-                        this.head.anadirElemento();
+                        this.head.anadirElemento(v1x, v1y, v2x, v2y, v3x, v3y, v4x, v4y);
                         columnas--;
                     }
                     filas--;
@@ -35,7 +35,7 @@ public class ListadeListasDeCuadros {
                     tmp.next = new ListaCuadros();
                     tmp.next.prev = tmp;
                     while (columnas != 0){
-                        tmp.next.anadirElemento();
+                        tmp.next.anadirElemento(v1x, v1y, v2x, v2y, v3x, v3y, v4x, v4y);
                         columnas--;
                     }
                     filas--;

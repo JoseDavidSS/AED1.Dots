@@ -1,6 +1,6 @@
 package com.dots.client.menu;
 
-import com.dots.client.lists.board.ListadeListasDeCuadros;
+import com.dots.server.lists.board.ListadeListasDeCuadros;
 import com.dots.client.socket.Cliente;
 import com.dots.client.board.Tablero;
 import javafx.event.ActionEvent;
