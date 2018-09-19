@@ -7,14 +7,6 @@ public class Tablero {
     private String jugador = "";
     private Boolean miTurno = false;
 
-    public Boolean getMiTurno() {
-        return miTurno;
-    }
-
-    public void setMiTurno(Boolean miTurno) {
-        this.miTurno = miTurno;
-    }
-
     public static Tablero getInstance(){
         return tablero;
     }
@@ -38,5 +30,14 @@ public class Tablero {
     public void setJugador(String jugador) {
         this.jugador = jugador;
     }
+
+    public Boolean getMiTurno() {
+        return miTurno;
+    }
+
+    public void setMiTurno(Boolean miTurno) {
+        this.miTurno = miTurno;
+    }
+
 }
 
