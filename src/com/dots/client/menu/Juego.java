@@ -185,10 +185,6 @@ public class Juego {
             contadorFila++;
             contadorColumna = 0;
         }
-        Tablero t = Tablero.getInstance();
-        if (t.getJugador().equals("J1")){
-            this.turno();
-        }
     }
 
     /**
@@ -224,12 +220,10 @@ public class Juego {
         paneBoard.getChildren().addAll(linea);
     }
 
-    public void dibujarCuadros () {
-        ListaFiguras l1 = ListaFiguras.getInstance();
-        NodoFiguras tmp = l1.head;
-        Rectangle rect = new Rectangle(50, 50, 200, 200);
+    public void dibujarCuadros (int EjeX, int EjeY, int ancho) {
+        Rectangle rect = new Rectangle(EjeX+5, EjeY+5, ancho, ancho);
         paneBoard.getChildren().addAll(rect);
-        System.out.println(tmp.getV1x());
+        /**
         while (tmp != null) {
             int EjeX = tmp.getV1x();
             int EjeY = tmp.getV1y();
@@ -238,27 +232,8 @@ public class Juego {
             Rectangle rect1 = new Rectangle(EjeX, EjeY, 200, 200);
             paneBoard.getChildren().addAll(rect);
             tmp = tmp.next;
-        }
+        }**/
     }
-    public void turno (){
-        boolean a = true;
-        int contador = 0;
-        while (a){
-            if (contador !=100){
-                contador ++;
-            }
-            else{
-                Cliente c = new Cliente();
-                Tablero t = Tablero.getInstance();
-                c.enviarTablero(t);
-                t = c.solicitarTablero();
-                Tablero.setInstance(t);
-                if (t.getMiTurno()){
-                    this.dibujarLineas();
-                    this.dibujarCuadros();
-                }
-            }
-        }
-    }
+
 }
 
