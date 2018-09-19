@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
@@ -224,9 +225,28 @@ public class Juego {
         paneBoard.getChildren().addAll(linea);
     }
 
-    public void dibujarCuadros (int EjeX, int EjeY, int ancho) {
-        Rectangle rect = new Rectangle(EjeX+5, EjeY+5, ancho, ancho);
-        paneBoard.getChildren().addAll(rect);
+    public void dibujarFiguras () {
+        ListaFiguras lF = ListaFiguras.getInstance();
+        lF.anadirElemento(250, 50, 366, 50, 366, 166, 0, 0);
+        NodoFiguras tmp = lF.head;
+        int ancho = (tmp.getV2x() - tmp.getV1x());
+        System.out.println("vertice 1:"+tmp.getV1x());
+        if (tmp.getV4x() == 0 && tmp.getV4y() == 0){
+            double x1 = tmp.getV1x();
+            double y1 = tmp.getV1y();
+            double x2 = tmp.getV2x();
+            double y2 = tmp.getV2y();
+            double x3 = tmp.getV3x();
+            double y3 = tmp.getV3y();
+            System.out.println("Mi y3 es: "+y3);
+            Polygon triangulo = new Polygon(x1+5, y1+5, x2+5, y2+5, x3+5, y3+5);
+            paneBoard.getChildren().addAll(triangulo);
+        }
+        else{
+            Rectangle rect = new Rectangle(tmp.getV1x()+5, tmp.getV1y()+5, ancho, ancho);
+            paneBoard.getChildren().addAll(rect);
+        }
+
         /**
         while (tmp != null) {
             int EjeX = tmp.getV1x();

@@ -55,12 +55,8 @@ public class Boton extends Button {
         System.out.println(coordenadaX +", "+ coordenadaY);
         ListaVertices l1 = ListaVertices.getInstance();
         l1.anadirElemento(coordenadaX, coordenadaY);
-        ListaFiguras lF = ListaFiguras.getInstance();
-        lF.anadirElemento(250, 50, 366, 50, 366, 216, 250, 216);
-        NodoFiguras tmp = lF.head;
-        int ancho = (tmp.getV2x() - tmp.getV1x());
-        System.out.println("vertice 1:"+tmp.getV1x());
-        Juego.juego.dibujarCuadros(tmp.getV1x(), tmp.getV1y(),ancho);
+
+        Juego.juego.dibujarFiguras();
 
 
         if (l1.getLargo() == 2){
