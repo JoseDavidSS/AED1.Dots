@@ -9,6 +9,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+
+import com.dots.server.lists.board.ListadeListasDeCuadros;
 import com.google.gson.Gson;
 
 
@@ -63,6 +65,8 @@ public class Server extends Thread{
                     t.setFilas_columnas(J.getM());
                     this.iniciarT(t);
                     J.setJ2(true);
+                    ListadeListasDeCuadros L1 =  ListadeListasDeCuadros.getInstance();
+                    L1.anadirElemento(J.getM()-1,250,50);
                 }
                 String tRecibida = entrada.readLine();
                 Tablero t = new Gson().fromJson(tRecibida, Tablero.class);
