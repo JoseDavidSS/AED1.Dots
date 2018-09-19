@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 
 import java.io.IOException;
 
@@ -48,36 +47,82 @@ public class Juego {
      * empezar3x3 es una función que determina las características que tendrá el tablero 3x3.
      */
     public void empezar3x3() {
-        Cliente c1 = new Cliente();
-        Tablero t = new Tablero();
-        t.setFilas_columnas(3);
-        //c1.enviarNum(t);
+        Tablero t = Tablero.getInstance();
+        if (t.getFilas_columnas() == 3 || t.getFilas_columnas() == 5 || t.getFilas_columnas() == 7) {
+            System.out.println("No, ya elijió un juego");
+        } else {
+            Cliente c = new Cliente();
+            t.setFilas_columnas(3);
+            c.enviarTablero(t);
+            t = c.solicitarTablero();
+            Tablero.setInstance(t);
+            if (t.getJugador().equals("J1")){
+                System.out.println("Soy el: " + t.getJugador());
+                this.empezar3x3_2();
+            }
+            else if (t.getJugador().equals("")){
+                System.out.println("Ya hay dos jugadores, no puedo jugar");
+            }
+            else {
+                System.out.println("Soy el: " + t.getJugador());
+                if (t.getFilas_columnas() == 5) {
+                    this.empezar5x5_2();
+                }else {
+                    this.empezar7x7_2();
+                }
+            }
+        }
+    }
 
-        double espacio = height / 3;
+    public void empezar3x3_2(){
+        int espacio = height / 3;
         int filas = 3;
         int columnas = 3;
         int contadorFila = 0;
         int contadorColumna = 0;
-        metodoWhile(espacio, filas, columnas, contadorFila, contadorColumna);
-
+        this.metodoWhile(espacio, filas, columnas, contadorFila, contadorColumna);
     }
 
     @FXML
     /**
      * empezar5x5 es una función que determina las características que tendrá el tablero 5x5.
      */
-    public void empezar5x5() {
-        Cliente c1 = new Cliente();
-        Tablero t = new Tablero();
-        t.setFilas_columnas(5);
-        //c1.enviarNum(t);
+    public void empezar5x5(){
+        Tablero t = Tablero.getInstance();
+        if (t.getFilas_columnas() == 3 || t.getFilas_columnas() == 5 || t.getFilas_columnas() == 7){
+            System.out.println("No, ya elijió un juego");
+        }
+        else {
+            Cliente c = new Cliente();
+            t.setFilas_columnas(5);
+            c.enviarTablero(t);
+            t = c.solicitarTablero();
+            Tablero.setInstance(t);
+            if (t.getJugador().equals("J1")){
+                System.out.println("Soy el: " + t.getJugador());
+                this.empezar5x5_2();
+            }
+            else if (t.getJugador().equals("")){
+                System.out.println("Ya hay dos jugadores, no puedo jugar");
+            }
+            else {
+                System.out.println("Soy el: " + t.getJugador());
+                if (t.getFilas_columnas() == 3) {
+                    this.empezar3x3_2();
+                }else {
+                    this.empezar7x7_2();
+                }
+            }
+        }
+    }
 
-        double espacio = height / 5;
+    public void empezar5x5_2(){
+        int espacio = height / 5;
         int filas = 5;
         int columnas = 5;
         int contadorFila = 0;
         int contadorColumna = 0;
-        metodoWhile(espacio, filas, columnas, contadorFila, contadorColumna);
+        this.metodoWhile(espacio, filas, columnas, contadorFila, contadorColumna);
     }
 
     @FXML
@@ -85,24 +130,48 @@ public class Juego {
      * empezar7x7 es una función que determina las características que tendrá el tablero 7x7.
      */
     public void empezar7x7() {
-        Cliente c1 = new Cliente();
-        Tablero t = new Tablero();
-        t.setFilas_columnas(7);
-        //c1.enviarNum(t);
+        Tablero t = Tablero.getInstance();
+        if (t.getFilas_columnas() == 3 || t.getFilas_columnas() == 5 || t.getFilas_columnas() == 7){
+            System.out.println("No, ya elijió un juego");
+        }
+        else {
+            Cliente c = new Cliente();
+            t.setFilas_columnas(7);
+            c.enviarTablero(t);
+            t = c.solicitarTablero();
+            Tablero.setInstance(t);
+            if (t.getJugador().equals("J1")){
+                System.out.println("Soy el: " + t.getJugador());
+                this.empezar7x7_2();
+            }
+            else if (t.getJugador().equals("")){
+                System.out.println("Ya hay dos jugadores, no puedo jugar");
+            }
+            else {
+                System.out.println("Soy el: " + t.getJugador());
+                if (t.getFilas_columnas() == 5) {
+                    this.empezar5x5_2();
+                }else {
+                    this.empezar3x3_2();
+                }
+            }
+        }
+    }
 
-        double espacio = height / 7;
+    public void empezar7x7_2(){
+        int espacio = height / 7;
         int filas = 7;
         int columnas = 7;
         int contadorFila = 0;
         int contadorColumna = 0;
-        metodoWhile(espacio, filas, columnas, contadorFila, contadorColumna);
+        this.metodoWhile(espacio, filas, columnas, contadorFila, contadorColumna);
     }
 
     @FXML
     /**
      * metodoWhile es una función iterativa que asigna las posiciones de cada botón al momento de instanciarlos.
      */
-    public void metodoWhile(double espacio, int filas, int columnas, int contadorFila, int contadorColumna) {
+    public void metodoWhile(int espacio, int filas, int columnas, int contadorFila, int contadorColumna) {
         ListadeListasDeCuadros l = new ListadeListasDeCuadros();
         while (contadorFila < filas) {
             while (contadorColumna < columnas) {
@@ -139,7 +208,7 @@ public class Juego {
             int InicioEjeY = tmp.getPosyi();
             int FinalEjeX = tmp.getPosxf();
             int FinalEjeY = tmp.getPosyf();
-            Line linea = new Line(InicioEjeX, InicioEjeY, FinalEjeX, FinalEjeY);
+            Line linea = new Line(InicioEjeX + 5, InicioEjeY + 5, FinalEjeX + 5, FinalEjeY + 5);
             paneBoard.getChildren().addAll(linea);
             tmp = tmp.next;
         }
