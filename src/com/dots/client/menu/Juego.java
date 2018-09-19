@@ -8,7 +8,6 @@ import com.dots.client.lists.figures.NodoFiguras;
 import com.dots.client.lists.lines.ListaLineas;
 import com.dots.client.lists.lines.NodoLineas;
 import com.dots.client.socket.Cliente;
-import com.dots.server.lists.board.ListadeListasDeCuadros;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -65,6 +64,7 @@ public class Juego {
             }
             else {
                 System.out.println("Soy el: " + t.getJugador());
+                t.setMiTurno(true);
                 if (t.getFilas_columnas() == 5) {
                     this.empezar5x5_2();
                 }else {
@@ -107,6 +107,7 @@ public class Juego {
             }
             else {
                 System.out.println("Soy el: " + t.getJugador());
+                t.setMiTurno(true);
                 if (t.getFilas_columnas() == 3) {
                     this.empezar3x3_2();
                 }else {
@@ -149,6 +150,7 @@ public class Juego {
             }
             else {
                 System.out.println("Soy el: " + t.getJugador());
+                t.setMiTurno(true);
                 if (t.getFilas_columnas() == 5) {
                     this.empezar5x5_2();
                 }else {
@@ -185,6 +187,8 @@ public class Juego {
             contadorFila++;
             contadorColumna = 0;
         }
+        Turno t1 = new Turno();
+        t1.start();
     }
 
     /**
@@ -216,7 +220,7 @@ public class Juego {
         ListaVertices l1 = ListaVertices.getInstance();
         NodoVertices tmp = l1.head;
         NodoVertices tmp2 = tmp.next;
-        Line linea = new Line(tmp.getPosx()+5, tmp.getPosy()+5, tmp2.getPosx()+5, tmp2.getPosy()+5);
+        Line linea = new Line(tmp.getPosx() + 5, tmp.getPosy() + 5, tmp2.getPosx() + 5, tmp2.getPosy() + 5);
         paneBoard.getChildren().addAll(linea);
     }
 

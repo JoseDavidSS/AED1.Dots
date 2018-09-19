@@ -40,7 +40,6 @@ public class Server extends Thread{
     public void run(){
         while (true){
             try{
-                System.out.println(Jugadores.getInstance().getJ1());
                 ServerSocket servidor = new ServerSocket(10001);
                 Socket cliente = servidor.accept();
                 BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
@@ -71,6 +70,28 @@ public class Server extends Thread{
                 if (t.getJugador().equals("")){
                     this.iniciarT(t);
                     System.out.println("Se intentó conectar otro jugador, debe esperar");
+                }else{
+                    if (t.getJugador().equals("J1")){
+                        if (J.isT1()) {
+                            System.out.println("Hola1");
+                            t.setMiTurno(true);
+                            this.iniciarT(t);
+                        }else{
+                            System.out.println("Hola2");
+                            t.setMiTurno(false);
+                            this.iniciarT(t);
+                        }
+                    }else{
+                        if (J.isT2()){
+                            System.out.println("Hola3");
+                            t.setMiTurno(true);
+                            this.iniciarT(t);
+                        }else{
+                            System.out.println("Hola4");
+                            t.setMiTurno(false);
+                            this.iniciarT(t);
+                        }
+                    }
                 }
             }catch (IOException a){
                 System.out.println("Error recibiendo datos desde el servidor");

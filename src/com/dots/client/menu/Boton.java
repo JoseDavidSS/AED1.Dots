@@ -2,6 +2,7 @@ package com.dots.client.menu;
 
 import com.dots.client.lists.dots.ListaVertices;
 import com.dots.client.lists.figures.ListaFiguras;
+import com.dots.client.lists.figures.ListaFiguras;
 import com.dots.client.lists.figures.NodoFiguras;
 import com.dots.client.lists.lines.ListaLineas;
 import javafx.scene.control.Button;

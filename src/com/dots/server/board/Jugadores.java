@@ -5,6 +5,8 @@ public class Jugadores {
     private static Jugadores jugadores = new Jugadores();
     private boolean j1 = false;
     private boolean j2 = false;
+    private boolean t1 = false;
+    private boolean t2 = true;
     private int m = 0;
 
     public static Jugadores getInstance(){
@@ -35,4 +37,19 @@ public class Jugadores {
         this.m = m;
     }
 
+    public boolean isT1() {
+        return this.t1;
+    }
+
+    public void setT1(boolean t1) {
+        this.t1 = t1;
+    }
+
+    public boolean isT2() {
+        return this.t2;
+    }
+
+    public void setT2(boolean t2) {
+        this.t2 = t2;
+    }
 }
