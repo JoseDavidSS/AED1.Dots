@@ -1,6 +1,8 @@
 package com.dots.client.lists.dots;
 
 import com.dots.client.lists.lines.ListaLineas;
+import com.dots.client.menu.Juego;
+import com.dots.server.board.Tablero;
 
 /**
  * Clase de listas simples
@@ -68,36 +70,89 @@ public class ListaVertices {
         }
     }
 
-    public void ordenar2(){
+    public boolean ordenar2(){
         if (this.largo == 2){
             NodoVertices tmp = this.head;
             NodoVertices tmp2 = tmp.next;
             ListaLineas l = ListaLineas.getInstance();
+            int m = Juego.columnas_filas;
             if (tmp.getPosy() == tmp2.getPosy()){
                 if (tmp.getPosx() < tmp2.getPosx()){
-                    l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                    if (tmp2.getPosx() - tmp.getPosx() > 350 / m){
+                        System.out.println(tmp2.getPosx() - tmp.getPosx());
+                        System.out.println(350 / m);
+                        System.out.println("NO1");
+                        return false;
+                    }else{
+                        l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                        System.out.println("SI");
+                        return true;
+                    }
                 }else{
-                    l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                    if (tmp.getPosx() - tmp2.getPosx() > 350 / m){
+                        System.out.println("NO2");
+                        return false;
+                    }else{
+                        l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                        System.out.println("SI");
+                        return true;
+                    }
                 }
             }
             else if (tmp.getPosx() == tmp2.getPosx()){
                 if (tmp.getPosy() < tmp2.getPosy()){
-                    l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                    if (tmp2.getPosy() - tmp.getPosy() > 350 / m){
+                        System.out.println("NO3");
+                        return false;
+                    }else{
+                        l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                        System.out.println("SI");
+                        return true;
+                    }
                 }else{
-                    l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp2.getPosy(), tmp.getPosy());
+                    if (tmp.getPosy() - tmp2.getPosy() > 350 / m){
+                        System.out.println("NO4");
+                        return false;
+                    }else{
+                        l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp2.getPosy(), tmp.getPosy());
+                        System.out.println("SI");
+                        return true;
+                    }
                 }
             }else {
                 if ((tmp.getPosx() < tmp2.getPosx()) && (tmp.getPosy() < tmp2.getPosy())) {
-                    l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                    if (tmp2.getPosx() - tmp.getPosx() > (350 / m) + 50){
+                        System.out.println("NO5");
+                        return false;
+                    }else{
+                        l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                        System.out.println("SI");
+                        return true;
+                    }
                 } else if ((tmp.getPosx() < tmp2.getPosx()) && (tmp.getPosy() > tmp2.getPosy())) {
-                    l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                    if (tmp2.getPosx() - tmp.getPosx() > (350 / m) + 50){
+                        System.out.println("NO6");
+                        return false;
+                    }else{
+                        l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                        System.out.println("SI");
+                        return true;
+                    }
                 }else{
-                    l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp2.getPosy(), tmp.getPosy());
+                    if (tmp.getPosx() - tmp2.getPosx() > (350 / m) + 50){
+                        System.out.println("NO7");
+                        return false;
+                    }else{
+                        l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp2.getPosy(), tmp.getPosy());
+                        System.out.println("SI");
+                        return true;
+                    }
                 }
             }
 
         }else{
             System.out.println("Error");
+            return false;
         }
     }
 

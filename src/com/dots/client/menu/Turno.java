@@ -9,6 +9,7 @@ public class Turno extends Thread {
 
     public void run(){
         Tablero t = Tablero.getInstance();
+        System.out.println(t.getMiTurno());
         while(true){
             if (!t.getMiTurno()){
                 this.esperese(20);

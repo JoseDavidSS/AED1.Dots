@@ -5,6 +5,7 @@ import com.dots.client.lists.figures.ListaFiguras;
 import com.dots.client.lists.figures.ListaFiguras;
 import com.dots.client.lists.figures.NodoFiguras;
 import com.dots.client.lists.lines.ListaLineas;
+import com.dots.server.board.Tablero;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -51,28 +52,34 @@ public class Boton extends Button {
     /**
      * presionarBoton es una funcion dedicada a ser llamada por el setOnAction de cada botón creado e imprime su posición en X y en Y.
      */
+
     private void presionarBoton (){
-        System.out.println(coordenadaX +", "+ coordenadaY);
-        ListaVertices l1 = ListaVertices.getInstance();
-        l1.anadirElemento(coordenadaX, coordenadaY);
-        ListaFiguras lF = ListaFiguras.getInstance();
+        if (Juego.turno){
+            System.out.println(coordenadaX +", "+ coordenadaY);
+            ListaVertices l1 = ListaVertices.getInstance();
+            l1.anadirElemento(coordenadaX, coordenadaY);
+        /*ListaFiguras lF = ListaFiguras.getInstance();
         lF.anadirElemento(250, 50, 366, 50, 366, 216, 250, 216);
         NodoFiguras tmp = lF.head;
         int ancho = (tmp.getV2x() - tmp.getV1x());
         System.out.println("vertice 1:"+tmp.getV1x());
-        Juego.juego.dibujarCuadros(tmp.getV1x(), tmp.getV1y(),ancho);
-
-
-        if (l1.getLargo() == 2){
-            l1.ordenar2();
-            Juego.juego.dibujarLinea();
-            l1.reiniciar();
-
-
-
+        Juego.juego.dibujarCuadros(tmp.getV1x(), tmp.getV1y(),ancho);*/
+            if (l1.getLargo() == 2){
+                boolean a = l1.ordenar2();
+                if (a){
+                    Juego.juego.dibujarLinea();
+                    l1.reiniciar();
+                }
+                else{
+                    System.out.println("LINEA NO ADMITIDA");
+                    l1.reiniciar();
+                }
+            }
+        }else{
+            System.out.println("NO ES MI TURNO");
         }
-
     }
+
     public Button getBoton (){
         return boton;
     }

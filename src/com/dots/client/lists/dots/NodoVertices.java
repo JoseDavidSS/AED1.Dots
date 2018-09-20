@@ -31,4 +31,5 @@ public class NodoVertices {
     public void setPosy(int posy) {
         this.posy = posy;
     }
+
 }

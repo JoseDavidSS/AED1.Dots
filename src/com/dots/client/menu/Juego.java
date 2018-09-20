@@ -23,6 +23,8 @@ public class Juego {
     int height = 350;
     int ejeX = 250;
     int ejeY = 50;
+    public static int columnas_filas;
+    public static boolean turno = false;
     public TextField IP;
     public TextField Puerto;
     public AnchorPane paneBoard;
@@ -55,7 +57,7 @@ public class Juego {
             c.enviarTablero(t);
             t = c.solicitarTablero();
             Tablero.setInstance(t);
-            if (t.getJugador().equals("J1")){
+            if (t.getJugador().equals("J1") || (t.getJugador().equals("J2") && t.getFilas_columnas() == 3)){
                 System.out.println("Soy el: " + t.getJugador());
                 this.empezar3x3_2();
             }
@@ -65,6 +67,8 @@ public class Juego {
             else {
                 System.out.println("Soy el: " + t.getJugador());
                 t.setMiTurno(true);
+                Tablero.setInstance(t);
+                turno = true;
                 if (t.getFilas_columnas() == 5) {
                     this.empezar5x5_2();
                 }else {
@@ -75,6 +79,7 @@ public class Juego {
     }
 
     public void empezar3x3_2(){
+        columnas_filas = 3;
         int espacio = height / 3;
         int filas = 3;
         int columnas = 3;
@@ -98,7 +103,7 @@ public class Juego {
             c.enviarTablero(t);
             t = c.solicitarTablero();
             Tablero.setInstance(t);
-            if (t.getJugador().equals("J1")){
+            if (t.getJugador().equals("J1") || (t.getJugador().equals("J2") && t.getFilas_columnas() == 5)){
                 System.out.println("Soy el: " + t.getJugador());
                 this.empezar5x5_2();
             }
@@ -108,6 +113,8 @@ public class Juego {
             else {
                 System.out.println("Soy el: " + t.getJugador());
                 t.setMiTurno(true);
+                Tablero.setInstance(t);
+                turno = true;
                 if (t.getFilas_columnas() == 3) {
                     this.empezar3x3_2();
                 }else {
@@ -118,6 +125,7 @@ public class Juego {
     }
 
     public void empezar5x5_2(){
+        columnas_filas = 5;
         int espacio = height / 5;
         int filas = 5;
         int columnas = 5;
@@ -141,7 +149,7 @@ public class Juego {
             c.enviarTablero(t);
             t = c.solicitarTablero();
             Tablero.setInstance(t);
-            if (t.getJugador().equals("J1")){
+            if (t.getJugador().equals("J1") || (t.getJugador().equals("J2") && t.getFilas_columnas() == 7)){
                 System.out.println("Soy el: " + t.getJugador());
                 this.empezar7x7_2();
             }
@@ -151,6 +159,8 @@ public class Juego {
             else {
                 System.out.println("Soy el: " + t.getJugador());
                 t.setMiTurno(true);
+                Tablero.setInstance(t);
+                turno = true;
                 if (t.getFilas_columnas() == 5) {
                     this.empezar5x5_2();
                 }else {
@@ -161,6 +171,7 @@ public class Juego {
     }
 
     public void empezar7x7_2(){
+        columnas_filas = 7;
         int espacio = height / 7;
         int filas = 7;
         int columnas = 7;
@@ -187,8 +198,8 @@ public class Juego {
             contadorFila++;
             contadorColumna = 0;
         }
-        Turno t1 = new Turno();
-        t1.start();
+        //Turno t1 = new Turno();
+        //t1.start();
     }
 
     /**
