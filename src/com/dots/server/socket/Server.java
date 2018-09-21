@@ -21,15 +21,19 @@ public class Server extends Thread{
         servidor.start();
     }
 
+    /***
+     * El servidor envia la informacion(Tablero) a cada jugador que esté activo
+     * @param t tablero (Estado del juego)
+     */
     public void iniciarT(Tablero t) {
         while (true) {
             try {
-                ServerSocket servidor = new ServerSocket(10000);
+                ServerSocket servidor = new ServerSocket(10000);                         //El puerto destinado a enviar info != al de recibir
                 Socket cliente = servidor.accept();
                 PrintWriter salida = new PrintWriter(cliente.getOutputStream(), true);
                 String tSerializada = new Gson().toJson(t);
                 salida.println(tSerializada);
-                cliente.close();
+                cliente.close();                                                            //Despues de enviar la informacion, cierra el socket
                 servidor.close();
                 break;
             } catch (IOException a) {
@@ -38,15 +42,20 @@ public class Server extends Thread{
         }
     }
 
+    /***
+     * El servidor abre un hilo que tiene como función recibir la información enviada por el cliente despues
+     * de cada turno. Guarda en la cola a cada jugador activo.
+     */
+
     @Override
     public void run(){
         while (true){
             try{
-                ServerSocket servidor = new ServerSocket(10001);
+                ServerSocket servidor = new ServerSocket(10001);     //EL puerto que recibe != al que envia la info del juego
                 Socket cliente = servidor.accept();
                 BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
                 Jugadores J = Jugadores.getInstance();
-                if (!J.getJ1()){
+                if (!J.getJ1()){                                            //Detecta cual jugador es el que intenta enviar la informacion
                     String tRecibida = entrada.readLine();
                     cliente.close();
                     servidor.close();
@@ -71,7 +80,7 @@ public class Server extends Thread{
                 Tablero t = new Gson().fromJson(tRecibida, Tablero.class);
                 cliente.close();
                 servidor.close();
-                if (t.getJugador().equals("")){
+                if (t.getJugador().equals("")){                                  //Si el jugador no está en la cola, no se le permite enviar info
                     this.iniciarT(t);
                     System.out.println("Se intentó conectar otro jugador, debe esperar");
                 }else{
