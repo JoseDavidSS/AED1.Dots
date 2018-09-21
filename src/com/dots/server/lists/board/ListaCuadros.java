@@ -1,11 +1,19 @@
 package com.dots.server.lists.board;
 
+/**
+ * Clase que maneja una lista de nodos de cuadros de juego.
+ */
+
 public class ListaCuadros {
 
     public ListaCuadros next;
     public ListaCuadros prev;
     public int largo;
     public NodoCuadros head;
+
+    /**
+     * Constructor de la clase.
+     */
 
     public ListaCuadros(){
         this.next = null;
@@ -14,19 +22,29 @@ public class ListaCuadros {
         this.head = null;
     }
 
+    /**
+     * Método para obtener el largo de la lista.
+     * @return entero con el largo de la lista.
+     */
+
     public int getLargo() {
         return this.largo;
     }
+
+    /**
+     * Método para modificar el largo de la lista.
+     * @param largo entero con el nuevo largo de la lista.
+     */
 
     public void setLargo(int largo) {
         this.largo = largo;
     }
 
-    /***
-     *
-     * @param filas_columnas tamaño del tablero
-     * @param x Posicion en x del vertice superior derecho del cuadro
-     * @param y Posicion en y del vertice superior derecho del cuadro
+    /**
+     * Método para crear la plantilla de juego.
+     * @param filas_columnas tamaño del tablero.
+     * @param x Posicion en x del vertice superior derecho del cuadro.
+     * @param y Posicion en y del vertice superior derecho del cuadro.
      */
 
     public void anadirElemento(int filas_columnas,int x,int y){
@@ -44,6 +62,10 @@ public class ListaCuadros {
             this.largo++;
         }
     }
+
+    /**
+     * Método para imprimir la lista.
+     */
 
     public void imprimirLista(){
         NodoCuadros tmp = this.head;

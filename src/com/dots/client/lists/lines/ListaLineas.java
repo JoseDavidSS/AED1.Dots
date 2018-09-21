@@ -2,6 +2,10 @@ package com.dots.client.lists.lines;
 
 import com.dots.client.lists.figures.ListaFiguras;
 
+/**
+ * Clase de una lista enlazada que almacena líneas.
+ */
+
 public class ListaLineas {
 
     public static ListaLineas ListaLineas = new ListaLineas();
@@ -9,27 +13,49 @@ public class ListaLineas {
     public NodoLineas tail = null;
     public int largo = 0;
 
-    public static ListaLineas getInstance(){
+    /**
+     * Singleton de la clase.
+     * @return instancia de la clase.
+     */
+
+    public static ListaLineas getInstance() {
         return ListaLineas;
     }
+
+    /**
+     * Método para obtener el largo de la lista.
+     * @return entero con el largo de la lista.
+     */
 
     public int getLargo() {
         return largo;
     }
 
+    /**
+     * Método para modificar el largo de la lista.
+     * @param largo enteron con el nuevo largo.
+     */
+
     public void setLargo(int largo) {
         this.largo = largo;
     }
 
-    public void anadirElemento(int posxi, int posxf, int posyi, int posyf){
-        if (this.head == null){
+    /**
+     * Método para añadir una nueva linea.
+     * @param posxi Eje x del vértice inicial de la lista.
+     * @param posxf Eje x del vértice final de la lista.
+     * @param posyi Eje y del vértice inicial de la lista.
+     * @param posyf Eje y del vértice final de la lista.
+     */
+
+    public void anadirElemento(int posxi, int posxf, int posyi, int posyf) {
+        if (this.head == null) {
             this.head = new NodoLineas(posxi, posxf, posyi, posyf);
             this.tail = this.head;
             this.largo++;
-        }
-        else{
+        } else {
             NodoLineas tmp = this.head;
-            while (tmp.next != null){
+            while (tmp.next != null) {
                 tmp = tmp.next;
             }
             tmp.next = new NodoLineas(posxi, posxf, posyi, posyf);
@@ -39,17 +65,21 @@ public class ListaLineas {
         }
     }
 
-    public void imprimirLista(){
-        if (this.largo != 0){
+    public void imprimirLista() {
+        if (this.largo != 0) {
             NodoLineas tmp = this.head;
-            while (tmp != null){
+            while (tmp != null) {
                 System.out.println("I: " + tmp.getPosxi() + ", " + tmp.getPosyi() + ". " + "F: " + tmp.getPosxf() + ", " + tmp.getPosyf());
                 tmp = tmp.next;
             }
-        }else{
+        } else {
             System.out.println("Error");
         }
     }
+
+    /**
+     * Método para comprobar si se forman figuras con las listas almacenadas.
+     */
 
     public void comprobarAdyacentes(){
         if (this.largo > 2){

@@ -19,6 +19,10 @@ import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 
+/**
+ * Clase principal del cliente.
+ */
+
 public class Juego {
 
     int height = 350;

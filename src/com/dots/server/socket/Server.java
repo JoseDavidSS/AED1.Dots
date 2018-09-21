@@ -2,6 +2,7 @@ package com.dots.server.socket;
 
 import com.dots.server.board.Jugadores;
 import com.dots.server.board.Tablero;
+import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,9 +10,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-
-import com.dots.server.lists.board.ListadeListasDeCuadros;
-import com.google.gson.Gson;
 
 
 public class Server extends Thread{
@@ -21,19 +19,20 @@ public class Server extends Thread{
         servidor.start();
     }
 
-    /***
+    /**
      * El servidor envia la informacion(Tablero) a cada jugador que esté activo
      * @param t tablero (Estado del juego)
      */
+
     public void iniciarT(Tablero t) {
         while (true) {
             try {
-                ServerSocket servidor = new ServerSocket(10000);                         //El puerto destinado a enviar info != al de recibir
+                ServerSocket servidor = new ServerSocket(10000);
                 Socket cliente = servidor.accept();
                 PrintWriter salida = new PrintWriter(cliente.getOutputStream(), true);
                 String tSerializada = new Gson().toJson(t);
                 salida.println(tSerializada);
-                cliente.close();                                                            //Despues de enviar la informacion, cierra el socket
+                cliente.close();
                 servidor.close();
                 break;
             } catch (IOException a) {
@@ -42,7 +41,7 @@ public class Server extends Thread{
         }
     }
 
-    /***
+    /**
      * El servidor abre un hilo que tiene como función recibir la información enviada por el cliente despues
      * de cada turno. Guarda en la cola a cada jugador activo.
      */
@@ -51,11 +50,11 @@ public class Server extends Thread{
     public void run(){
         while (true){
             try{
-                ServerSocket servidor = new ServerSocket(10001);     //EL puerto que recibe != al que envia la info del juego
+                ServerSocket servidor = new ServerSocket(10001);
                 Socket cliente = servidor.accept();
                 BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
                 Jugadores J = Jugadores.getInstance();
-                if (!J.getJ1()){                                            //Detecta cual jugador es el que intenta enviar la informacion
+                if (!J.getJ1()){
                     String tRecibida = entrada.readLine();
                     cliente.close();
                     servidor.close();
@@ -80,7 +79,7 @@ public class Server extends Thread{
                 Tablero t = new Gson().fromJson(tRecibida, Tablero.class);
                 cliente.close();
                 servidor.close();
-                if (t.getJugador().equals("")){                                  //Si el jugador no está en la cola, no se le permite enviar info
+                if (t.getJugador().equals("")){
                     this.iniciarT(t);
                     System.out.println("Se intentó conectar otro jugador, debe esperar");
                 }else{

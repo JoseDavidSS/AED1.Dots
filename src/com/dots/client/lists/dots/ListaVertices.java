@@ -87,8 +87,8 @@ public class ListaVertices {
     }
 
     /**
-     * Método para ordenar los dos vértices de la lista de modo que
-     * @return
+     * Método para ordenar los dos vértices de la lista de modo que cumplan el orden estipulado por nosotros, para que el algoritmo de realización de figuras funcione de manera adecuada.
+     * @return booleans indicando si los vértices presionados son adyacentes.
      */
 
     public boolean ordenar2(){

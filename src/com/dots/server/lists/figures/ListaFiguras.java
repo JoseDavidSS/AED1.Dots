@@ -1,22 +1,53 @@
 package com.dots.server.lists.figures;
 
+/**
+ * Clase de una lista enlazada que almacena las figuaras del juego.
+ */
+
 public class ListaFiguras {
 
-    private static com.dots.server.lists.figures.ListaFiguras ListaFiguras = new ListaFiguras();
+    private static ListaFiguras ListaFiguras = new ListaFiguras();
     private NodoFiguras head = null;
     private int largo = 0;
 
-    public static com.dots.server.lists.figures.ListaFiguras getInstance(){
+    /**
+     * Singleton de la clase.
+     * @return instancia de la clase.
+     */
+
+    public static ListaFiguras getInstance(){
         return ListaFiguras;
     }
+
+    /**
+     * Método para obtener el largo de la lista.
+     * @return entero con el largo de la lista.
+     */
 
     public int getLargo() {
         return largo;
     }
 
+    /**
+     * Método para modificar el largo de la lista.
+     * @param largo entero con el nuevo largo de la lista.
+     */
+
     public void setLargo(int largo) {
         this.largo = largo;
     }
+
+    /**
+     * Método para añadir una figura a la lista.
+     * @param v1x Primer vértice en x.
+     * @param v1y Primer vértice en y.
+     * @param v2x Segundo vértice en x.
+     * @param v2y Segundo vértice en y.
+     * @param v3x Tercer vértice en x.
+     * @param v3y Tercer vértice en y.
+     * @param v4x Cuarto vértice en x, si es un triángulo será 0.
+     * @param v4y Cuarto vértice en y, si es un triángulo será 0.
+     */
 
     public void anadirElemento(int v1x, int v1y, int v2x, int v2y, int v3x, int v3y, int v4x, int v4y){
         if (this.head == null){
@@ -32,6 +63,10 @@ public class ListaFiguras {
             this.largo++;
         }
     }
+
+    /**
+     * Método para imprimir la lista.
+     */
 
     public void imprimirLista(){
         if (this.head != null){
@@ -50,6 +85,19 @@ public class ListaFiguras {
             System.out.println("Error");
         }
     }
+
+    /**
+     * Método para comprobar que no se repitan figuras en la lista.
+     * @param v1x Primer vértice en x.
+     * @param v1y Primer vértice en y.
+     * @param v2x Segundo vértice en x.
+     * @param v2y Segundo vértice en y.
+     * @param v3x Tercer vértice en x.
+     * @param v3y Tercer vértice en y.
+     * @param v4x Cuarto vértice en x, si es un triángulo será 0.
+     * @param v4y Cuarto vértice en y, si es un triángulo será 0.
+     * @return boolean indicando si se repite o no.
+     */
 
     public boolean comprobarCoincidencia(int v1x, int v1y, int v2x, int v2y, int v3x, int v3y, int v4x, int v4y){
         if (this.head != null){

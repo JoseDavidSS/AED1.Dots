@@ -2,28 +2,48 @@ package com.dots.server.lists.board;
 
 import com.dots.server.board.Jugadores;
 
+/**
+ * Clase que crea la lista de listas para la malla de juego.
+ */
+
 public class ListadeListasDeCuadros {
 
     public int largo = 0;
     public ListaCuadros head = null;
     private static ListadeListasDeCuadros lista = new ListadeListasDeCuadros();
 
+    /**
+     * Singleton de la clase.
+     * @return instancia de la clase.
+     */
+
     public static ListadeListasDeCuadros getInstance(){
         return lista;
     }
+
+    /**
+     * Método para obtener el largo de la lista.
+     * @return entero con el largo de la lista.
+     */
 
     public int getLargo() {
         return this.largo;
     }
 
+    /**
+     * Método para modificar el largo de la lista.
+     * @param largo entero con el nuevo largo de la lista.
+     */
+
     public void setLargo(int largo) {
         this.largo = largo;
     }
 
-    /***
-     * Crea la lista con todos los cuadros del juego apartir del tamaño del juego.
+    /**
+     * Método que crea la lista con todos los cuadros del juego apartir del tamaño del juego.
      * @param filas_columnas tamaño del tablero
      */
+
     public void anadirElemento(int filas_columnas) {
         int m = filas_columnas - 1;
         int multiplicacdor_y = 1;
@@ -63,6 +83,10 @@ public class ListadeListasDeCuadros {
         }
     }
 
+    /**
+     * Método para imprimir la lista.
+     */
+
     public void imprimirLista(){
         ListaCuadros tmp = this.head;
         while (tmp != null){
@@ -71,10 +95,11 @@ public class ListadeListasDeCuadros {
         }
     }
 
-    /***
-     * Verifica si en el tablero todavía hay cuadrados incompletos
+    /**
+     * Método que verifica si en el tablero todavía hay cuadrados incompletos
      * @return Boolean indicando si el jeugo ha terminado
      */
+
     public boolean verificar(){
         ListaCuadros tmp = this.head;
 
@@ -95,14 +120,15 @@ public class ListadeListasDeCuadros {
         return juegoTerminado;
     }
 
-    /***
-     * Cambia el estado del cuadro, si no está el vertice superior derecho, se vuelve a llamar al metodo con un nuevo vertice generado automaticamente.
+    /**
+     * Método que cambia el estado del cuadro, si no está el vertice superior derecho, se vuelve a llamar al metodo con un nuevo vertice generado automaticamente.
      * @param x1 X del Vertice superior izquierdo
      * @param y1 Y del Vertice superior izquierdo
      * @param x2 X del Vertice superior derecho
      * @param y2 Y del vertice superior derecho
      * @param estado estado al que se quiere cambiar
      */
+
     public void cambiarEstado(int x1, int y1, int x2,int y2, int estado) {
 
         if (x2 == 0 && y2 == 0) {
