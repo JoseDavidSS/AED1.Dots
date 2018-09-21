@@ -14,6 +14,7 @@ import java.net.JarURLConnection;
 /**
  * Esta clase es una clase envoltorio que extiende de Button de JavaFX.
  */
+
 public class Boton extends Button {
 
     private Button boton;
@@ -21,20 +22,22 @@ public class Boton extends Button {
     private int coordenadaY;
 
     /**
-     * Es te es el constructor de la clase Boton.
+     * Constructor de la clase Boton.
      * @param ejeX variable que almacena la posición en X del botón.
      * @param ejeY variable que almacena la posición en X del botón.
      */
+
     public Boton (int ejeX, int ejeY){
         this.boton = crearBoton(ejeX, ejeY);
     }
 
     /**
-     * crearBoton es una función para crear un botón con características diferentes a los botones normales.
+     * Método para crear un botón con características diferentes a los botones normales.
      * @param ejeX atributo para asignar la posición en X del botón.
      * @param ejeY atributo para asignar la posición en Y del botón.
-     * @return
+     * @return el botón creado.
      */
+
     private Button crearBoton(int ejeX, int ejeY) {
 
         int r = 6;
@@ -52,8 +55,9 @@ public class Boton extends Button {
     }
 
     /**
-     * presionarBoton es una funcion dedicada a ser llamada por el setOnAction de cada botón creado e imprime su posición en X y en Y.
+     * Método dedicado a ser llamado por el setOnAction de cada botón creado e imprime su posición en X y en Y.
      */
+
     private void presionarBoton (){
         if (Juego.turno){
             System.out.println(coordenadaX +", "+ coordenadaY);
@@ -83,8 +87,10 @@ public class Boton extends Button {
     }
 
     /**
-     * getBoton es un método que retorna el atributo boton de tipo Button.
+     * Método que retorna el atributo boton de tipo Button.
+     * @return el botón creado.
      */
+
     public Button getBoton (){
         return boton;
     }

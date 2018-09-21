@@ -9,6 +9,11 @@ public class Jugadores {
     private boolean t2 = true;
     private int m = 0;
 
+    /**
+     *
+     * @return
+     */
+
     public static Jugadores getInstance(){
         return jugadores;
     }

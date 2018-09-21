@@ -2,10 +2,9 @@ package com.dots.client.lists.dots;
 
 import com.dots.client.lists.lines.ListaLineas;
 import com.dots.client.menu.Juego;
-import com.dots.server.board.Tablero;
 
 /**
- * Clase de listas simples
+ * Clase de una lista enlazada que almacena solamente dos nodos, osea dos vertices.
  */
 
 public class ListaVertices {
@@ -14,24 +13,37 @@ public class ListaVertices {
     private int largo = 0;
     public NodoVertices head = null;
 
+    /**
+     * Método Singleton.
+     * @return instancia de esta clase.
+     */
+
     public static ListaVertices getInstance(){
         return ListaVertices;
     }
 
     /**
-     * Getters y setters de la clase
+     * Método para obtener el largo de la lista.
+     * @return entero con el largo de la lista.
      */
 
     public int getLargo() {
         return this.largo;
     }
 
+    /**
+     * Método para modificar/cambiar el largo de la lista.
+     * @param largo entero con el nuevo largo de la lista.
+     */
+
     public void setLargo(int largo) {
         this.largo = largo;
     }
 
     /**
-     * Metodo que agrega un elemento a la lista
+     * Método que agrega un vértice a la lista
+     * @param posx Posición en x del vértice
+     * @param posy Posición en y del vérice
      */
 
     public void anadirElemento(int posx, int posy){
@@ -52,6 +64,10 @@ public class ListaVertices {
         }
     }
 
+    /**
+     * Método para reiniciar el Singleton
+     */
+
     public void reiniciar(){
         ListaVertices = new ListaVertices();
     }
@@ -69,6 +85,11 @@ public class ListaVertices {
             tmp = tmp.next;
         }
     }
+
+    /**
+     * Método para ordenar los dos vértices de la lista de modo que
+     * @return
+     */
 
     public boolean ordenar2(){
         if (this.largo == 2){
