@@ -20,6 +20,10 @@ public class ListadeListasDeCuadros {
         this.largo = largo;
     }
 
+    /***
+     * Crea la lista con todos los cuadros del juego apartir del tamaño del juego.
+     * @param filas_columnas tamaño del tablero
+     */
     public void anadirElemento(int filas_columnas) {
         int m = filas_columnas - 1;
         int multiplicacdor_y = 1;
@@ -67,6 +71,10 @@ public class ListadeListasDeCuadros {
         }
     }
 
+    /***
+     * Verifica si en el tablero todavía hay cuadrados incompletos
+     * @return Boolean indicando si el jeugo ha terminado
+     */
     public boolean verificar(){
         ListaCuadros tmp = this.head;
 
@@ -87,6 +95,14 @@ public class ListadeListasDeCuadros {
         return juegoTerminado;
     }
 
+    /***
+     * Cambia el estado del cuadro, si no está el vertice superior derecho, se vuelve a llamar al metodo con un nuevo vertice generado automaticamente.
+     * @param x1 X del Vertice superior izquierdo
+     * @param y1 Y del Vertice superior izquierdo
+     * @param x2 X del Vertice superior derecho
+     * @param y2 Y del vertice superior derecho
+     * @param estado estado al que se quiere cambiar
+     */
     public void cambiarEstado(int x1, int y1, int x2,int y2, int estado) {
 
         if (x2 == 0 && y2 == 0) {

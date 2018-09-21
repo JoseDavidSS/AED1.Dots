@@ -22,6 +22,13 @@ public class ListaCuadros {
         this.largo = largo;
     }
 
+    /***
+     *
+     * @param filas_columnas tamaño del tablero
+     * @param x Posicion en x del vertice superior derecho del cuadro
+     * @param y Posicion en y del vertice superior derecho del cuadro
+     */
+
     public void anadirElemento(int filas_columnas,int x,int y){
         if (this.head == null) {
             this.head = new NodoCuadros(x,y);
