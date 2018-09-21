@@ -4,8 +4,8 @@ public class ListaCuadros {
 
     public ListaCuadros next;
     public ListaCuadros prev;
-    private int largo;
-    private NodoCuadros head;
+    public int largo;
+    public NodoCuadros head;
 
     public ListaCuadros(){
         this.next = null;
@@ -22,9 +22,16 @@ public class ListaCuadros {
         this.largo = largo;
     }
 
-    public void anadirElemento(int v1x, int v1y, int v2x, int v2y, int v3x, int v3y, int v4x, int v4y){
+    /***
+     *
+     * @param filas_columnas tamaño del tablero
+     * @param x Posicion en x del vertice superior derecho del cuadro
+     * @param y Posicion en y del vertice superior derecho del cuadro
+     */
+
+    public void anadirElemento(int filas_columnas,int x,int y){
         if (this.head == null) {
-            this.head = new NodoCuadros(v1x, v1y, v2x, v2y, v3x, v3y, v4x, v4y);
+            this.head = new NodoCuadros(x,y);
             this.largo++;
         }
         else{
@@ -32,7 +39,7 @@ public class ListaCuadros {
             while(tmp.next != null) {
                 tmp = tmp.next;
             }
-            tmp.next = new NodoCuadros(v1x, v1y, v2x, v2y, v3x, v3y, v4x, v4y);
+            tmp.next = new NodoCuadros(tmp.get_x()+(350/filas_columnas),y);
             tmp.next.prev = tmp;
             this.largo++;
         }

@@ -19,9 +19,13 @@ public class Cliente extends Thread{
         Tablero t = new Tablero();
     }
 
+    /***
+     * Metodo que solicita el estado del juego al servidor(Tablero)
+     * @return
+     */
     public Tablero solicitarTablero(){
         try{
-            Socket conexionServer = new Socket("127.0.0.1",10000);
+            Socket conexionServer = new Socket("127.0.0.1",10000);   //Se conecta al puerto dedicado a enviar la informacion
             BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
             String tserial = entradaDatos.readLine();
             System.out.println(tserial);
@@ -34,6 +38,10 @@ public class Cliente extends Thread{
         return null;
     }
 
+    /***
+     *  Despues de terminado el turno, el jugador envia al servidor el tablero modificado.
+     *  @param tablero Tablero modificado
+     */
     public void enviarTablero(Tablero tablero) {
         try {
             Socket conexionServer = new Socket("127.0.0.1", 10001);
