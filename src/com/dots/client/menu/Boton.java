@@ -1,6 +1,9 @@
 package com.dots.client.menu;
 
 import com.dots.client.lists.dots.ListaVertices;
+import com.dots.client.lists.figures.ListaFiguras;
+import com.dots.client.lists.figures.ListaFiguras;
+import com.dots.client.lists.figures.NodoFiguras;
 import com.dots.client.lists.lines.ListaLineas;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
@@ -8,6 +11,9 @@ import javafx.scene.shape.Line;
 
 import java.net.JarURLConnection;
 
+/**
+ * Esta clase es una clase envoltorio que extiende de Button de JavaFX.
+ */
 public class Boton extends Button {
 
     private Button boton;
@@ -52,6 +58,10 @@ public class Boton extends Button {
         System.out.println(coordenadaX +", "+ coordenadaY);
         ListaVertices l1 = ListaVertices.getInstance();
         l1.anadirElemento(coordenadaX, coordenadaY);
+
+        Juego.juego.dibujarFiguras();
+
+
         if (l1.getLargo() == 2){
             l1.ordenar2();
             Juego.juego.dibujarLinea();
@@ -62,6 +72,10 @@ public class Boton extends Button {
         }
 
     }
+
+    /**
+     * getBoton es un método que retorna el atributo boton de tipo Button.
+     */
     public Button getBoton (){
         return boton;
     }
