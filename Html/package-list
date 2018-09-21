@@ -1,0 +1,12 @@
+com.dots.client.board
+com.dots.client.lists.dots
+com.dots.client.lists.figures
+com.dots.client.lists.lines
+com.dots.client.menu
+com.dots.client.socket
+com.dots.server.board
+com.dots.server.lists.board
+com.dots.server.lists.dots
+com.dots.server.lists.figures
+com.dots.server.lists.lines
+com.dots.server.socket
