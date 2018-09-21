@@ -25,7 +25,7 @@ public class Cliente extends Thread{
      */
     public Tablero solicitarTablero(){
         try{
-            Socket conexionServer = new Socket("127.0.0.1",10000);
+            Socket conexionServer = new Socket("127.0.0.1",10000);   //Se conecta al puerto dedicado a enviar la informacion
             BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
             String tserial = entradaDatos.readLine();
             System.out.println(tserial);
