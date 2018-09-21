@@ -22,9 +22,9 @@ public class ListaCuadros {
         this.largo = largo;
     }
 
-    public void anadirElemento(int v1x, int v1y){
+    public void anadirElemento(int filas_columnas,int x,int y){
         if (this.head == null) {
-            this.head = new NodoCuadros(v1x, v1y);
+            this.head = new NodoCuadros(x,y);
             this.largo++;
         }
         else{
@@ -32,7 +32,7 @@ public class ListaCuadros {
             while(tmp.next != null) {
                 tmp = tmp.next;
             }
-            tmp.next = new NodoCuadros(v1x, v1y);
+            tmp.next = new NodoCuadros(tmp.get_x()+(350/filas_columnas),y);
             tmp.next.prev = tmp;
             this.largo++;
         }
