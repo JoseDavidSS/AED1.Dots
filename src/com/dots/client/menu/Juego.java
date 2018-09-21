@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
@@ -45,7 +46,7 @@ public class Juego {
 
     @FXML
     /**
-     * empezar3x3 es una función que determina las características que tendrá el tablero 3x3.
+     * empezar3x3 es una función que manda al server la plantilla elegida notificando la verificación del jugador corresponde recibida del server.
      */
     public void empezar3x3() {
         Tablero t = Tablero.getInstance();
@@ -77,7 +78,9 @@ public class Juego {
             }
         }
     }
-
+    /**
+     * empezar3x3_2 es una función que determina las características que tendrá el tablero 3x3.
+     */
     public void empezar3x3_2(){
         columnas_filas = 3;
         int espacio = height / 3;
@@ -90,7 +93,7 @@ public class Juego {
 
     @FXML
     /**
-     * empezar5x5 es una función que determina las características que tendrá el tablero 5x5.
+     * empezar5x5 es una función que manda al server la plantilla elegida notificando la verificación del jugador corresponde recibida del server.
      */
     public void empezar5x5(){
         Tablero t = Tablero.getInstance();
@@ -123,7 +126,9 @@ public class Juego {
             }
         }
     }
-
+    /**
+     * empezar5x5_2 es una función que determina las características que tendrá el tablero 5x5.
+     */
     public void empezar5x5_2(){
         columnas_filas = 5;
         int espacio = height / 5;
@@ -136,7 +141,7 @@ public class Juego {
 
     @FXML
     /**
-     * empezar7x7 es una función que determina las características que tendrá el tablero 7x7.
+     * empezar7x7 es una función que manda al server la plantilla elegida notificando la verificación del jugador corresponde recibida del server.
      */
     public void empezar7x7() {
         Tablero t = Tablero.getInstance();
@@ -169,7 +174,9 @@ public class Juego {
             }
         }
     }
-
+    /**
+     * empezar7x7_2 es una función que determina las características que tendrá el tablero 7x7.
+     */
     public void empezar7x7_2(){
         columnas_filas = 7;
         int espacio = height / 7;
@@ -204,7 +211,7 @@ public class Juego {
 
     /**
      * la función recibir texto recibe el texto de los TextField y activa el botón de inicio para jugar.
-     * @param event este parametro es el accionar del botón en el tab Sockets
+     * @param event este parametro es el accionar del botón en el tab Sockets.
      */
     public void recibirTexto (ActionEvent event){
         if (IP.getText() == null || IP.getText().trim().isEmpty() || Puerto.getText() == null || Puerto.getText().trim().isEmpty()){
@@ -214,6 +221,9 @@ public class Juego {
         }
     }
 
+    /**
+     * dibujarLineas es un método que se ejecuta una vez se manda la información de cliente a cliente para dibujar las líneas hechas.
+     */
     public void dibujarLineas () {
         ListaLineas l1 = ListaLineas.getInstance();
         NodoLineas tmp = l1.head;
@@ -227,6 +237,10 @@ public class Juego {
             tmp = tmp.next;
         }
     }
+
+    /**
+     * dibujarLinea es una función que se ejecuta al presionar un segundo botón del tablero para dibujar una línea.
+     */
     public void dibujarLinea () {
         ListaVertices l1 = ListaVertices.getInstance();
         NodoVertices tmp = l1.head;
@@ -235,9 +249,31 @@ public class Juego {
         paneBoard.getChildren().addAll(linea);
     }
 
-    public void dibujarCuadros (int EjeX, int EjeY, int ancho) {
-        Rectangle rect = new Rectangle(EjeX+5, EjeY+5, ancho, ancho);
-        paneBoard.getChildren().addAll(rect);
+    /**
+     * dibujarFiguras es un método que se ejecuta una vez se manda la información de cliente a cliente para dibujar las figuras ya hechas.
+     */
+    public void dibujarFiguras () {
+        ListaFiguras lF = ListaFiguras.getInstance();
+        lF.anadirElemento(250, 50, 366, 50, 366, 166, 0, 0);
+        NodoFiguras tmp = lF.head;
+        int ancho = (tmp.getV2x() - tmp.getV1x());
+        System.out.println("vertice 1:"+tmp.getV1x());
+        if (tmp.getV4x() == 0 && tmp.getV4y() == 0){
+            double x1 = tmp.getV1x();
+            double y1 = tmp.getV1y();
+            double x2 = tmp.getV2x();
+            double y2 = tmp.getV2y();
+            double x3 = tmp.getV3x();
+            double y3 = tmp.getV3y();
+            System.out.println("Mi y3 es: "+y3);
+            Polygon triangulo = new Polygon(x1+5, y1+5, x2+5, y2+5, x3+5, y3+5);
+            paneBoard.getChildren().addAll(triangulo);
+        }
+        else{
+            Rectangle rect = new Rectangle(tmp.getV1x()+5, tmp.getV1y()+5, ancho, ancho);
+            paneBoard.getChildren().addAll(rect);
+        }
+
         /**
         while (tmp != null) {
             int EjeX = tmp.getV1x();

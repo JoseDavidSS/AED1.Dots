@@ -5,13 +5,15 @@ import com.dots.client.lists.figures.ListaFiguras;
 import com.dots.client.lists.figures.ListaFiguras;
 import com.dots.client.lists.figures.NodoFiguras;
 import com.dots.client.lists.lines.ListaLineas;
-import com.dots.server.board.Tablero;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 
 import java.net.JarURLConnection;
 
+/**
+ * Esta clase es una clase envoltorio que extiende de Button de JavaFX.
+ */
 public class Boton extends Button {
 
     private Button boton;
@@ -52,7 +54,6 @@ public class Boton extends Button {
     /**
      * presionarBoton es una funcion dedicada a ser llamada por el setOnAction de cada botón creado e imprime su posición en X y en Y.
      */
-
     private void presionarBoton (){
         if (Juego.turno){
             System.out.println(coordenadaX +", "+ coordenadaY);
@@ -78,8 +79,12 @@ public class Boton extends Button {
         }else{
             System.out.println("NO ES MI TURNO");
         }
+
     }
 
+    /**
+     * getBoton es un método que retorna el atributo boton de tipo Button.
+     */
     public Button getBoton (){
         return boton;
     }
