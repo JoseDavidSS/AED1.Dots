@@ -44,7 +44,7 @@ public class Juego {
 
     @FXML
     /**
-     * empezar3x3 es una función que determina las características que tendrá el tablero 3x3.
+     * empezar3x3 es una función que manda al server la plantilla elegida notificando la verificación del jugador corresponde recibida del server.
      */
     public void empezar3x3() {
         Tablero t = Tablero.getInstance();
@@ -74,7 +74,9 @@ public class Juego {
             }
         }
     }
-
+    /**
+     * empezar3x3_2 es una función que determina las características que tendrá el tablero 3x3.
+     */
     public void empezar3x3_2(){
         int espacio = height / 3;
         int filas = 3;
@@ -86,7 +88,7 @@ public class Juego {
 
     @FXML
     /**
-     * empezar5x5 es una función que determina las características que tendrá el tablero 5x5.
+     * empezar5x5 es una función que manda al server la plantilla elegida notificando la verificación del jugador corresponde recibida del server.
      */
     public void empezar5x5(){
         Tablero t = Tablero.getInstance();
@@ -117,7 +119,9 @@ public class Juego {
             }
         }
     }
-
+    /**
+     * empezar5x5_2 es una función que determina las características que tendrá el tablero 5x5.
+     */
     public void empezar5x5_2(){
         int espacio = height / 5;
         int filas = 5;
@@ -129,7 +133,7 @@ public class Juego {
 
     @FXML
     /**
-     * empezar7x7 es una función que determina las características que tendrá el tablero 7x7.
+     * empezar7x7 es una función que manda al server la plantilla elegida notificando la verificación del jugador corresponde recibida del server.
      */
     public void empezar7x7() {
         Tablero t = Tablero.getInstance();
@@ -160,7 +164,9 @@ public class Juego {
             }
         }
     }
-
+    /**
+     * empezar7x7_2 es una función que determina las características que tendrá el tablero 7x7.
+     */
     public void empezar7x7_2(){
         int espacio = height / 7;
         int filas = 7;
@@ -194,7 +200,7 @@ public class Juego {
 
     /**
      * la función recibir texto recibe el texto de los TextField y activa el botón de inicio para jugar.
-     * @param event este parametro es el accionar del botón en el tab Sockets
+     * @param event este parametro es el accionar del botón en el tab Sockets.
      */
     public void recibirTexto (ActionEvent event){
         if (IP.getText() == null || IP.getText().trim().isEmpty() || Puerto.getText() == null || Puerto.getText().trim().isEmpty()){
@@ -204,6 +210,9 @@ public class Juego {
         }
     }
 
+    /**
+     * dibujarLineas es un método que se ejecuta una vez se manda la información de cliente a cliente para dibujar las líneas hechas.
+     */
     public void dibujarLineas () {
         ListaLineas l1 = ListaLineas.getInstance();
         NodoLineas tmp = l1.head;
@@ -217,6 +226,10 @@ public class Juego {
             tmp = tmp.next;
         }
     }
+
+    /**
+     * dibujarLinea es una función que se ejecuta al presionar un segundo botón del tablero para dibujar una línea.
+     */
     public void dibujarLinea () {
         ListaVertices l1 = ListaVertices.getInstance();
         NodoVertices tmp = l1.head;
@@ -225,6 +238,9 @@ public class Juego {
         paneBoard.getChildren().addAll(linea);
     }
 
+    /**
+     * dibujarFiguras es un método que se ejecuta una vez se manda la información de cliente a cliente para dibujar las figuras ya hechas.
+     */
     public void dibujarFiguras () {
         ListaFiguras lF = ListaFiguras.getInstance();
         lF.anadirElemento(250, 50, 366, 50, 366, 166, 0, 0);

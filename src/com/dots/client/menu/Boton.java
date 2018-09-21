@@ -11,6 +11,9 @@ import javafx.scene.shape.Line;
 
 import java.net.JarURLConnection;
 
+/**
+ * Esta clase es una clase envoltorio que extiende de Button de JavaFX.
+ */
 public class Boton extends Button {
 
     private Button boton;
@@ -69,6 +72,10 @@ public class Boton extends Button {
         }
 
     }
+
+    /**
+     * getBoton es un método que retorna el atributo boton de tipo Button.
+     */
     public Button getBoton (){
         return boton;
     }
