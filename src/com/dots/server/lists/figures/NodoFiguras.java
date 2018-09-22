@@ -104,8 +104,8 @@ public class NodoFiguras {
     }
 
     /**
-     * Método para obtener el eje x del tercer vértice.
-     * @return entero con el eje x del vértice.
+     * Método para modificar el eje y del segundo vértice.
+     * @param v2y entero con el nuevo eje.
      */
 
     public void setV2y(int v2y) {
