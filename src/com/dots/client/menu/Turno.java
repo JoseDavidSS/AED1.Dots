@@ -24,7 +24,7 @@ public class Turno extends Thread {
         System.out.println(t.getMiTurno());
         while(true){
             if (!t.getMiTurno()){
-                this.esperese(20);
+                this.esperar(20);
                 Cliente c = new Cliente();
                 c.enviarTablero(t);
                 t = c.solicitarTablero();
@@ -32,7 +32,7 @@ public class Turno extends Thread {
             }
             else{
                 System.out.println("MI TURNO");
-                this.esperese(20);
+                this.esperar(20);
             }
         }
     }
@@ -42,13 +42,11 @@ public class Turno extends Thread {
      * @param seg entero con la cantidad de segundos  esperar.
      */
 
-    private void esperese(int seg){
+    private void esperar(int seg){
         try{
             Thread.sleep(seg * 1000);
         }catch(InterruptedException e){
             Thread.currentThread().interrupt();
         }
     }
-
-
 }

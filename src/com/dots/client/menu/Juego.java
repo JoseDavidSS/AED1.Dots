@@ -1,5 +1,4 @@
 package com.dots.client.menu;
-
 import com.dots.client.board.Tablero;
 import com.dots.client.lists.dots.ListaVertices;
 import com.dots.client.lists.dots.NodoVertices;
@@ -16,7 +15,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
-
 import java.io.IOException;
 
 /**
@@ -35,10 +33,6 @@ public class Juego {
     public AnchorPane paneBoard;
     public Button Comenzar;
     public static Juego juego = new Juego();
-
-    public AnchorPane getPaneBoard() {
-        return paneBoard;
-    }
 
     @FXML
 
