@@ -10,6 +10,8 @@ public class Tablero {
     private static Tablero tablero = new Tablero();
     private String jugador = "";
     private Boolean miTurno = false;
+    private boolean fin = false;
+    private int puntaje = 0;
 
     /**
      * Método Singleton.
@@ -81,6 +83,42 @@ public class Tablero {
 
     public void setMiTurno(Boolean miTurno) {
         this.miTurno = miTurno;
+    }
+
+    /**
+     * Método para obtener si el juego acabó.
+     * @return un boolean con el estado del juego.
+     */
+
+    public boolean isFin() {
+        return this.fin;
+    }
+
+    /**
+     * Método para cambiar el estado del juego.
+     * @param fin boolean que almacena si acabó o no el juego.
+     */
+
+    public void setFin(boolean fin) {
+        this.fin = fin;
+    }
+
+    /**
+     * Método para obtener el puntaje actual de este jugador.
+     * @return entero con el puntaje actual.
+     */
+
+    public int getPuntaje() {
+        return puntaje;
+    }
+
+    /**
+     * Método para modificar el puntaje actual de este jugador.
+     * @param puntaje entero con el nuevo puntaje.
+     */
+
+    public void setPuntaje(int puntaje) {
+        this.puntaje = puntaje;
     }
 
 }

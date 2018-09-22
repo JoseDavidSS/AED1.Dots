@@ -12,6 +12,9 @@ public class Jugadores {
     private boolean t1 = false;
     private boolean t2 = true;
     private int m = 0;
+    private boolean fin = false;
+    private int puntaje1 = 0;
+    private int puntaje2 = 0;
 
     /**
      * Singletom de la clase.
@@ -110,5 +113,59 @@ public class Jugadores {
 
     public void setT2(boolean t2) {
         this.t2 = t2;
+    }
+
+    /**
+     * Método para obtener si el juego acabó.
+     * @return un boolean con el estado del juego.
+     */
+
+    public boolean isFin() {
+        return this.fin;
+    }
+
+    /**
+     * Método para cambiar el estado del juego.
+     * @param fin boolean que almacena si acabó o no el juego.
+     */
+
+    public void setFin(boolean fin) {
+        this.fin = fin;
+    }
+
+    /**
+     * Método para obtener el puntaje del jugador 1.
+     * @return entero que almacena la cantidad de puntos del jugador 1.
+     */
+
+    public int getPuntaje1() {
+        return puntaje1;
+    }
+
+    /**
+     * Método para modificar el puntaje del jugador 1.
+     * @param puntaje1 entero con la nueva cantidad de puntos del jugador 1.
+     */
+
+    public void setPuntaje1(int puntaje1) {
+        this.puntaje1 = puntaje1;
+    }
+
+    /**
+     * Método para obtener el puntaje del jugador 2.
+     * @return entero que almacena la cantidad de puntos del jugador 2.
+     */
+
+    public int getPuntaje2() {
+        return puntaje2;
+    }
+
+    /**
+     * Método para modificar el puntaje del jugador 2.
+     * @param puntaje2 entero con la nueva cantidad de puntos del jugador 2.
+     */
+
+    public void setPuntaje2(int puntaje2) {
+        this.puntaje2 = puntaje2;
     }
 }

@@ -8,7 +8,7 @@ import com.dots.client.lists.figures.ListaFiguras;
 
 public class ListaLineas {
 
-    public static com.dots.server.lists.lines.ListaLineas ListaLineas = new ListaLineas();
+    public static ListaLineas ListaLineas = new ListaLineas();
     public NodoLineas head = null;
     public NodoLineas tail = null;
     public int largo = 0;
@@ -18,7 +18,7 @@ public class ListaLineas {
      * @return instancia de la clase.
      */
 
-    public static com.dots.server.lists.lines.ListaLineas getInstance() {
+    public static ListaLineas getInstance() {
         return ListaLineas;
     }
 
