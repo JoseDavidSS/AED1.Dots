@@ -217,12 +217,19 @@ public class Server extends Thread{
                             }
                             ListaLineas.getInstance().comprobarAdyacentes();
                             this.enviarListaFiguras(ListaFiguras.getInstance());
-                            J.setT1(false);
-                            J.setT2(true);
+                            if (ListaLineas.getInstance().isUltLinea()){
+                                J.setT1(true);
+                                J.setT2(false);
+                            }else{
+                                J.setT1(false);
+                                J.setT2(true);
+                            }
                         }else{
                             t.setMiTurno(false);
                             t.setJugador("J1");
                             this.enviarTablero(t);
+                            this.enviarListaLineas(ListaLineas.getInstance());
+                            this.enviarListaFiguras(ListaFiguras.getInstance());
                         }
                     }else{
                         if (J.isT2()){
@@ -246,16 +253,19 @@ public class Server extends Thread{
                             }
                             ListaLineas.getInstance().comprobarAdyacentes();
                             this.enviarListaFiguras(ListaFiguras.getInstance());
-                            J.setT2(false);
-                            J.setT1(true);
+                            if (ListaLineas.getInstance().isUltLinea()){
+                                J.setT1(false);
+                                J.setT2(true);
+                            }else{
+                                J.setT2(false);
+                                J.setT1(true);
+                            }
                         }else{
-                            System.out.println("HOLA");
                             t.setMiTurno(false);
-                            System.out.println("HOLA");
                             t.setJugador("J2");
-                            System.out.println("HOLA");
                             this.enviarTablero(t);
-                            System.out.println("HOLA");
+                            this.enviarListaLineas(ListaLineas.getInstance());
+                            this.enviarListaFiguras(ListaFiguras.getInstance());
                         }
                     }
                 }

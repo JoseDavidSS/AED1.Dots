@@ -11,7 +11,8 @@ public class ListaLineas {
     public static ListaLineas ListaLineas = new ListaLineas();
     public NodoLineas head = null;
     public NodoLineas tail = null;
-    public int largo = 0;
+    private int largo = 0;
+    private boolean ultLinea = false;
 
     /**
      * Singleton de la clase.
@@ -24,6 +25,14 @@ public class ListaLineas {
 
     public static void setInstance(ListaLineas lista){
         ListaLineas = lista;
+    }
+
+    public boolean isUltLinea() {
+        return this.ultLinea;
+    }
+
+    public void setUltLinea(boolean ultLinea) {
+        this.ultLinea = ultLinea;
     }
 
     /**
@@ -108,6 +117,7 @@ public class ListaLineas {
                                             tmp3 = tmp3.next;
                                         }
                                         else{
+                                            this.ultLinea = true;
                                             System.out.println("Triangulo con ultima linea");
                                             System.out.println("V1: " + tmp1.getPosxi() + ", " + tmp1.getPosyi());
                                             System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
@@ -117,6 +127,7 @@ public class ListaLineas {
                                         }
                                     }
                                     else{
+                                        this.ultLinea = false;
                                         System.out.println("Triangulo");
                                         System.out.println("V1: " + tmp1.getPosxi() + ", " + tmp1.getPosyi());
                                         System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
@@ -138,6 +149,7 @@ public class ListaLineas {
                                                         tmp4 = tmp4.next;
                                                     }
                                                     else{
+                                                        this.ultLinea = true;
                                                         System.out.println("Cuadrado con ultima linea");
                                                         System.out.println("V1: " + tmp1.getPosxi() + ", " + tmp1.getPosyi());
                                                         System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
@@ -148,6 +160,7 @@ public class ListaLineas {
                                                     }
                                                 }
                                                 else{
+                                                    this.ultLinea = false;
                                                     System.out.println("Cuadrado");
                                                     System.out.println("V1: " + tmp1.getPosxi() + ", " + tmp1.getPosyi());
                                                     System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());

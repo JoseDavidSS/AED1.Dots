@@ -35,6 +35,13 @@ public class Turno extends Thread {
                     Tablero t = c.solicitarTablero();
                     Tablero.setInstance(t);
                     Juego.tablero = t;
+                    if (!t.getMiTurno()){
+                        ListaLineas l = c.solicitarListaLineas();
+                        ListaFiguras l2 = c.solicitarListaFiguras();
+                        ListaLineas.setInstance(l);
+                        ListaFiguras.setInstance(l2);
+                        Platform.runLater(() -> Juego.juego.dibujar());
+                    }
                 }
             }
             else{

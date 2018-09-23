@@ -11,7 +11,9 @@ public class ListaLineas {
     public static ListaLineas ListaLineas = new ListaLineas();
     public NodoLineas head = null;
     public NodoLineas tail = null;
-    public int largo = 0;
+    private int largo = 0;
+    private boolean ultLinea = false;
+
 
     /**
      * Singleton de la clase.
@@ -24,6 +26,14 @@ public class ListaLineas {
 
     public static void setInstance(ListaLineas lista){
         ListaLineas = lista;
+    }
+
+    public boolean isUltLinea() {
+        return this.ultLinea;
+    }
+
+    public void setUltLinea(boolean ultLinea) {
+        this.ultLinea = ultLinea;
     }
 
     /**
