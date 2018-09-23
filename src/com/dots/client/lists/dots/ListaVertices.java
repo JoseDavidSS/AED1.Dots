@@ -12,6 +12,7 @@ public class ListaVertices {
     private static ListaVertices ListaVertices = new ListaVertices();
     private int largo = 0;
     public NodoVertices head = null;
+    private boolean valido = false;
 
     /**
      * Método Singleton.
@@ -38,6 +39,14 @@ public class ListaVertices {
 
     public void setLargo(int largo) {
         this.largo = largo;
+    }
+
+    public boolean isValido() {
+        return this.valido;
+    }
+
+    public void setValido(boolean valido) {
+        this.valido = valido;
     }
 
     /**
@@ -91,7 +100,7 @@ public class ListaVertices {
      * @return booleans indicando si los vértices presionados son adyacentes.
      */
 
-    public boolean ordenar2(){
+    public void ordenar2(){
         if (this.largo == 2){
             NodoVertices tmp = this.head;
             NodoVertices tmp2 = tmp.next;
@@ -103,20 +112,20 @@ public class ListaVertices {
                         System.out.println(tmp2.getPosx() - tmp.getPosx());
                         System.out.println(350 / m);
                         System.out.println("NO1");
-                        return false;
+                        this.valido = false;
                     }else{
                         l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
                         System.out.println("SI");
-                        return true;
+                        this.valido = true;
                     }
                 }else{
                     if (tmp.getPosx() - tmp2.getPosx() > 350 / m){
                         System.out.println("NO2");
-                        return false;
+                        this.valido = false;
                     }else{
                         l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp.getPosy(), tmp2.getPosy());
                         System.out.println("SI");
-                        return true;
+                        this.valido = true;
                     }
                 }
             }
@@ -124,56 +133,56 @@ public class ListaVertices {
                 if (tmp.getPosy() < tmp2.getPosy()){
                     if (tmp2.getPosy() - tmp.getPosy() > 350 / m){
                         System.out.println("NO3");
-                        return false;
+                        this.valido = false;
                     }else{
                         l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
                         System.out.println("SI");
-                        return true;
+                        this.valido = true;
                     }
                 }else{
                     if (tmp.getPosy() - tmp2.getPosy() > 350 / m){
                         System.out.println("NO4");
-                        return false;
+                        this.valido = false;
                     }else{
                         l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp2.getPosy(), tmp.getPosy());
                         System.out.println("SI");
-                        return true;
+                        this.valido = true;
                     }
                 }
             }else {
                 if ((tmp.getPosx() < tmp2.getPosx()) && (tmp.getPosy() < tmp2.getPosy())) {
                     if (tmp2.getPosx() - tmp.getPosx() > (350 / m) + 50){
                         System.out.println("NO5");
-                        return false;
+                        this.valido = false;
                     }else{
                         l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
                         System.out.println("SI");
-                        return true;
+                        this.valido = true;
                     }
                 } else if ((tmp.getPosx() < tmp2.getPosx()) && (tmp.getPosy() > tmp2.getPosy())) {
                     if (tmp2.getPosx() - tmp.getPosx() > (350 / m) + 50){
                         System.out.println("NO6");
-                        return false;
+                        this.valido = false;
                     }else{
                         l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
                         System.out.println("SI");
-                        return true;
+                        this.valido = true;
                     }
                 }else{
                     if (tmp.getPosx() - tmp2.getPosx() > (350 / m) + 50){
                         System.out.println("NO7");
-                        return false;
+                        this.valido = false;
                     }else{
                         l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp2.getPosy(), tmp.getPosy());
                         System.out.println("SI");
-                        return true;
+                        this.valido = true;
                     }
                 }
             }
 
         }else{
             System.out.println("Error");
-            return false;
+            this.valido = false;
         }
     }
 

@@ -1,6 +1,6 @@
 package com.dots.server.lists.lines;
 
-import com.dots.client.lists.figures.ListaFiguras;
+import com.dots.server.lists.figures.ListaFiguras;
 
 /**
  * Clase de una lista enlazada que almacena líneas.
@@ -20,6 +20,10 @@ public class ListaLineas {
 
     public static ListaLineas getInstance() {
         return ListaLineas;
+    }
+
+    public static void setInstance(ListaLineas lista){
+        ListaLineas = lista;
     }
 
     /**

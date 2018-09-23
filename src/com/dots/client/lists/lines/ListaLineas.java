@@ -22,6 +22,10 @@ public class ListaLineas {
         return ListaLineas;
     }
 
+    public static void setInstance(ListaLineas lista){
+        ListaLineas = lista;
+    }
+
     /**
      * Método para obtener el largo de la lista.
      * @return entero con el largo de la lista.

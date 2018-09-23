@@ -1,6 +1,8 @@
 package com.dots.client.menu;
 
 import com.dots.client.lists.dots.ListaVertices;
+import com.dots.client.lists.figures.ListaFiguras;
+import com.dots.client.socket.Cliente;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
 
@@ -56,17 +58,19 @@ public class Boton extends Button {
             System.out.println(coordenadaX +", "+ coordenadaY);
             ListaVertices l1 = ListaVertices.getInstance();
             l1.anadirElemento(coordenadaX, coordenadaY);
-        /*ListaFiguras lF = ListaFiguras.getInstance();
-        lF.anadirElemento(250, 50, 366, 50, 366, 216, 250, 216);
-        NodoFiguras tmp = lF.head;
-        int ancho = (tmp.getV2x() - tmp.getV1x());
-        System.out.println("vertice 1:"+tmp.getV1x());
-        Juego.juego.dibujarCuadros(tmp.getV1x(), tmp.getV1y(),ancho);*/
             if (l1.getLargo() == 2){
-                boolean a = l1.ordenar2();
-                if (a){
+                Cliente c = new Cliente();
+                c.enviarListaVertices(l1);
+                l1 = c.solicitarListaVertices();
+                if (l1.isValido()){
+                    System.out.println("LINEA ADMITIDA");
                     Juego.juego.dibujarLinea();
                     l1.reiniciar();
+                    Juego.turno = false;
+                    ListaFiguras.setInstance(c.solicitarListaFiguras());
+                    Juego.juego.dibujarFiguras();
+                    Turno t = new Turno();
+                    t.start();
                 }
                 else{
                     System.out.println("LINEA NO ADMITIDA");

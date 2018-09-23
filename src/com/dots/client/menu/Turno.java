@@ -1,7 +1,10 @@
 package com.dots.client.menu;
 
 import com.dots.client.board.Tablero;
+import com.dots.client.lists.figures.ListaFiguras;
+import com.dots.client.lists.lines.ListaLineas;
 import com.dots.client.socket.Cliente;
+import javafx.application.Platform;
 
 /**
  * Clase que maneja los turnos del jugador
@@ -20,29 +23,31 @@ public class Turno extends Thread {
      */
 
     public void run(){
-        Tablero t = Tablero.getInstance();
-        System.out.println(t.getMiTurno());
         while(true){
-            if (!t.getMiTurno()){
-                this.esperar(20);
-                Cliente c = new Cliente();
-                c.enviarTablero(t);
-                t = c.solicitarTablero();
+            Cliente c = new Cliente();
+            if (!Juego.tablero.getMiTurno()){
+                this.esperar(15);
+                c.enviarTablero(Juego.tablero);
+                Tablero t = c.solicitarTablero();
                 Tablero.setInstance(t);
+                Juego.tablero = t;
             }
             else{
+                ListaLineas l = c.solicitarListaLineas();
+                ListaFiguras l2 = c.solicitarListaFiguras();
+                ListaLineas.setInstance(l);
+                ListaFiguras.setInstance(l2);
                 System.out.println("MI TURNO");
-                this.esperar(20);
+                Platform.runLater(() -> Juego.juego.dibujar());
+                Juego.turno = true;
+                Juego.tablero.setMiTurno(false);
+                Tablero.setInstance(Juego.tablero);
+                break;
             }
         }
     }
 
-    /**
-     * Método para hacer que el thread espere cierta cantidad de segundos antes de volver a conectarse al server.
-     * @param seg entero con la cantidad de segundos  esperar.
-     */
-
-    private void esperar(int seg){
+    public void esperar(int seg){
         try{
             Thread.sleep(seg * 1000);
         }catch(InterruptedException e){

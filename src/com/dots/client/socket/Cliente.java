@@ -4,7 +4,7 @@ import com.dots.client.board.Tablero;
 import com.dots.client.lists.dots.ListaVertices;
 import com.dots.client.lists.figures.ListaFiguras;
 import com.dots.client.lists.lines.ListaLineas;
-import com.google.gson.Gson;
+import com.gilecode.yagson.YaGson;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,11 +32,12 @@ public class Cliente extends Thread{
 
     public Tablero solicitarTablero(){
         try{
+            YaGson mapper = new YaGson();
             Socket conexionServer = new Socket("127.0.0.1",10000);
             BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
             String tserial = entradaDatos.readLine();
             System.out.println(tserial);
-            Tablero tablero = new Gson().fromJson(tserial, Tablero.class);
+            Tablero tablero = mapper.fromJson(tserial, Tablero.class);
             conexionServer.close();
             return tablero;
         } catch (IOException a){
@@ -52,9 +53,10 @@ public class Cliente extends Thread{
 
     public void enviarTablero(Tablero tablero) {
         try {
+            YaGson mapper = new YaGson();
             Socket conexionServer = new Socket("127.0.0.1", 10001);
             PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(), true);
-            String tableroSerial = new Gson().toJson(tablero);
+            String tableroSerial = mapper.toJson(tablero, Tablero.class);
             System.out.println(tableroSerial);
             salida.println(tableroSerial);
             conexionServer.close();
@@ -70,15 +72,16 @@ public class Cliente extends Thread{
 
     public ListaLineas solicitarListaLineas(){
         try{
+            YaGson mapper = new YaGson();
             Socket conexionServer = new Socket("127.0.0.1",10000);
             BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
             String lserial = entradaDatos.readLine();
             System.out.println(lserial);
-            ListaLineas lista = new Gson().fromJson(lserial, ListaLineas.class);
+            ListaLineas lista = mapper.fromJson(lserial, ListaLineas.class);
             conexionServer.close();
             return lista;
         } catch (IOException a){
-            System.out.println("Error recibiendo datos");
+            System.out.println("Error recibiendo datos 1");
         }
         return null;
     }
@@ -90,9 +93,10 @@ public class Cliente extends Thread{
 
     public void enviarListaLineas(ListaLineas lista) {
         try {
+            YaGson mapper = new YaGson();
             Socket conexionServer = new Socket("127.0.0.1", 10001);
             PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(), true);
-            String listaSerial = new Gson().toJson(lista);
+            String listaSerial = mapper.toJson(lista, ListaLineas.class);
             System.out.println(listaSerial);
             salida.println(listaSerial);
             conexionServer.close();
@@ -108,11 +112,12 @@ public class Cliente extends Thread{
 
     public ListaVertices solicitarListaVertices(){
         try{
+            YaGson mapper = new YaGson();
             Socket conexionServer = new Socket("127.0.0.1",10000);
             BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
             String lserial = entradaDatos.readLine();
             System.out.println(lserial);
-            ListaVertices lista = new Gson().fromJson(lserial, ListaVertices.class);
+            ListaVertices lista = mapper.fromJson(lserial, ListaVertices.class);
             conexionServer.close();
             return lista;
         } catch (IOException a){
@@ -128,9 +133,10 @@ public class Cliente extends Thread{
 
     public void enviarListaVertices(ListaVertices lista) {
         try {
-            Socket conexionServer = new Socket("127.0.0.1", 10001);
+            YaGson mapper = new YaGson();
+            Socket conexionServer = new Socket("127.0.0.1", 10002);
             PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(), true);
-            String listaSerial = new Gson().toJson(lista);
+            String listaSerial = mapper.toJson(lista, ListaVertices.class);
             System.out.println(listaSerial);
             salida.println(listaSerial);
             conexionServer.close();
@@ -146,11 +152,12 @@ public class Cliente extends Thread{
 
     public ListaFiguras solicitarListaFiguras(){
         try{
+            YaGson mapper = new YaGson();
             Socket conexionServer = new Socket("127.0.0.1",10000);
             BufferedReader entradaDatos = new BufferedReader(new InputStreamReader(conexionServer.getInputStream()));
             String lserial = entradaDatos.readLine();
             System.out.println(lserial);
-            ListaFiguras lista = new Gson().fromJson(lserial, ListaFiguras.class);
+            ListaFiguras lista = mapper.fromJson(lserial, ListaFiguras.class);
             conexionServer.close();
             return lista;
         } catch (IOException a){
@@ -164,11 +171,12 @@ public class Cliente extends Thread{
      * @param lista lista de vertices a enviar.
      */
 
-    public void enviarListaVertices(ListaFiguras lista) {
+    public void enviarListaFiguras(ListaFiguras lista) {
         try {
+            YaGson mapper = new YaGson();
             Socket conexionServer = new Socket("127.0.0.1", 10001);
             PrintWriter salida = new PrintWriter(conexionServer.getOutputStream(), true);
-            String listaSerial = new Gson().toJson(lista);
+            String listaSerial = mapper.toJson(lista);
             System.out.println(listaSerial);
             salida.println(listaSerial);
             conexionServer.close();

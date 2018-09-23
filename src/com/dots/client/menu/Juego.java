@@ -1,4 +1,5 @@
 package com.dots.client.menu;
+
 import com.dots.client.board.Tablero;
 import com.dots.client.lists.dots.ListaVertices;
 import com.dots.client.lists.dots.NodoVertices;
@@ -15,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
+
 import java.io.IOException;
 
 /**
@@ -28,11 +30,13 @@ public class Juego {
     int ejeY = 50;
     public static int columnas_filas;
     public static boolean turno = false;
+    public static String jugador = "";
     public TextField IP;
     public TextField Puerto;
     public AnchorPane paneBoard;
     public Button Comenzar;
     public static Juego juego = new Juego();
+    public static Tablero tablero;
 
     @FXML
 
@@ -59,6 +63,7 @@ public class Juego {
             c.enviarTablero(t);
             t = c.solicitarTablero();
             Tablero.setInstance(t);
+            tablero = t;
             if (t.getJugador().equals("J1") || (t.getJugador().equals("J2") && t.getFilas_columnas() == 3)){
                 System.out.println("Soy el: " + t.getJugador());
                 this.empezar3x3_2();
@@ -70,7 +75,6 @@ public class Juego {
                 System.out.println("Soy el: " + t.getJugador());
                 t.setMiTurno(true);
                 Tablero.setInstance(t);
-                turno = true;
                 if (t.getFilas_columnas() == 5) {
                     this.empezar5x5_2();
                 }else {
@@ -111,6 +115,7 @@ public class Juego {
             c.enviarTablero(t);
             t = c.solicitarTablero();
             Tablero.setInstance(t);
+            tablero = t;
             if (t.getJugador().equals("J1") || (t.getJugador().equals("J2") && t.getFilas_columnas() == 5)){
                 System.out.println("Soy el: " + t.getJugador());
                 this.empezar5x5_2();
@@ -122,7 +127,6 @@ public class Juego {
                 System.out.println("Soy el: " + t.getJugador());
                 t.setMiTurno(true);
                 Tablero.setInstance(t);
-                turno = true;
                 if (t.getFilas_columnas() == 3) {
                     this.empezar3x3_2();
                 }else {
@@ -163,6 +167,7 @@ public class Juego {
             c.enviarTablero(t);
             t = c.solicitarTablero();
             Tablero.setInstance(t);
+            tablero = t;
             if (t.getJugador().equals("J1") || (t.getJugador().equals("J2") && t.getFilas_columnas() == 7)){
                 System.out.println("Soy el: " + t.getJugador());
                 this.empezar7x7_2();
@@ -174,7 +179,6 @@ public class Juego {
                 System.out.println("Soy el: " + t.getJugador());
                 t.setMiTurno(true);
                 Tablero.setInstance(t);
-                turno = true;
                 if (t.getFilas_columnas() == 5) {
                     this.empezar5x5_2();
                 }else {
@@ -218,8 +222,8 @@ public class Juego {
             contadorFila++;
             contadorColumna = 0;
         }
-        //Turno t1 = new Turno();
-        //t1.start();
+        Turno t = new Turno();
+        t.start();
     }
 
     /**
@@ -240,15 +244,19 @@ public class Juego {
      */
     public void dibujarLineas () {
         ListaLineas l1 = ListaLineas.getInstance();
-        NodoLineas tmp = l1.head;
-        while (tmp != null) {
-            int InicioEjeX = tmp.getPosxi();
-            int InicioEjeY = tmp.getPosyi();
-            int FinalEjeX = tmp.getPosxf();
-            int FinalEjeY = tmp.getPosyf();
-            Line linea = new Line(InicioEjeX + 5, InicioEjeY + 5, FinalEjeX + 5, FinalEjeY + 5);
-            paneBoard.getChildren().addAll(linea);
-            tmp = tmp.next;
+        if (l1.getLargo() != 0){
+            NodoLineas tmp = l1.head;
+            while (tmp != null) {
+                int InicioEjeX = tmp.getPosxi();
+                int InicioEjeY = tmp.getPosyi();
+                int FinalEjeX = tmp.getPosxf();
+                int FinalEjeY = tmp.getPosyf();
+                Line linea = new Line(InicioEjeX + 5, InicioEjeY + 5, FinalEjeX + 5, FinalEjeY + 5);
+                paneBoard.getChildren().addAll(linea);
+                tmp = tmp.next;
+            }
+        }else{
+            System.out.println("Lista vacia");
         }
     }
 
@@ -268,36 +276,35 @@ public class Juego {
      */
     public void dibujarFiguras () {
         ListaFiguras lF = ListaFiguras.getInstance();
-        lF.anadirElemento(250, 50, 366, 50, 366, 166, 0, 0);
-        NodoFiguras tmp = lF.head;
-        int ancho = (tmp.getV2x() - tmp.getV1x());
-        System.out.println("vertice 1:"+tmp.getV1x());
-        if (tmp.getV4x() == 0 && tmp.getV4y() == 0){
-            double x1 = tmp.getV1x();
-            double y1 = tmp.getV1y();
-            double x2 = tmp.getV2x();
-            double y2 = tmp.getV2y();
-            double x3 = tmp.getV3x();
-            double y3 = tmp.getV3y();
-            System.out.println("Mi y3 es: "+y3);
-            Polygon triangulo = new Polygon(x1+5, y1+5, x2+5, y2+5, x3+5, y3+5);
-            paneBoard.getChildren().addAll(triangulo);
+        if (lF.getLargo() != 0){
+            NodoFiguras tmp = lF.head;
+            while (tmp != null){
+                int ancho = (tmp.getV2x() - tmp.getV1x());
+                if (tmp.getV4x() == 0 && tmp.getV4y() == 0){
+                    double x1 = tmp.getV1x();
+                    double y1 = tmp.getV1y();
+                    double x2 = tmp.getV2x();
+                    double y2 = tmp.getV2y();
+                    double x3 = tmp.getV3x();
+                    double y3 = tmp.getV3y();
+                    Polygon triangulo = new Polygon(x1+5, y1+5, x2+5, y2+5, x3+5, y3+5);
+                    paneBoard.getChildren().addAll(triangulo);
+                    tmp = tmp.next;
+                }
+                else{
+                    Rectangle rect = new Rectangle(tmp.getV1x()+5, tmp.getV1y()+5, ancho, ancho);
+                    paneBoard.getChildren().addAll(rect);
+                    tmp = tmp.next;
+                }
+            }
+        }else{
+            System.out.println("Lista vacia");
         }
-        else{
-            Rectangle rect = new Rectangle(tmp.getV1x()+5, tmp.getV1y()+5, ancho, ancho);
-            paneBoard.getChildren().addAll(rect);
-        }
+    }
 
-        /**
-        while (tmp != null) {
-            int EjeX = tmp.getV1x();
-            int EjeY = tmp.getV1y();
-            int ancho = (tmp.getV2x() - EjeX);
-            System.out.println(ancho);
-            Rectangle rect1 = new Rectangle(EjeX, EjeY, 200, 200);
-            paneBoard.getChildren().addAll(rect);
-            tmp = tmp.next;
-        }**/
+    public void dibujar(){
+        this.dibujarLineas();
+        this.dibujarFiguras();
     }
 
 }
