@@ -65,6 +65,9 @@ public class Juego {
             Tablero.setInstance(t);
             tablero = t;
             if (t.getJugador().equals("J1") || (t.getJugador().equals("J2") && t.getFilas_columnas() == 3)){
+                if (t.getJugador().equals("J2")){
+                    t.setMiTurno(true);
+                }
                 System.out.println("Soy el: " + t.getJugador());
                 this.empezar3x3_2();
             }
@@ -117,6 +120,9 @@ public class Juego {
             Tablero.setInstance(t);
             tablero = t;
             if (t.getJugador().equals("J1") || (t.getJugador().equals("J2") && t.getFilas_columnas() == 5)){
+                if (t.getJugador().equals("J2")){
+                    t.setMiTurno(true);
+                }
                 System.out.println("Soy el: " + t.getJugador());
                 this.empezar5x5_2();
             }
@@ -169,6 +175,9 @@ public class Juego {
             Tablero.setInstance(t);
             tablero = t;
             if (t.getJugador().equals("J1") || (t.getJugador().equals("J2") && t.getFilas_columnas() == 7)){
+                if (t.getJugador().equals("J2")){
+                    t.setMiTurno(true);
+                }
                 System.out.println("Soy el: " + t.getJugador());
                 this.empezar7x7_2();
             }

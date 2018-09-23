@@ -107,7 +107,6 @@ public class Server extends Thread{
                 ServerSocket servidor = new ServerSocket(10000);
                 Socket cliente = servidor.accept();
                 PrintWriter salida = new PrintWriter(cliente.getOutputStream(), true);
-                System.out.println(lista.getLargo());
                 String listaSerializada = mapper.toJson(lista, ListaLineas.class);
                 salida.println(listaSerializada);
                 cliente.close();
@@ -152,6 +151,7 @@ public class Server extends Thread{
                 BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
                 Jugadores J = Jugadores.getInstance();
                 String tRecibida = entrada.readLine();
+                System.out.println(tRecibida);
                 Tablero t = mapper.fromJson(tRecibida, Tablero.class);
                 if (!J.getJ1()){
                     cliente.close();
@@ -197,7 +197,6 @@ public class Server extends Thread{
                     servidor.close();
                     if (t.getJugador().equals("J1")){
                         if (J.isT1()) {
-                            System.out.println("Hola1");
                             t.setMiTurno(true);
                             t.setJugador("J1");
                             this.enviarTablero(t);
@@ -216,26 +215,22 @@ public class Server extends Thread{
                                     break;
                                 }
                             }
+                            ListaLineas.getInstance().comprobarAdyacentes();
                             this.enviarListaFiguras(ListaFiguras.getInstance());
                             J.setT1(false);
                             J.setT2(true);
                         }else{
-                            System.out.println("Hola2");
                             t.setMiTurno(false);
                             t.setJugador("J1");
                             this.enviarTablero(t);
                         }
                     }else{
                         if (J.isT2()){
-                            System.out.println("Hola3");
                             t.setMiTurno(true);
                             t.setJugador("J2");
                             this.enviarTablero(t);
-                            System.out.println("Wey");
                             this.enviarListaLineas(ListaLineas.getInstance());
-                            System.out.println("Weye");
                             this.enviarListaFiguras(ListaFiguras.getInstance());
-                            System.out.println("Weys");
                             this.solicitarListaVertices();
                             ListaVertices l = ListaVertices.getInstance();
                             while (!l.isValido()){
@@ -249,14 +244,18 @@ public class Server extends Thread{
                                     break;
                                 }
                             }
+                            ListaLineas.getInstance().comprobarAdyacentes();
                             this.enviarListaFiguras(ListaFiguras.getInstance());
                             J.setT2(false);
                             J.setT1(true);
                         }else{
-                            System.out.println("Hola4");
+                            System.out.println("HOLA");
                             t.setMiTurno(false);
+                            System.out.println("HOLA");
                             t.setJugador("J2");
+                            System.out.println("HOLA");
                             this.enviarTablero(t);
+                            System.out.println("HOLA");
                         }
                     }
                 }

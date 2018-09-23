@@ -110,83 +110,116 @@ public class ListaVertices {
             NodoVertices tmp2 = tmp.next;
             ListaLineas l = ListaLineas.getInstance();
             int m = Jugadores.getInstance().getM();
+            boolean a;
             if (tmp.getPosy() == tmp2.getPosy()){
                 if (tmp.getPosx() < tmp2.getPosx()){
                     if (tmp2.getPosx() - tmp.getPosx() > 350 / m){
-                        System.out.println(tmp2.getPosx() - tmp.getPosx());
-                        System.out.println(350 / m);
-                        System.out.println("NO1");
                         this.valido = false;
                     }else{
-                        l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
-                        ListaLineas.setInstance(l);
-                        System.out.println("SI");
-                        this.valido = true;
+                        a = l.comprobarIgualdad(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                        if (a){
+                            l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                            ListaLineas.setInstance(l);
+                            this.valido = true;
+                        }else{
+                            this.valido = false;
+                        }
                     }
                 }else{
                     if (tmp.getPosx() - tmp2.getPosx() > 350 / m){
-                        System.out.println("NO2");
                         this.valido = false;
                     }else{
-                        l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp.getPosy(), tmp2.getPosy());
-                        ListaLineas.setInstance(l);
-                        System.out.println("SI");
-                        this.valido = true;
+                        a = l.comprobarIgualdad(tmp2.getPosx(), tmp.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                        if (a){
+                            l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                            ListaLineas.setInstance(l);
+                            this.valido = true;
+                        }else{
+                            this.valido = false;
+                        }
                     }
                 }
             }
             else if (tmp.getPosx() == tmp2.getPosx()){
                 if (tmp.getPosy() < tmp2.getPosy()){
                     if (tmp2.getPosy() - tmp.getPosy() > 350 / m){
-                        System.out.println("NO3");
                         this.valido = false;
                     }else{
-                        l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
-                        ListaLineas.setInstance(l);
-                        System.out.println("SI");
-                        this.valido = true;
+                        a = l.comprobarIgualdad(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                        if (a){
+                            l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                            ListaLineas.setInstance(l);
+                            this.valido = true;
+                        }else{
+                            this.valido = false;
+                        }
                     }
                 }else{
                     if (tmp.getPosy() - tmp2.getPosy() > 350 / m){
-                        System.out.println("NO4");
                         this.valido = false;
                     }else{
-                        l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp2.getPosy(), tmp.getPosy());
-                        ListaLineas.setInstance(l);
-                        System.out.println("SI");
-                        this.valido = true;
+                        a = l.comprobarIgualdad(tmp.getPosx(), tmp2.getPosx(), tmp2.getPosy(), tmp.getPosy());
+                        if (a){
+                            l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp2.getPosy(), tmp.getPosy());
+                            ListaLineas.setInstance(l);
+                            this.valido = true;
+                        }else{
+                            this.valido = false;
+                        }
                     }
                 }
             }else {
                 if ((tmp.getPosx() < tmp2.getPosx()) && (tmp.getPosy() < tmp2.getPosy())) {
-                    if (tmp2.getPosx() - tmp.getPosx() > (350 / m) + 50){
-                        System.out.println("NO5");
+                    if (((tmp2.getPosx() - tmp.getPosx() >= (350 / m)) && (tmp2.getPosy() - tmp.getPosy() != (350 / m))) || ((tmp2.getPosy() - tmp.getPosy() >= (350 / m)) && (tmp2.getPosx() - tmp.getPosx() != (350 / m)))){
                         this.valido = false;
                     }else{
-                        l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
-                        ListaLineas.setInstance(l);
-                        System.out.println("SI");
-                        this.valido = true;
+                        a = l.comprobarIgualdad(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                        if (a){
+                            l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                            ListaLineas.setInstance(l);
+                            this.valido = true;
+                        }else{
+                            this.valido = false;
+                        }
                     }
                 } else if ((tmp.getPosx() < tmp2.getPosx()) && (tmp.getPosy() > tmp2.getPosy())) {
-                    if (tmp2.getPosx() - tmp.getPosx() > (350 / m) + 50){
-                        System.out.println("NO6");
+                    if (((tmp2.getPosx() - tmp.getPosx() >= (350 / m)) && (tmp.getPosy() - tmp2.getPosy() != (350 / m))) || ((tmp.getPosy() - tmp2.getPosy() >= (350 / m)) && (tmp2.getPosx() - tmp.getPosx() != (350 / m)))){
                         this.valido = false;
                     }else{
-                        l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
-                        ListaLineas.setInstance(l);
-                        System.out.println("SI");
-                        this.valido = true;
+                        a = l.comprobarIgualdad(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                        if (a){
+                            l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
+                            ListaLineas.setInstance(l);
+                            this.valido = true;
+                        }else{
+                            this.valido = false;
+                        }
+                    }
+                }else if ((tmp.getPosx() > tmp2.getPosx()) && (tmp.getPosy() < tmp2.getPosy())){
+                    if (((tmp.getPosx() - tmp2.getPosx() >= (350 / m)) && (tmp2.getPosy() - tmp.getPosy() != (350 / m))) || ((tmp2.getPosy() - tmp.getPosy() >= (350 / m)) && (tmp.getPosx() - tmp2.getPosx() != (350 / m)))){
+                        this.valido = false;
+                    }else{
+                        a = l.comprobarIgualdad(tmp2.getPosx(), tmp.getPosx(), tmp2.getPosy(), tmp.getPosy());
+                        if (a){
+                            l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp2.getPosy(), tmp.getPosy());
+                            ListaLineas.setInstance(l);
+                            this.valido = true;
+                        }else{
+                            this.valido = false;
+                        }
                     }
                 }else{
-                    if (tmp.getPosx() - tmp2.getPosx() > (350 / m) + 50){
-                        System.out.println("NO7");
+                    if (((tmp.getPosx() - tmp2.getPosx() >= (350 / m)) && (tmp.getPosy() - tmp2.getPosy() != (350 / m))) || ((tmp.getPosy() - tmp2.getPosy() >= (350 / m)) && (tmp.getPosx() - tmp2.getPosx() != (350 / m)))){
                         this.valido = false;
                     }else{
-                        l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp2.getPosy(), tmp.getPosy());
-                        ListaLineas.setInstance(l);
-                        System.out.println("SI");
-                        this.valido = true;
+                        a = l.comprobarIgualdad(tmp2.getPosx(), tmp.getPosx(), tmp2.getPosy(), tmp.getPosy());
+                        if (a){
+                            l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp2.getPosy(), tmp.getPosy());
+                            ListaLineas.setInstance(l);
+                            this.valido = true;
+                        }else{
+                            this.valido = false;
+                        }
                     }
                 }
             }

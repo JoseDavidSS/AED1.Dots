@@ -27,10 +27,15 @@ public class Turno extends Thread {
             Cliente c = new Cliente();
             if (!Juego.tablero.getMiTurno()){
                 this.esperar(15);
-                c.enviarTablero(Juego.tablero);
-                Tablero t = c.solicitarTablero();
-                Tablero.setInstance(t);
-                Juego.tablero = t;
+                boolean a = c.enviarTablero(Juego.tablero);
+                if (!a){
+                    Juego.tablero.setMiTurno(false);
+                    Tablero.setInstance(Juego.tablero);
+                }else{
+                    Tablero t = c.solicitarTablero();
+                    Tablero.setInstance(t);
+                    Juego.tablero = t;
+                }
             }
             else{
                 ListaLineas l = c.solicitarListaLineas();

@@ -186,4 +186,20 @@ public class ListaLineas {
             System.out.println("Error");
         }
     }
+
+    public boolean comprobarIgualdad(int posxi, int posxf, int posyi, int posyf){
+        if (this.largo != 0){
+            NodoLineas tmp = this.head;
+            while (tmp != null){
+                if (tmp.getPosxi() == posxi && tmp.getPosxf() == posxf && tmp.getPosyi() == posyi && tmp.getPosyf() == posyf){
+                    return false;
+                }else{
+                    tmp = tmp.next;
+                }
+            }
+            return true;
+        }else{
+            return true;
+        }
+    }
 }

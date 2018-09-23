@@ -51,7 +51,7 @@ public class Cliente extends Thread{
      *  @param tablero Tablero modificado.
      */
 
-    public void enviarTablero(Tablero tablero) {
+    public boolean enviarTablero(Tablero tablero) {
         try {
             YaGson mapper = new YaGson();
             Socket conexionServer = new Socket("127.0.0.1", 10001);
@@ -60,8 +60,10 @@ public class Cliente extends Thread{
             System.out.println(tableroSerial);
             salida.println(tableroSerial);
             conexionServer.close();
+            return true;
         } catch (IOException a) {
             System.out.println("Error enviando datos");
+            return false;
         }
     }
 
