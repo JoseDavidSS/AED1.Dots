@@ -129,16 +129,13 @@ public class ListadeListasDeCuadros {
      * @param estado estado al que se quiere cambiar
      */
 
-    public void cambiarEstado(int x1, int y1, int x2,int y2, int estado) {
-
+    public void cambiarEstado(int x1, int y1, int x2, int y2, int estado) {
         if (x2 == 0 && y2 == 0) {
             Jugadores j = Jugadores.getInstance();
-            cambiarEstado(x1, y1, x1+(350/j.getM()),y1,estado);
+            this.cambiarEstado(x1, y1, x1+(350/j.getM()),y1,estado);
         } else {
-            ListadeListasDeCuadros L1 = ListadeListasDeCuadros.getInstance();
-            if (L1.largo != 0) {
-                ListaCuadros tmp = L1.head;
-
+            if (this.largo != 0) {
+                ListaCuadros tmp = this.head;
                 while (tmp != null) {
                     NodoCuadros sub_tmp = tmp.head;
                     while (sub_tmp != null) {
@@ -155,27 +152,6 @@ public class ListadeListasDeCuadros {
             } else {
                 System.out.println("Error, la lista está vacía");
             }
-
         }
-    }
-
-    public static void main(String[] args){
-        /*ListadeListasDeCuadros L1 = ListadeListasDeCuadros.getInstance();
-        L1.anadirElemento(5);
-        L1.imprimirLista();
-        L1.cambiarEstado(390,120,460,120,3);
-        L1.imprimirLista();
-        System.out.println(L1.head.next.next.next.next.next.head.getV1x());
-        System.out.println(L1.head.next.next.next.next.next.head.getV1y());
-        System.out.println(L1.verificar());
-        L1.head.head.setEstado(2);
-        L1.head.head.next.setEstado(2);
-        L1.head.next.head.setEstado(2);
-        L1.head.next.head.next.setEstado(1);
-        L1.imprimirLista();
-        System.out.println(L1.verificar());
-        L1.head.next.head.next.setEstado(2);
-        L1.imprimirLista();
-        System.out.println(L1.verificar());*/
     }
 }

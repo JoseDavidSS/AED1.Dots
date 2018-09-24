@@ -285,10 +285,11 @@ public class Juego {
      */
     public void dibujarFiguras () {
         ListaFiguras lF = ListaFiguras.getInstance();
+        lF.imprimirLista();
         if (lF.getLargo() != 0){
+            System.out.println(lF.getLargo());
             NodoFiguras tmp = lF.head;
             while (tmp != null){
-                int ancho = (tmp.getV2x() - tmp.getV1x());
                 if (tmp.getV4x() == 0 && tmp.getV4y() == 0){
                     double x1 = tmp.getV1x();
                     double y1 = tmp.getV1y();
@@ -301,6 +302,7 @@ public class Juego {
                     tmp = tmp.next;
                 }
                 else{
+                    int ancho = (tmp.getV2x() - tmp.getV1x());
                     Rectangle rect = new Rectangle(tmp.getV1x()+5, tmp.getV1y()+5, ancho, ancho);
                     paneBoard.getChildren().addAll(rect);
                     tmp = tmp.next;

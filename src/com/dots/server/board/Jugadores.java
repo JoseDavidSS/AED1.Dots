@@ -25,6 +25,10 @@ public class Jugadores {
         return jugadores;
     }
 
+    public static void setInstance(Jugadores jugador){
+        jugadores = jugador;
+    }
+
     /**
      * Método para comprobar si ya se conectó el primer jugador.
      * @return boolean indicando si se conectó o no.

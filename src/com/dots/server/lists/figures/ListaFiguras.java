@@ -72,6 +72,7 @@ public class ListaFiguras {
         if (this.head != null){
             NodoFiguras tmp = this.head;
             while (tmp != null){
+                System.out.println("******************************************");
                 System.out.println("V1: " + tmp.getV1x() + ", " + tmp.getV1y());
                 System.out.println("V2: " + tmp.getV2x() + ", " + tmp.getV2y());
                 System.out.println("V3: " + tmp.getV3x() + ", " + tmp.getV3y());

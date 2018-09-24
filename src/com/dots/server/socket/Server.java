@@ -215,8 +215,11 @@ public class Server extends Thread{
                                     break;
                                 }
                             }
-                            ListaLineas.getInstance().comprobarAdyacentes();
+                            System.out.println("HOLA1");
+                            ListaLineas.getInstance().comprobarAdyacentes(t);
+                            System.out.println("HOLA2");
                             this.enviarListaFiguras(ListaFiguras.getInstance());
+                            ListadeListasDeCuadros.getInstance().imprimirLista();
                             if (ListaLineas.getInstance().isUltLinea()){
                                 J.setT1(true);
                                 J.setT2(false);
@@ -251,8 +254,11 @@ public class Server extends Thread{
                                     break;
                                 }
                             }
-                            ListaLineas.getInstance().comprobarAdyacentes();
+                            System.out.println("HOLA3");
+                            ListaLineas.getInstance().comprobarAdyacentes(t);
+                            System.out.println("HOLA4");
                             this.enviarListaFiguras(ListaFiguras.getInstance());
+                            ListadeListasDeCuadros.getInstance().imprimirLista();
                             if (ListaLineas.getInstance().isUltLinea()){
                                 J.setT1(false);
                                 J.setT2(true);
