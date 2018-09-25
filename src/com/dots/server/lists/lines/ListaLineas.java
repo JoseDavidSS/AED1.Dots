@@ -96,15 +96,15 @@ public class ListaLineas {
     public static void main(String[] args) {
         ListadeListasDeCuadros.getInstance().anadirElemento(3);
         ListadeListasDeCuadros.getInstance().imprimirLista();
-        ListaLineas.anadirElemento(366,482,50,50);
-        ListaLineas.anadirElemento(366,482,166,166);
-        ListaLineas.anadirElemento(250, 366, 50, 50);
+        ListaLineas.anadirElemento(250,366,50,50);
         ListaLineas.anadirElemento(250, 250, 50, 166);
-        ListaLineas.anadirElemento(250, 366, 166, 166);
-        ListaLineas.anadirElemento(482,482,50,166);
-        Tablero.getInstance().setJugador("J1");
-        ListaLineas.anadirElemento(366, 366, 50, 166);
+        ListaLineas.anadirElemento(250,366,166,50);
         ListaLineas.comprobarAdyacentes(Tablero.getInstance());
+        ListaLineas.anadirElemento(250,366,166,166);
+        ListaLineas.anadirElemento(366,366,50,166);
+        Tablero.getInstance().setJugador("J1");
+        ListaLineas.comprobarAdyacentes(Tablero.getInstance());
+        ListaLineas.anadirElemento(1,1,2,2);
         ListaLineas.comprobarAdyacentes(Tablero.getInstance());
         ListaFiguras.getInstance().imprimirLista();
     }
@@ -169,19 +169,34 @@ public class ListaLineas {
                                             this.ultLinea = true;
                                             System.out.println("Triangulo con ultima linea");
                                             System.out.println("V1: " + tmp1.getPosxi() + ", " + tmp1.getPosyi());
-                                            System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
-                                            System.out.println("V3: " + tmp2.getPosxf() + ", " + tmp2.getPosyf());
+                                            System.out.println("V2: " + tmp2.getPosxi() + ", " + tmp2.getPosyi());
+                                            System.out.println("V3: " + tmp3.getPosxf() + ", " + tmp3.getPosyf());
                                             l.anadirElemento(tmp1.getPosxi(), tmp1.getPosyi(), tmp2.getPosxi(), tmp2.getPosyi(), tmp3.getPosxf(), tmp3.getPosyf(), 0, 0);
-                                           // ListadeListasDeCuadros.getInstance().cambiarEstado(tmp1.getPosxi(), tmp1.getPosyi(), tmp1.getPosxf(), tmp1.getPosyf(), tmp2.getPosxf(), tmp2.getPosyf(), 0, 0, 1);
-                                            tmp3 = tmp3.next;
+                                            if (tmp1.getPosyi() == tmp3.getPosyf()){
+                                                if (tmp1.getPosyi() < tmp2.getPosyi()){
+                                                    ListadeListasDeCuadros.getInstance().cambiarEstado(tmp1.getPosxi(), tmp1.getPosyi(), tmp3.getPosxf(), tmp3.getPosyf(), 1);
+                                                    tmp3 = tmp3.next;
+                                                }
+                                                else{
+                                                    ListadeListasDeCuadros.getInstance().cambiarEstado(0, 0, tmp2.getPosxi(), tmp2.getPosyi(), 1);
+                                                    tmp3 = tmp3.next;
+                                                }
+                                            }
+                                            else if (tmp1.getPosyi() == tmp2.getPosyi()){
+                                                ListadeListasDeCuadros.getInstance().cambiarEstado(tmp1.getPosxi(), tmp1.getPosyi(), tmp2.getPosxi(), tmp2.getPosyi(), 1);
+                                                tmp3 = tmp3.next;
+                                            }else{
+                                                ListadeListasDeCuadros.getInstance().cambiarEstado(tmp1.getPosxi(), tmp1.getPosyi(), 0, 0, 1);
+                                                tmp3 = tmp3.next;
+                                            }
                                         }
                                     }
                                     else{
                                         this.ultLinea = false;
                                         System.out.println("Triangulo");
                                         System.out.println("V1: " + tmp1.getPosxi() + ", " + tmp1.getPosyi());
-                                        System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
-                                        System.out.println("V3: " + tmp2.getPosxf() + ", " + tmp2.getPosyf());
+                                        System.out.println("V2: " + tmp2.getPosxi() + ", " + tmp2.getPosyi());
+                                        System.out.println("V3: " + tmp3.getPosxf() + ", " + tmp3.getPosyf());
                                         tmp3 = tmp3.next;
                                     }
                                 }
@@ -232,8 +247,8 @@ public class ListaLineas {
                                                     this.ultLinea = false;
                                                     System.out.println("Cuadrado");
                                                     System.out.println("V1: " + tmp1.getPosxi() + ", " + tmp1.getPosyi());
-                                                    System.out.println("V2: " + tmp1.getPosxf() + ", " + tmp1.getPosyf());
-                                                    System.out.println("V3: " + tmp2.getPosxf() + ", " + tmp2.getPosyf());
+                                                    System.out.println("V2: " + tmp2.getPosxi() + ", " + tmp2.getPosyi());
+                                                    System.out.println("V3: " + tmp3.getPosxf() + ", " + tmp3.getPosyf());
                                                     System.out.println("V4: " + tmp4.getPosxf() + ", " + tmp4.getPosyf());
                                                     tmp4 = tmp4.next;
                                                 }

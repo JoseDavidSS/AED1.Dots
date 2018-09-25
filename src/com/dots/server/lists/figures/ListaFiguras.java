@@ -118,11 +118,16 @@ public class ListaFiguras {
                     }
                 }
                 else{
-                    if ((v1x == tmp.getV1x() || v1x == tmp.getV2x() || v1x == tmp.getV3x() || v1x == tmp.getV4x()) && (v2x == tmp.getV1x() || v2x == tmp.getV2x() || v2x == tmp.getV3x() || v2x == tmp.getV4x()) && (v3x == tmp.getV1x() || v3x == tmp.getV2x() || v3x == tmp.getV3x() || v3x == tmp.getV4x()) && (v4x == tmp.getV1x() || v4x == tmp.getV2x() || v4x == tmp.getV3x() || v4x == tmp.getV4x()) && (v1y == tmp.getV1y() || v1y == tmp.getV2y() || v1y == tmp.getV3y() || v1y == tmp.getV4y()) && (v2y == tmp.getV1y() || v2y == tmp.getV2y() || v2y == tmp.getV3y() || v2y == tmp.getV4y()) && (v3y == tmp.getV1y() || v3y == tmp.getV2y() || v3y == tmp.getV3y() || v3y == tmp.getV4y()) && (v4y == tmp.getV1y() || v4y == tmp.getV2y() || v4y == tmp.getV3y() || v4y == tmp.getV4y())){
-                        return true;
+                    if (tmp.getV4x() == 0){
+                        tmp = tmp.next;
                     }
                     else{
-                        tmp = tmp.next;
+                        if ((v1x == tmp.getV1x() || v1x == tmp.getV2x() || v1x == tmp.getV3x() || v1x == tmp.getV4x()) && (v2x == tmp.getV1x() || v2x == tmp.getV2x() || v2x == tmp.getV3x() || v2x == tmp.getV4x()) && (v3x == tmp.getV1x() || v3x == tmp.getV2x() || v3x == tmp.getV3x() || v3x == tmp.getV4x()) && (v4x == tmp.getV1x() || v4x == tmp.getV2x() || v4x == tmp.getV3x() || v4x == tmp.getV4x()) && (v1y == tmp.getV1y() || v1y == tmp.getV2y() || v1y == tmp.getV3y() || v1y == tmp.getV4y()) && (v2y == tmp.getV1y() || v2y == tmp.getV2y() || v2y == tmp.getV3y() || v2y == tmp.getV4y()) && (v3y == tmp.getV1y() || v3y == tmp.getV2y() || v3y == tmp.getV3y() || v3y == tmp.getV4y()) && (v4y == tmp.getV1y() || v4y == tmp.getV2y() || v4y == tmp.getV3y() || v4y == tmp.getV4y())){
+                            return true;
+                        }
+                        else{
+                            tmp = tmp.next;
+                        }
                     }
                 }
             }

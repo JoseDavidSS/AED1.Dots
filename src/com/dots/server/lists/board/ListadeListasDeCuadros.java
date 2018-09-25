@@ -102,14 +102,11 @@ public class ListadeListasDeCuadros {
 
     public boolean verificar(){
         ListaCuadros tmp = this.head;
-
-        boolean juegoTerminado = true;
-
-        while(tmp != null && juegoTerminado){
+        while(tmp != null){
             NodoCuadros sub_tmp = tmp.head;
-            while (sub_tmp != null && juegoTerminado){
+            while (sub_tmp != null){
                 if (sub_tmp.getEstado() != 2){
-                    juegoTerminado = false;
+                    return false;
                 }
                 else {
                     sub_tmp = sub_tmp.next;
@@ -117,7 +114,7 @@ public class ListadeListasDeCuadros {
             }
             tmp = tmp.next;
         }
-        return juegoTerminado;
+        return true;
     }
 
     /**
