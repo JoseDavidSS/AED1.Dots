@@ -21,6 +21,10 @@ public class ListadeListasDeCuadros {
         return lista;
     }
 
+    public static void reinicio(){
+        lista = new ListadeListasDeCuadros();
+    }
+
     /**
      * Método para obtener el largo de la lista.
      * @return entero con el largo de la lista.

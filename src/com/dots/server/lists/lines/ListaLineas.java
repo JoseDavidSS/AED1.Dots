@@ -30,6 +30,10 @@ public class ListaLineas {
         ListaLineas = lista;
     }
 
+    public static void reinicio(){
+        ListaLineas = new ListaLineas();
+    }
+
     public boolean isUltLinea() {
         return this.ultLinea;
     }

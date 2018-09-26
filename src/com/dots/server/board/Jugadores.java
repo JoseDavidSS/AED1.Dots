@@ -12,7 +12,8 @@ public class Jugadores {
     private boolean t1 = false;
     private boolean t2 = true;
     private int m = 0;
-    private boolean fin = false;
+    private boolean fin1 = false;
+    private boolean fin2 = false;
     private int puntaje1 = 0;
     private int puntaje2 = 0;
 
@@ -27,6 +28,10 @@ public class Jugadores {
 
     public static void setInstance(Jugadores jugador){
         jugadores = jugador;
+    }
+
+    public static void reinicio(){
+        jugadores = new Jugadores();
     }
 
     /**
@@ -120,24 +125,6 @@ public class Jugadores {
     }
 
     /**
-     * Método para obtener si el juego acabó.
-     * @return un boolean con el estado del juego.
-     */
-
-    public boolean isFin() {
-        return this.fin;
-    }
-
-    /**
-     * Método para cambiar el estado del juego.
-     * @param fin boolean que almacena si acabó o no el juego.
-     */
-
-    public void setFin(boolean fin) {
-        this.fin = fin;
-    }
-
-    /**
      * Método para obtener el puntaje del jugador 1.
      * @return entero que almacena la cantidad de puntos del jugador 1.
      */
@@ -171,5 +158,21 @@ public class Jugadores {
 
     public void setPuntaje2(int puntaje2) {
         this.puntaje2 = puntaje2;
+    }
+
+    public boolean isFin1() {
+        return this.fin1;
+    }
+
+    public void setFin1(boolean fin1) {
+        this.fin1 = fin1;
+    }
+
+    public boolean isFin2() {
+        return this.fin2;
+    }
+
+    public void setFin2(boolean fin2) {
+        this.fin2 = fin2;
     }
 }

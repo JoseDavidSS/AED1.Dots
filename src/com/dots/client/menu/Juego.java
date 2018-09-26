@@ -8,8 +8,11 @@ import com.dots.client.lists.figures.NodoFiguras;
 import com.dots.client.lists.lines.ListaLineas;
 import com.dots.client.lists.lines.NodoLineas;
 import com.dots.client.socket.Cliente;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -316,6 +319,34 @@ public class Juego {
     public void dibujar(){
         this.dibujarLineas();
         this.dibujarFiguras();
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Aviso");
+        alert.setHeaderText("MI TURNO");
+        alert.setContentText("Dibuja una linea");
+        alert.showAndWait();
+    }
+
+    public void dibujarNT(){
+        this.dibujarLineas();
+        this.dibujarFiguras();
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Aviso");
+        alert.setHeaderText("El otro jugador");
+        alert.setContentText("dibujo una figura");
+        alert.showAndWait();
+    }
+
+
+    public void finJuego(){
+        this.dibujarLineas();
+        this.dibujarFiguras();
+        System.out.println(tablero.getJugador() + " con: " + tablero.getPuntaje());
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Aviso");
+        alert.setHeaderText(tablero.getJugador());
+        alert.setContentText("Con: " + Integer.toString(tablero.getPuntaje()));
+        alert.showAndWait();
+        Platform.exit();
     }
 
 }

@@ -19,6 +19,10 @@ public class ListaFiguras {
         return ListaFiguras;
     }
 
+    public static void reinicio(){
+        ListaFiguras = new ListaFiguras();
+    }
+
     /**
      * Método para obtener el largo de la lista.
      * @return entero con el largo de la lista.
