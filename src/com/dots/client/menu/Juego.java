@@ -332,7 +332,7 @@ public class Juego {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Aviso");
         alert.setHeaderText("El otro jugador");
-        alert.setContentText("dibujo una figura");
+        alert.setContentText("no ha terminado su turno.");
         alert.showAndWait();
     }
 
@@ -347,6 +347,7 @@ public class Juego {
         alert.setContentText("Con: " + Integer.toString(tablero.getPuntaje()));
         alert.showAndWait();
         Platform.exit();
+        System.out.println("FIN");
     }
 
 }

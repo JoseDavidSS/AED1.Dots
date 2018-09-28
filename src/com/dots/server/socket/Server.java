@@ -151,8 +151,47 @@ public class Server extends Thread{
                 BufferedReader entrada = new BufferedReader(new InputStreamReader(cliente.getInputStream()));
                 Jugadores J = Jugadores.getInstance();
                 String tRecibida = entrada.readLine();
+                System.out.println(tRecibida);
                 Tablero t = mapper.fromJson(tRecibida, Tablero.class);
-                if (!J.getJ1()){
+                if (J.isFin1()){
+                    cliente.close();
+                    servidor.close();
+                    if (t.getJugador().equals("J1")){
+                        if (J.getPuntaje1() > J.getPuntaje2()){
+                            t.setJugador("Gane");
+                        }if (J.getPuntaje1() < J.getPuntaje2()){
+                            t.setJugador("Perdi");
+                        }if (J.getPuntaje1() == J.getPuntaje2()){
+                            t.setJugador("Empate");
+                        }
+                        t.setPuntaje(J.getPuntaje1());
+                    }
+                    if (t.getJugador().equals("J2")){
+                        if (J.getPuntaje1() < J.getPuntaje2()){
+                            t.setJugador("Gane");
+                        }if (J.getPuntaje1() > J.getPuntaje2()){
+                            t.setJugador("Perdi");
+                        }if (J.getPuntaje1() == J.getPuntaje2()){
+                            t.setJugador("Empate");
+                        }
+                        t.setPuntaje(J.getPuntaje2());
+                    }
+                    t.setMiTurno(false);
+                    t.setFin(true);
+                    this.enviarTablero(t);
+                    this.enviarListaLineas(ListaLineas.getInstance());
+                    this.enviarListaFiguras(ListaFiguras.getInstance());
+                    if (J.isFin2()){
+                        Jugadores.reinicio();
+                        ListadeListasDeCuadros.reinicio();
+                        ListaFiguras.reinicio();
+                        ListaLineas.reinicio();
+                        System.out.println("Listo para un nuevo juego");
+                    }else{
+                        J.setFin2(true);
+                    }
+                }
+                else if (!J.getJ1()){
                     cliente.close();
                     servidor.close();
                     J.setM(t.getFilas_columnas());
@@ -222,7 +261,7 @@ public class Server extends Thread{
                                 if (ListadeListasDeCuadros.getInstance().verificar()){
                                     J.setT1(false);
                                     J.setT2(false);
-                                    J.setFin2(true);
+                                    J.setFin1(true);
                                 }else{
                                     J.setT1(true);
                                     J.setT2(false);
@@ -231,43 +270,18 @@ public class Server extends Thread{
                                 if (ListadeListasDeCuadros.getInstance().verificar()){
                                     J.setT1(false);
                                     J.setT2(false);
-                                    J.setFin2(true);
+                                    J.setFin1(true);
                                 }else{
                                     J.setT1(false);
                                     J.setT2(true);
                                 }
                             }
                         }else{
-                            if (J.isFin1()){
-                                t.setMiTurno(false);
-                                if (J.getPuntaje1() < J.getPuntaje2()){
-                                    t.setJugador("Perdi");
-                                }if (J.getPuntaje2() < J.getPuntaje1()){
-                                    t.setJugador("Gane");
-                                }if (J.getPuntaje1() == J.getPuntaje2()){
-                                    t.setJugador("Empate");
-                                }
-                                t.setFin(true);
-                                t.setPuntaje(J.getPuntaje1());
-                                this.enviarTablero(t);
-                                this.enviarListaLineas(ListaLineas.getInstance());
-                                this.enviarListaFiguras(ListaFiguras.getInstance());
-                                if (J.isFin2()){
-                                    Jugadores.reinicio();
-                                    ListadeListasDeCuadros.reinicio();
-                                    ListaFiguras.reinicio();
-                                    ListaLineas.reinicio();
-                                    System.out.println("Listo para un nuevo juego");
-                                }else{
-                                    J.setFin2(true);
-                                }
-                            }else{
-                                t.setMiTurno(false);
-                                t.setJugador("J1");
-                                this.enviarTablero(t);
-                                this.enviarListaLineas(ListaLineas.getInstance());
-                                this.enviarListaFiguras(ListaFiguras.getInstance());
-                            }
+                            t.setMiTurno(false);
+                            t.setJugador("J1");
+                            this.enviarTablero(t);
+                            this.enviarListaLineas(ListaLineas.getInstance());
+                            this.enviarListaFiguras(ListaFiguras.getInstance());
                         }
                     }else{
                         if (J.isT2()){
@@ -313,41 +327,11 @@ public class Server extends Thread{
                                 }
                             }
                         }else{
-                            if (J.isFin2()){
-                                t.setMiTurno(false);
-                                if (J.getPuntaje1() < J.getPuntaje2()){
-                                    t.setJugador("Gane");
-                                }if (J.getPuntaje2() < J.getPuntaje1()){
-                                    t.setJugador("Perdi");
-                                }if (J.getPuntaje1() == J.getPuntaje2()){
-                                    t.setJugador("Empate");
-                                }
-                                t.setFin(true);
-                                t.setPuntaje(J.getPuntaje2());
-                                this.enviarTablero(t);
-                                this.enviarListaLineas(ListaLineas.getInstance());
-                                this.enviarListaFiguras(ListaFiguras.getInstance());
-                                Jugadores.reinicio();
-                                ListadeListasDeCuadros.reinicio();
-                                ListaFiguras.reinicio();
-                                ListaLineas.reinicio();
-                                System.out.println("Listo para un nuevo juego");
-                                if (J.isFin2()){
-                                    Jugadores.reinicio();
-                                    ListadeListasDeCuadros.reinicio();
-                                    ListaFiguras.reinicio();
-                                    ListaLineas.reinicio();
-                                    System.out.println("Listo para un nuevo juego");
-                                }else{
-                                    J.setFin1(true);
-                                }
-                            }else{
-                                t.setMiTurno(false);
-                                t.setJugador("J2");
-                                this.enviarTablero(t);
-                                this.enviarListaLineas(ListaLineas.getInstance());
-                                this.enviarListaFiguras(ListaFiguras.getInstance());
-                            }
+                            t.setMiTurno(false);
+                            t.setJugador("J2");
+                            this.enviarTablero(t);
+                            this.enviarListaLineas(ListaLineas.getInstance());
+                            this.enviarListaFiguras(ListaFiguras.getInstance());
                         }
                     }
                 }

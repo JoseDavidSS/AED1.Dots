@@ -85,7 +85,7 @@ public class Cliente extends Thread{
         } catch (IOException a){
             System.out.println("Error recibiendo datos 1");
         }
-        return null;
+        return ListaLineas.getInstance();
     }
 
     /**
@@ -165,7 +165,7 @@ public class Cliente extends Thread{
         } catch (IOException a){
             System.out.println("Error recibiendo datos");
         }
-        return null;
+        return ListaFiguras.getInstance();
     }
 
     /**

@@ -26,7 +26,7 @@ public class Turno extends Thread {
         while(true){
             Cliente c = new Cliente();
             if (!Juego.tablero.getMiTurno()){
-                this.esperar(15);
+                this.esperar(7);
                 boolean a = c.enviarTablero(Juego.tablero);
                 if (!a){
                     Juego.tablero.setMiTurno(false);

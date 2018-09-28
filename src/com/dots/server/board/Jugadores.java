@@ -161,7 +161,7 @@ public class Jugadores {
     }
 
     public boolean isFin1() {
-        return this.fin1;
+        return fin1;
     }
 
     public void setFin1(boolean fin1) {
@@ -169,7 +169,7 @@ public class Jugadores {
     }
 
     public boolean isFin2() {
-        return this.fin2;
+        return fin2;
     }
 
     public void setFin2(boolean fin2) {
