@@ -97,22 +97,6 @@ public class ListaLineas {
         }
     }
 
-    public static void main(String[] args) {
-        ListadeListasDeCuadros.getInstance().anadirElemento(3);
-        ListadeListasDeCuadros.getInstance().imprimirLista();
-        ListaLineas.anadirElemento(250,366,50,50);
-        ListaLineas.anadirElemento(250, 250, 50, 166);
-        ListaLineas.anadirElemento(250,366,166,50);
-        ListaLineas.comprobarAdyacentes(Tablero.getInstance());
-        ListaLineas.anadirElemento(250,366,166,166);
-        ListaLineas.anadirElemento(366,366,50,166);
-        Tablero.getInstance().setJugador("J1");
-        ListaLineas.comprobarAdyacentes(Tablero.getInstance());
-        ListaLineas.anadirElemento(1,1,2,2);
-        ListaLineas.comprobarAdyacentes(Tablero.getInstance());
-        ListaFiguras.getInstance().imprimirLista();
-    }
-
     public boolean comprobarIgualdad(int posxi, int posxf, int posyi, int posyf){
         if (this.largo != 0){
             NodoLineas tmp = this.head;

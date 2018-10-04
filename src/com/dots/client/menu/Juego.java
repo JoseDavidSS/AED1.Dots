@@ -63,10 +63,12 @@ public class Juego {
         } else {
             Cliente c = new Cliente();
             t.setFilas_columnas(3);
-            c.enviarTablero(t);
-            t = c.solicitarTablero();
-            Tablero.setInstance(t);
-            tablero = t;
+            boolean a = c.enviarTablero(t);
+            if (a){
+                t = c.solicitarTablero();
+                Tablero.setInstance(t);
+                tablero = t;
+            }
             if (t.getJugador().equals("J1") || (t.getJugador().equals("J2") && t.getFilas_columnas() == 3)){
                 if (t.getJugador().equals("J2")){
                     t.setMiTurno(true);
@@ -75,7 +77,14 @@ public class Juego {
                 this.empezar3x3_2();
             }
             else if (t.getJugador().equals("")){
-                System.out.println("Ya hay dos jugadores, no puedo jugar");
+                System.out.println("Hubo un error intentando conectar al servidor, intente de nuevo");
+                Tablero.getInstance().setFilas_columnas(0);
+                tablero = Tablero.getInstance();
+            }
+            else if (t.getJugador().equals("Cola")){
+                System.out.println("En Cola, soy el: " + t.getPuntaje());
+                Tablero.getInstance().setFilas_columnas(0);
+                tablero = Tablero.getInstance();
             }
             else {
                 System.out.println("Soy el: " + t.getJugador());
@@ -118,10 +127,12 @@ public class Juego {
         else {
             Cliente c = new Cliente();
             t.setFilas_columnas(5);
-            c.enviarTablero(t);
-            t = c.solicitarTablero();
-            Tablero.setInstance(t);
-            tablero = t;
+            boolean a = c.enviarTablero(t);
+            if (a){
+                t = c.solicitarTablero();
+                Tablero.setInstance(t);
+                tablero = t;
+            }
             if (t.getJugador().equals("J1") || (t.getJugador().equals("J2") && t.getFilas_columnas() == 5)){
                 if (t.getJugador().equals("J2")){
                     t.setMiTurno(true);
@@ -130,7 +141,14 @@ public class Juego {
                 this.empezar5x5_2();
             }
             else if (t.getJugador().equals("")){
-                System.out.println("Ya hay dos jugadores, no puedo jugar");
+                System.out.println("Hubo un error intentando conectar al servidor, intente de nuevo");
+                Tablero.getInstance().setFilas_columnas(0);
+                tablero = Tablero.getInstance();
+            }
+            else if (t.getJugador().equals("Cola")){
+                System.out.println("En Cola, soy el: " + t.getPuntaje());
+                Tablero.getInstance().setFilas_columnas(0);
+                tablero = Tablero.getInstance();
             }
             else {
                 System.out.println("Soy el: " + t.getJugador());
@@ -173,10 +191,12 @@ public class Juego {
         else {
             Cliente c = new Cliente();
             t.setFilas_columnas(7);
-            c.enviarTablero(t);
-            t = c.solicitarTablero();
-            Tablero.setInstance(t);
-            tablero = t;
+            boolean a = c.enviarTablero(t);
+            if (a){
+                t = c.solicitarTablero();
+                Tablero.setInstance(t);
+                tablero = t;
+            }
             if (t.getJugador().equals("J1") || (t.getJugador().equals("J2") && t.getFilas_columnas() == 7)){
                 if (t.getJugador().equals("J2")){
                     t.setMiTurno(true);
@@ -185,9 +205,16 @@ public class Juego {
                 this.empezar7x7_2();
             }
             else if (t.getJugador().equals("")){
-                System.out.println("Ya hay dos jugadores, no puedo jugar");
+                System.out.println("Hubo un error intentando conectar al servidor, intente de nuevo");
+                Tablero.getInstance().setFilas_columnas(0);
+                tablero = Tablero.getInstance();
             }
-            else {
+            else if (t.getJugador().equals("Cola")){
+                System.out.println("En Cola, soy el: " + t.getPuntaje());
+                Tablero.getInstance().setFilas_columnas(0);
+                tablero = Tablero.getInstance();
+            }
+            else{
                 System.out.println("Soy el: " + t.getJugador());
                 t.setMiTurno(true);
                 Tablero.setInstance(t);

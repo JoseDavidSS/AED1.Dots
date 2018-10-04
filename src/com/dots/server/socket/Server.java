@@ -6,6 +6,7 @@ import com.dots.server.lists.board.ListadeListasDeCuadros;
 import com.dots.server.lists.dots.ListaVertices;
 import com.dots.server.lists.figures.ListaFiguras;
 import com.dots.server.lists.lines.ListaLineas;
+import com.dots.server.lists.tail.ListaDeCola;
 import com.gilecode.yagson.YaGson;
 
 import java.io.BufferedReader;
@@ -153,7 +154,31 @@ public class Server extends Thread{
                 String tRecibida = entrada.readLine();
                 System.out.println(tRecibida);
                 Tablero t = mapper.fromJson(tRecibida, Tablero.class);
-                if (J.isFin1()){
+                if (t.getJugador().equals("Cola")){
+                    cliente.close();
+                    servidor.close();
+                    if (t.getPuntaje() == 1 && !J.getJ1()){
+                        t.setPuntaje(0);
+                        t.setJugador("");
+                        this.enviarTablero(t);
+                    }else if (t.getPuntaje() == 2 && !J.getJ2()){
+                        t.setPuntaje(0);
+                        t.setJugador("");
+                        this.enviarTablero(t);
+                    }else{
+                        if (!J.getJ1()){
+                            int a = t.getPuntaje();
+                            a--;
+                            t.setPuntaje(a);
+                            t.setJugador("Cola");
+                            this.enviarTablero(t);
+                        }else{
+                            t.setJugador("Cola");
+                            this.enviarTablero(t);
+                        }
+                    }
+                }
+                else if (J.isFin1()){
                     cliente.close();
                     servidor.close();
                     if (t.getJugador().equals("J1")){
@@ -228,8 +253,11 @@ public class Server extends Thread{
                 }else if (t.getJugador().equals("")){
                     cliente.close();
                     servidor.close();
+                    ListaDeCola.getInstance().anadirElemento();
+                    t.setPuntaje(ListaDeCola.getInstance().getLargo());
+                    t.setJugador("Cola");
                     this.enviarTablero(t);
-                    System.out.println("Se intentó conectar otro jugador, debe esperar");
+                    System.out.println("Se intentó conectar otro jugador, se metió insertó en una cola");
                 }else{
                     cliente.close();
                     servidor.close();

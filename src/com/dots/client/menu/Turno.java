@@ -26,7 +26,7 @@ public class Turno extends Thread {
         while(true){
             Cliente c = new Cliente();
             if (!Juego.tablero.getMiTurno()){
-                this.esperar(7);
+                this.esperar(10);
                 boolean a = c.enviarTablero(Juego.tablero);
                 if (!a){
                     Juego.tablero.setMiTurno(false);
@@ -43,7 +43,7 @@ public class Turno extends Thread {
                         Platform.runLater(() -> Juego.juego.finJuego());
                         break;
                     }
-                    if (!t.getMiTurno()){
+                    if (!t.getMiTurno() && (t.getJugador().equals("J1") || t.getJugador().equals("J2"))){
                         ListaLineas l = c.solicitarListaLineas();
                         ListaFiguras l2 = c.solicitarListaFiguras();
                         ListaLineas.setInstance(l);
