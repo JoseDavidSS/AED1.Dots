@@ -158,21 +158,31 @@ public class Server extends Thread{
                     cliente.close();
                     servidor.close();
                     if (t.getPuntaje() == 1 && !J.getJ1()){
+                        ListaDeCola.getInstance().eliminar(1);
                         t.setPuntaje(0);
                         t.setJugador("");
                         this.enviarTablero(t);
-                    }else if (t.getPuntaje() == 2 && !J.getJ2()){
+                    }
+                    else if (t.getPuntaje() == 2 && !J.getJ2() && J.getJ1()){
+                        ListaDeCola.getInstance().eliminar(2);
                         t.setPuntaje(0);
                         t.setJugador("");
                         this.enviarTablero(t);
-                    }else{
-                        if (!J.getJ1()){
+                    }
+                    else{
+                        if (!J.getJ1() || !J.getJ2()){
                             int a = t.getPuntaje();
-                            a--;
-                            t.setPuntaje(a);
-                            t.setJugador("Cola");
-                            this.enviarTablero(t);
-                        }else{
+                            if (ListaDeCola.getInstance().buscar(a)){
+                                t.setPuntaje(0);
+                                t.setJugador("");
+                                this.enviarTablero(t);
+                            }
+                            else{
+                                t.setJugador("Cola");
+                                this.enviarTablero(t);
+                            }
+                        }
+                        else{
                             t.setJugador("Cola");
                             this.enviarTablero(t);
                         }
@@ -184,9 +194,11 @@ public class Server extends Thread{
                     if (t.getJugador().equals("J1")){
                         if (J.getPuntaje1() > J.getPuntaje2()){
                             t.setJugador("Gane");
-                        }if (J.getPuntaje1() < J.getPuntaje2()){
+                        }
+                        if (J.getPuntaje1() < J.getPuntaje2()){
                             t.setJugador("Perdi");
-                        }if (J.getPuntaje1() == J.getPuntaje2()){
+                        }
+                        if (J.getPuntaje1() == J.getPuntaje2()){
                             t.setJugador("Empate");
                         }
                         t.setPuntaje(J.getPuntaje1());
@@ -194,9 +206,11 @@ public class Server extends Thread{
                     if (t.getJugador().equals("J2")){
                         if (J.getPuntaje1() < J.getPuntaje2()){
                             t.setJugador("Gane");
-                        }if (J.getPuntaje1() > J.getPuntaje2()){
+                        }
+                        if (J.getPuntaje1() > J.getPuntaje2()){
                             t.setJugador("Perdi");
-                        }if (J.getPuntaje1() == J.getPuntaje2()){
+                        }
+                        if (J.getPuntaje1() == J.getPuntaje2()){
                             t.setJugador("Empate");
                         }
                         t.setPuntaje(J.getPuntaje2());
@@ -212,7 +226,8 @@ public class Server extends Thread{
                         ListaFiguras.reinicio();
                         ListaLineas.reinicio();
                         System.out.println("Listo para un nuevo juego");
-                    }else{
+                    }
+                    else{
                         J.setFin2(true);
                     }
                 }
@@ -223,7 +238,8 @@ public class Server extends Thread{
                     t.setJugador("J1");
                     this.enviarTablero(t);
                     J.setJ1(true);
-                }else if (!J.getJ2() && t.getJugador().equals("")){
+                }
+                else if (!J.getJ2() && t.getJugador().equals("")){
                     cliente.close();
                     servidor.close();
                     t.setJugador("J2");
@@ -250,15 +266,17 @@ public class Server extends Thread{
                     this.enviarListaFiguras(ListaFiguras.getInstance());
                     J.setT2(false);
                     J.setT1(true);
-                }else if (t.getJugador().equals("")){
+                }
+                else if (t.getJugador().equals("")){
                     cliente.close();
                     servidor.close();
                     ListaDeCola.getInstance().anadirElemento();
                     t.setPuntaje(ListaDeCola.getInstance().getLargo());
                     t.setJugador("Cola");
                     this.enviarTablero(t);
-                    System.out.println("Se intentó conectar otro jugador, se metió insertó en una cola");
-                }else{
+                    System.out.println("Se intentó conectar otro jugador, se insertó en la cola");
+                }
+                else{
                     cliente.close();
                     servidor.close();
                     if (t.getJugador().equals("J1")){
@@ -290,28 +308,33 @@ public class Server extends Thread{
                                     J.setT1(false);
                                     J.setT2(false);
                                     J.setFin1(true);
-                                }else{
+                                }
+                                else{
                                     J.setT1(true);
                                     J.setT2(false);
                                 }
-                            }else{
+                            }
+                            else{
                                 if (ListadeListasDeCuadros.getInstance().verificar()){
                                     J.setT1(false);
                                     J.setT2(false);
                                     J.setFin1(true);
-                                }else{
+                                }
+                                else{
                                     J.setT1(false);
                                     J.setT2(true);
                                 }
                             }
-                        }else{
+                        }
+                        else{
                             t.setMiTurno(false);
                             t.setJugador("J1");
                             this.enviarTablero(t);
                             this.enviarListaLineas(ListaLineas.getInstance());
                             this.enviarListaFiguras(ListaFiguras.getInstance());
                         }
-                    }else{
+                    }
+                    else{
                         if (J.isT2()){
                             t.setMiTurno(true);
                             t.setJugador("J2");
@@ -340,21 +363,25 @@ public class Server extends Thread{
                                     J.setT1(false);
                                     J.setT2(false);
                                     J.setFin1(true);
-                                }else{
+                                }
+                                else{
                                     J.setT1(false);
                                     J.setT2(true);
                                 }
-                            }else{
+                            }
+                            else{
                                 if (ListadeListasDeCuadros.getInstance().verificar()){
                                     J.setT1(false);
                                     J.setT2(false);
                                     J.setFin1(true);
-                                }else{
+                                }
+                                else{
                                     J.setT1(true);
                                     J.setT2(false);
                                 }
                             }
-                        }else{
+                        }
+                        else{
                             t.setMiTurno(false);
                             t.setJugador("J2");
                             this.enviarTablero(t);
