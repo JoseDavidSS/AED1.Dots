@@ -104,6 +104,17 @@ public class ListaLineas {
                 if (tmp.getPosxi() == posxi && tmp.getPosxf() == posxf && tmp.getPosyi() == posyi && tmp.getPosyf() == posyf){
                     return false;
                 }
+                else if (tmp.getPosxi() == posxi && tmp.getPosxf() == posxf){
+                    if ((Math.abs(tmp.getPosxf() - tmp.getPosxi()) == Math.abs(posxf - posxi)) && (Math.abs(tmp.getPosyf() - tmp.getPosyi()) == Math.abs(posyf - posyi))){
+                        if (tmp.getPosyi() == posyf && tmp.getPosyf() == posyi){
+                            return false;
+                        }else {
+                            tmp = tmp.next;
+                        }
+                    }else{
+                        tmp = tmp.next;
+                    }
+                }
                 else{
                     tmp = tmp.next;
                 }
