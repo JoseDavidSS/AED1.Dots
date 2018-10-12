@@ -11,6 +11,7 @@ public class ListadeListasDeCuadros {
     public int largo = 0;
     public ListaCuadros head = null;
     private static ListadeListasDeCuadros lista = new ListadeListasDeCuadros();
+    private boolean comprobacion = false;
 
     /**
      * Singleton de la clase.
@@ -41,6 +42,14 @@ public class ListadeListasDeCuadros {
 
     public void setLargo(int largo) {
         this.largo = largo;
+    }
+
+    public boolean isComprobacion() {
+        return this.comprobacion;
+    }
+
+    public void setComprobacion(boolean comprobacion) {
+        this.comprobacion = comprobacion;
     }
 
     /**
@@ -155,4 +164,36 @@ public class ListadeListasDeCuadros {
             }
         }
     }
+
+    public void comprobarEstado(int x1, int y1, int x2, int y2){
+        if (x2 == 0 && y2 == 0) {
+            Jugadores j = Jugadores.getInstance();
+            this.comprobarEstado(x1, y1, x1+(350/j.getM()),y1);
+        } else {
+            if (this.largo != 0) {
+                ListaCuadros tmp = this.head;
+                while (tmp != null) {
+                    NodoCuadros sub_tmp = tmp.head;
+                    while (sub_tmp != null) {
+                        if (sub_tmp.get_x() == x2 && sub_tmp.get_y() == y2) {
+                            if (sub_tmp.getEstado() <= 1){
+                                this.comprobacion = true;
+                                break;
+                            }else{
+                                this.comprobacion = false;
+                                break;
+                            }
+                        } else {
+                            sub_tmp = sub_tmp.next;
+                        }
+                    }
+                    tmp = tmp.next;
+                }
+
+            } else {
+                System.out.println("Error, la lista está vacía");
+            }
+        }
+    }
+
 }

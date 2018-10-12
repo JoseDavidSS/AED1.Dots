@@ -103,7 +103,8 @@ public class ListaLineas {
             while (tmp != null){
                 if (tmp.getPosxi() == posxi && tmp.getPosxf() == posxf && tmp.getPosyi() == posyi && tmp.getPosyf() == posyf){
                     return false;
-                }else{
+                }
+                else{
                     tmp = tmp.next;
                 }
             }

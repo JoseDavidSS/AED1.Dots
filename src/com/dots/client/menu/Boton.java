@@ -3,6 +3,7 @@ package com.dots.client.menu;
 import com.dots.client.lists.dots.ListaVertices;
 import com.dots.client.lists.figures.ListaFiguras;
 import com.dots.client.socket.Cliente;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
 
@@ -73,12 +74,20 @@ public class Boton extends Button {
                     t.start();
                 }
                 else{
-                    System.out.println("LINEA NO ADMITIDA");
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Aviso");
+                    alert.setHeaderText("Error");
+                    alert.setContentText("Jugada invalida");
+                    alert.showAndWait();
                     l1.reiniciar();
                 }
             }
         }else{
-            System.out.println("NO ES MI TURNO");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Error");
+            alert.setContentText("No es mi turno");
+            alert.showAndWait();
         }
 
     }

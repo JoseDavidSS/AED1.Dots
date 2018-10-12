@@ -31,6 +31,10 @@ public class Tablero {
         tablero = t;
     }
 
+    public static void reinicio(){
+        tablero = new Tablero();
+    }
+
     /**
      * Método para conseguir las filas y columnas de los vértices.
      * @return entero con la cantidad de filas y columnas.

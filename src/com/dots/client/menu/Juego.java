@@ -394,7 +394,7 @@ public class Juego {
     }
 
 
-    public void finJuego(){
+    public void finJuego() {
         this.dibujarLineas();
         this.dibujarFiguras();
         System.out.println(tablero.getJugador() + " con: " + tablero.getPuntaje());
@@ -403,9 +403,17 @@ public class Juego {
         alert.setHeaderText(tablero.getJugador());
         alert.setContentText("Con: " + Integer.toString(tablero.getPuntaje()));
         alert.showAndWait();
-        Platform.exit();
         System.out.println("FIN");
+        try{
+            turno = false;
+            jugador = "";
+            Tablero.reinicio();
+            tablero = Tablero.getInstance();
+            this.correrTablero();
+        }catch (IOException e){
+            System.out.println("Hubo un error :(");
+            Platform.exit();
+        }
     }
-
 }
 

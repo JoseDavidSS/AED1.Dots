@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 /**
@@ -22,6 +23,7 @@ public class Main extends Application {
      */
 
     static void setScene(String scene_route) throws IOException {
+
         Parent root = FXMLLoader.load(Main.class.getResource(scene_route));
         Scene escena = new Scene(root);
         double width = juego.getWidth();
@@ -47,6 +49,7 @@ public class Main extends Application {
      */
 
     public void start(Stage primaryStage) throws Exception{
+        System.out.println("Hola1");
         Main.juego=primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("juegoFXML.fxml"));
         primaryStage.setTitle("¡¡ DOTS !!");

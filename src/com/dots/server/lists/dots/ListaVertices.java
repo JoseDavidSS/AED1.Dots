@@ -1,6 +1,7 @@
 package com.dots.server.lists.dots;
 
 import com.dots.server.board.Jugadores;
+import com.dots.server.lists.board.ListadeListasDeCuadros;
 import com.dots.server.lists.lines.ListaLineas;
 
 /**
@@ -109,8 +110,10 @@ public class ListaVertices {
             NodoVertices tmp = this.head;
             NodoVertices tmp2 = tmp.next;
             ListaLineas l = ListaLineas.getInstance();
+            ListadeListasDeCuadros l2 = ListadeListasDeCuadros.getInstance();
             int m = Jugadores.getInstance().getM();
             boolean a;
+            boolean b;
             if (tmp.getPosy() == tmp2.getPosy()){
                 if (tmp.getPosx() < tmp2.getPosx()){
                     if (tmp2.getPosx() - tmp.getPosx() > 350 / m){
@@ -174,7 +177,10 @@ public class ListaVertices {
                         this.valido = false;
                     }else{
                         a = l.comprobarIgualdad(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
-                        if (a){
+                        l2.comprobarEstado(tmp.getPosx(), tmp.getPosy(), 0, 0);
+                        b = l2.isComprobacion();
+                        System.out.println(a + ", " + b);
+                        if (a && b){
                             l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
                             ListaLineas.setInstance(l);
                             this.valido = true;
@@ -187,7 +193,9 @@ public class ListaVertices {
                         this.valido = false;
                     }else{
                         a = l.comprobarIgualdad(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
-                        if (a){
+                        l2.comprobarEstado(tmp.getPosx(), tmp.getPosy(), 0, 0);
+                        b = l2.isComprobacion();
+                        if (a && b){
                             l.anadirElemento(tmp.getPosx(), tmp2.getPosx(), tmp.getPosy(), tmp2.getPosy());
                             ListaLineas.setInstance(l);
                             this.valido = true;
@@ -200,7 +208,9 @@ public class ListaVertices {
                         this.valido = false;
                     }else{
                         a = l.comprobarIgualdad(tmp2.getPosx(), tmp.getPosx(), tmp2.getPosy(), tmp.getPosy());
-                        if (a){
+                        l2.comprobarEstado(tmp.getPosx(), tmp.getPosy(), 0, 0);
+                        b = l2.isComprobacion();
+                        if (a && b){
                             l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp2.getPosy(), tmp.getPosy());
                             ListaLineas.setInstance(l);
                             this.valido = true;
@@ -213,7 +223,9 @@ public class ListaVertices {
                         this.valido = false;
                     }else{
                         a = l.comprobarIgualdad(tmp2.getPosx(), tmp.getPosx(), tmp2.getPosy(), tmp.getPosy());
-                        if (a){
+                        l2.comprobarEstado(tmp.getPosx(), tmp.getPosy(), 0, 0);
+                        b = l2.isComprobacion();
+                        if (a && b){
                             l.anadirElemento(tmp2.getPosx(), tmp.getPosx(), tmp2.getPosy(), tmp.getPosy());
                             ListaLineas.setInstance(l);
                             this.valido = true;
