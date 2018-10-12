@@ -115,11 +115,17 @@ public class ListadeListasDeCuadros {
 
     public boolean verificar(){
         ListaCuadros tmp = this.head;
+        boolean solo1 = false;
         while(tmp != null){
             NodoCuadros sub_tmp = tmp.head;
             while (sub_tmp != null){
                 if (sub_tmp.getEstado() != 2){
-                    return false;
+                    if (!solo1 && sub_tmp.getEstado() == 1){
+                        solo1 = true;
+                        sub_tmp = sub_tmp.next;
+                    }else{
+                        return false;
+                    }
                 }
                 else {
                     sub_tmp = sub_tmp.next;
@@ -189,10 +195,34 @@ public class ListadeListasDeCuadros {
                     }
                     tmp = tmp.next;
                 }
-
             } else {
                 System.out.println("Error, la lista está vacía");
             }
+        }
+    }
+
+    public void hayTriangulo(int x, int y){
+        if (this.largo != 0) {
+            ListaCuadros tmp = this.head;
+            while (tmp != null) {
+                NodoCuadros sub_tmp = tmp.head;
+                while (sub_tmp != null) {
+                    if (sub_tmp.get_x() == x && sub_tmp.get_y() == y) {
+                        if (sub_tmp.getEstado() == 1){
+                            this.comprobacion = true;
+                            break;
+                        }else{
+                            this.comprobacion = false;
+                            break;
+                        }
+                    } else {
+                        sub_tmp = sub_tmp.next;
+                    }
+                }
+                tmp = tmp.next;
+            }
+        } else {
+            System.out.println("Error, la lista está vacía");
         }
     }
 

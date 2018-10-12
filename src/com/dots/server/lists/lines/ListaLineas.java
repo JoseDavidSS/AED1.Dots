@@ -233,10 +233,42 @@ public class ListaLineas {
                                                             Jugadores.setInstance(j);
                                                         }
                                                         if (tmp2.getPosxi() - tmp1.getPosxi() == 0){
+                                                            ListadeListasDeCuadros.getInstance().hayTriangulo(tmp4.getPosxf(), tmp4.getPosyf());
+                                                            String jugador = t.getJugador();
+                                                            if (ListadeListasDeCuadros.getInstance().isComprobacion()){
+                                                                if (jugador.equals("J1")){
+                                                                    j.setPuntaje1(j.getPuntaje1() - 2);
+                                                                    System.out.println(j.getPuntaje1());
+                                                                    System.out.println(j.getPuntaje2());
+                                                                    Jugadores.setInstance(j);
+                                                                }
+                                                                if (jugador.equals("J2")){
+                                                                    j.setPuntaje2(j.getPuntaje2() - 2);
+                                                                    System.out.println(j.getPuntaje1());
+                                                                    System.out.println(j.getPuntaje2());
+                                                                    Jugadores.setInstance(j);
+                                                                }
+                                                            }
                                                             l.anadirElemento(tmp1.getPosxi(), tmp1.getPosyi(), tmp4.getPosxf(), tmp4.getPosyf(), tmp3.getPosxf(), tmp3.getPosyf(), tmp2.getPosxi(), tmp2.getPosyi());
                                                             ListadeListasDeCuadros.getInstance().cambiarEstado(tmp1.getPosxi(), tmp1.getPosyi(), tmp4.getPosxf(), tmp4.getPosyf(), 2);
                                                             tmp4 = tmp4.next;
                                                         }else{
+                                                            ListadeListasDeCuadros.getInstance().hayTriangulo(tmp2.getPosxf(), tmp2.getPosyf());
+                                                            String jugador = t.getJugador();
+                                                            if (ListadeListasDeCuadros.getInstance().isComprobacion()){
+                                                                if (jugador.equals("J1")){
+                                                                    j.setPuntaje1(j.getPuntaje1() - 2);
+                                                                    System.out.println(j.getPuntaje1());
+                                                                    System.out.println(j.getPuntaje2());
+                                                                    Jugadores.setInstance(j);
+                                                                }
+                                                                if (jugador.equals("J2")){
+                                                                    j.setPuntaje2(j.getPuntaje2() - 2);
+                                                                    System.out.println(j.getPuntaje1());
+                                                                    System.out.println(j.getPuntaje2());
+                                                                    Jugadores.setInstance(j);
+                                                                }
+                                                            }
                                                             l.anadirElemento(tmp1.getPosxi(), tmp1.getPosyi(), tmp2.getPosxi(), tmp2.getPosyi(), tmp3.getPosxf(), tmp3.getPosyf(), tmp4.getPosxf(), tmp4.getPosyf());
                                                             ListadeListasDeCuadros.getInstance().cambiarEstado(tmp1.getPosxi(), tmp1.getPosyi(), tmp2.getPosxi(), tmp2.getPosyi(), 2);
                                                             tmp4 = tmp4.next;
